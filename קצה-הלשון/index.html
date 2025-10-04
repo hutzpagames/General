@@ -1,894 +1,883 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-     </script>    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>קצה הלשון - המשחק</title>
-    
-    <link rel="manifest" href="manifest.json">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878123086661063"
+     crossorigin="anonymous"></script>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>קצה הלשון - המשחק</title>
+    
+    <link rel="manifest" href="manifest.json">
 
-    <meta name="theme-color" content="#d92d20"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="קצה הלשון">
-    <link rel="apple-touch-icon" href="icon-192x192.png">
+    <meta name="theme-color" content="#d92d20"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="קצה הלשון">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --alias-red: #d92d20;
-            --alias-white: #ffffff;
-            --alias-dark: #2c2c2c;
-            --alias-light-gray: #f7f7f7;
-        }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --alias-red: #d92d20;
+            --alias-white: #ffffff;
+            --alias-dark: #2c2c2c;
+            --alias-light-gray: #f7f7f7;
+        }
 
-        body {
-            font-family: 'Rubik', sans-serif;
-            touch-action: manipulation;
-            background-color: var(--alias-light-gray);
-            overflow: hidden;
-        }
+        body {
+            font-family: 'Rubik', sans-serif;
+            touch-action: manipulation;
+            background-color: var(--alias-light-gray);
+            overflow: hidden;
+        }
 
-        #app-container {
-            /* height: 100vh; */ /* This was causing the overlap issue */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        #app-container {
+            /* height: 100vh; */ /* This was causing the overlap issue */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-        #setup-screen, #game-screen {
-            max-height: calc(100vh - 80px);
-            overflow-y: auto;
-            /* For better scrolling on iOS */
-            -webkit-overflow-scrolling: touch;
-        }
+        #setup-screen, #game-screen {
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            /* For better scrolling on iOS */
+            -webkit-overflow-scrolling: touch;
+        }
 
-        .alias-title {
-            font-weight: 900;
-            color: var(--alias-red);
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
-        }
-        .card {
-            -webkit-perspective: 1000;
-            perspective: 1000;
-            transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .card.is-flipped {
-            transform: rotateY(180deg);
-        }
-        .card__face {
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border: 2px solid var(--alias-dark);
-        }
-        .card__face--front {
-             background-color: var(--alias-white);
-             color: var(--alias-dark);
-        }
-        .card__face--back {
-            transform: rotateY(180deg);
-            background-color: var(--alias-red);
-            color: var(--alias-white);
-            border-color: var(--alias-red);
-        }
-        .btn {
-            transition: all 0.15s ease-in-out;
-            border-radius: 0.75rem;
-            font-weight: 700;
-        }
-        .btn:active {
-            transform: scale(0.96);
-            filter: brightness(0.95);
-        }
-        .btn-red {
-            background-color: var(--alias-red);
-            color: var(--alias-white);
-        }
-        .btn-outline {
-            background-color: var(--alias-white);
-            color: var(--alias-red);
-            border: 2px solid var(--alias-red);
-        }
-        .score-box {
-            background-color: var(--alias-white);
-            border: 2px solid #e5e7eb;
-            color: var(--alias-dark);
-            transition: all 0.3s ease-in-out;
-            border-radius: 0.5rem;
-            position: relative;
-            overflow: hidden;
-        }
+        .alias-title {
+            font-weight: 900;
+            color: var(--alias-red);
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
+        }
+        .card {
+            -webkit-perspective: 1000;
+            perspective: 1000;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .card__face {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 2px solid var(--alias-dark);
+        }
+        .card__face--front {
+             background-color: var(--alias-white);
+             color: var(--alias-dark);
+        }
+        .card__face--back {
+            transform: rotateY(180deg);
+            background-color: var(--alias-red);
+            color: var(--alias-white);
+            border-color: var(--alias-red);
+        }
+        .btn {
+            transition: all 0.15s ease-in-out;
+            border-radius: 0.75rem;
+            font-weight: 700;
+        }
+        .btn:active {
+            transform: scale(0.96);
+            filter: brightness(0.95);
+        }
+        .btn-red {
+            background-color: var(--alias-red);
+            color: var(--alias-white);
+        }
+        .btn-outline {
+            background-color: var(--alias-white);
+            color: var(--alias-red);
+            border: 2px solid var(--alias-red);
+        }
+        .score-box {
+            background-color: var(--alias-white);
+            border: 2px solid #e5e7eb;
+            color: var(--alias-dark);
+            transition: all 0.3s ease-in-out;
+            border-radius: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-        .score-box.active {
-            border: 2px solid var(--alias-red);
-        }
+        .score-box.active {
+            border: 2px solid var(--alias-red);
+        }
 
-        .modal-content {
-            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-        }
-        .btn-outline.selected {
-            background-color: var(--alias-red);
-            color: var(--alias-white);
-        }
-        .score-change {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            font-size: 1.5rem;
-            font-weight: 900;
-            opacity: 0;
-            pointer-events: none;
-            direction: ltr;
-        }
+        .modal-content {
+            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+        }
+        .btn-outline.selected {
+            background-color: var(--alias-red);
+            color: var(--alias-white);
+        }
+        .score-change {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 1.5rem;
+            font-weight: 900;
+            opacity: 0;
+            pointer-events: none;
+            direction: ltr;
+        }
 
-        .score-change.plus-one {
-            color: #16a34a;
-            animation: float-up-left 0.8s ease-out forwards;
-        }
+        .score-change.plus-one {
+            color: #16a34a;
+            animation: float-up-left 0.8s ease-out forwards;
+        }
 
-        .score-change.minus-one {
-            color: var(--alias-red);
-            animation: float-up-right 0.8s ease-out forwards;
-        }
+        .score-change.minus-one {
+            color: var(--alias-red);
+            animation: float-up-right 0.8s ease-out forwards;
+        }
 
-        @keyframes float-up-left {
-            0% { opacity: 1; transform: translate(-120%, -50%); }
-            100% { opacity: 0; transform: translate(-120%, -150%); }
-        }
+        @keyframes float-up-left {
+            0% { opacity: 1; transform: translate(-120%, -50%); }
+            100% { opacity: 0; transform: translate(-120%, -150%); }
+        }
 
-        @keyframes float-up-right {
-            0% { opacity: 1; transform: translate(20%, -50%); }
-            100% { opacity: 0; transform: translate(20%, -150%); }
-        }
-    </style>
+        @keyframes float-up-right {
+            0% { opacity: 1; transform: translate(20%, -50%); }
+            100% { opacity: 0; transform: translate(20%, -150%); }
+        }
+    </style>
 </head>
 
-<body class="flex flex-col items-center justify-center p-4 min-h-screen">
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878123086661063"
-     crossorigin="anonymous"></script>
+<body class="flex items-center justify-center p-4 pb-20 min-h-screen">
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878123086661063"
+     crossorigin="anonymous"></script>
 <!-- Banner -->
-<div class="w-full max-w-md mx-auto mb-4">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-6878123086661063"
-         data-ad-slot="1398411061"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6878123086661063"
+     data-ad-slot="1398411061"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 <div id="app-container" class="w-full max-w-md mx-auto">
 
-    <div id="setup-screen" class="bg-white p-6 md:p-8 rounded-xl shadow-lg text-center">
-        <h1 class="text-6xl mb-4 alias-title">קצה הלשון</h1>
-        <p class="text-gray-500 mb-8">נחשו מילים עם חברים!</p>
+    <div id="setup-screen" class="bg-white p-6 md:p-8 rounded-xl shadow-lg text-center">
+        <h1 class="text-6xl mb-4 alias-title">קצה הלשון</h1>
+        <p class="text-gray-500 mb-8">נחשו מילים עם חברים!</p>
 
-        <div id="team-inputs-container" class="space-y-4 mb-4">
-            <div class="flex items-center gap-2">
-                <input type="text" placeholder="שם קבוצה 1" value="קבוצה א'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
-            </div>
-            <div class="flex items-center gap-2">
-                <input type="text" placeholder="שם קבוצה 2" value="קבוצה ב'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
-            </div>
-        </div>
-        <button id="add-team-btn" class="w-full mb-6 py-2 px-4 text-md text-red-600 font-semibold rounded-lg border-2 border-dashed border-red-300 hover:bg-red-50 transition">
-            + הוסף קבוצה
-        </button>
+        <div id="team-inputs-container" class="space-y-4 mb-4">
+            <div class="flex items-center gap-2">
+                <input type="text" placeholder="שם קבוצה 1" value="קבוצה א'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+            </div>
+            <div class="flex items-center gap-2">
+                <input type="text" placeholder="שם קבוצה 2" value="קבוצה ב'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+            </div>
+        </div>
+        <button id="add-team-btn" class="w-full mb-6 py-2 px-4 text-md text-red-600 font-semibold rounded-lg border-2 border-dashed border-red-300 hover:bg-red-50 transition">
+            + הוסף קבוצה
+        </button>
 
-        <div class="mb-8">
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">נקודות לניצחון</label>
-                <div id="score-options" class="flex justify-center gap-2 max-w-xs mx-auto">
-                    <button class="score-option w-full py-3 btn btn-outline" data-value="10">10</button>
-                    <button class="score-option w-full py-3 btn btn-outline selected" data-value="20">20</button>
-                    <button class="score-option w-full py-3 btn btn-outline" data-value="50">50</button>
-                </div>
-            </div>
-        </div>
+        <div class="mb-8">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">נקודות לניצחון</label>
+                <div id="score-options" class="flex justify-center gap-2 max-w-xs mx-auto">
+                    <button class="score-option w-full py-3 btn btn-outline" data-value="10">10</button>
+                    <button class="score-option w-full py-3 btn btn-outline selected" data-value="20">20</button>
+                    <button class="score-option w-full py-3 btn btn-outline" data-value="50">50</button>
+                </div>
+            </div>
+        </div>
 
-        <button id="start-game-btn" class="w-full py-4 px-6 text-2xl shadow-lg transform btn btn-red mb-4">
-            התחל משחק
-        </button>
-        <div class="grid grid-cols-2 gap-4">
-            <button id="add-words-btn" class="w-full py-3 px-6 text-lg shadow-md transform btn btn-outline">
-                הוסף מילים
-            </button>
-            <button id="how-to-play-btn" class="w-full py-3 px-6 text-lg shadow-md transform btn btn-outline">
-                איך משחקים?
-            </button>
-        </div>
+        <button id="start-game-btn" class="w-full py-4 px-6 text-2xl shadow-lg transform btn btn-red mb-4">
+            התחל משחק
+        </button>
+        <div class="grid grid-cols-2 gap-4">
+            <button id="add-words-btn" class="w-full py-3 px-6 text-lg shadow-md transform btn btn-outline">
+                הוסף מילים
+            </button>
+            <button id="how-to-play-btn" class="w-full py-3 px-6 text-lg shadow-md transform btn btn-outline">
+                איך משחקים?
+            </button>
+        </div>
 
-        <div class="mt-8 pt-6 border-t border-gray-200">
-            <a href="http://hutzpa.games/PrivacyPolicies/KtzeHalashon" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-red-600 text-sm underline">מדיניות פרטיות</a>
-        </div>
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <a href="http://hutzpa.games/PrivacyPolicies/KtzeHalashon" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-red-600 text-sm underline">מדיניות פרטיות</a>
+        </div>
 
-    </div>
+    </div>
 
-    <div id="game-screen" class="hidden w-full">
-        <div id="last-round-banner" class="hidden text-center bg-red-600 text-white font-bold p-2 mb-4 rounded-lg shadow-md animate-pulse">
-        </div>
-        <div id="tie-breaker-banner" class="hidden text-center bg-blue-600 text-white font-bold p-2 mb-4 rounded-lg shadow-md">
-        </div>
-        <div class="mb-4 text-center">
-            <button id="edit-scores-btn" class="py-2 px-5 text-sm btn btn-outline hidden">
-                עריכת ניקוד
-            </button>
-        </div>
-        <div class="flex items-start justify-center gap-3 mb-6">
-            <div id="scores-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 flex-grow">
-            </div>
-            <div class="text-center bg-white rounded-lg p-2 shadow-md flex-shrink-0">
-                <div class="text-5xl font-black text-gray-800" id="timer">60</div>
-                <div class="text-sm text-gray-500">שניות</div>
-            </div>
-        </div>
+    <div id="game-screen" class="hidden w-full">
+        <div id="last-round-banner" class="hidden text-center bg-red-600 text-white font-bold p-2 mb-4 rounded-lg shadow-md animate-pulse">
+        </div>
+        <div id="tie-breaker-banner" class="hidden text-center bg-blue-600 text-white font-bold p-2 mb-4 rounded-lg shadow-md">
+        </div>
+        <div class="mb-4 text-center">
+            <button id="edit-scores-btn" class="py-2 px-5 text-sm btn btn-outline hidden">
+                עריכת ניקוד
+            </button>
+        </div>
+        <div class="flex items-start justify-center gap-3 mb-6">
+            <div id="scores-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 flex-grow">
+            </div>
+            <div class="text-center bg-white rounded-lg p-2 shadow-md flex-shrink-0">
+                <div class="text-5xl font-black text-gray-800" id="timer">60</div>
+                <div class="text-sm text-gray-500">שניות</div>
+            </div>
+        </div>
 
-        <div class="relative h-64 mb-6">
-            <div class="card w-full h-full" id="word-card">
-                <div class="card__face card__face--front flex items-center justify-center p-6">
-                    <div class="text-center">
-                        <h2 class="text-2xl md:text-3xl font-bold">התור של <span id="current-team-name-card"></span></h2>
-                        <p class="text-gray-500 mt-2">הפכו את הקלף כדי להתחיל</p>
-                    </div>
-                </div>
-                <div class="card__face card__face--back flex items-center justify-center p-6">
-                    <h2 id="word-display" class="text-5xl font-extrabold text-center">מילה</h2>
-                </div>
-            </div>
-        </div>
+        <div class="relative h-64 mb-6">
+            <div class="card w-full h-full" id="word-card">
+                <div class="card__face card__face--front flex items-center justify-center p-6">
+                    <div class="text-center">
+                        <h2 class="text-2xl md:text-3xl font-bold">התור של <span id="current-team-name-card"></span></h2>
+                        <p class="text-gray-500 mt-2">הפכו את הקלף כדי להתחיל</p>
+                    </div>
+                </div>
+                <div class="card__face card__face--back flex items-center justify-center p-6">
+                    <h2 id="word-display" class="text-5xl font-extrabold text-center">מילה</h2>
+                </div>
+            </div>
+        </div>
 
-        <div id="action-buttons" class="grid grid-cols-2 gap-4 hidden">
-            <button id="skip-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-outline">דלג</button>
-            <button id="correct-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-red">הצלחנו!</button>
-        </div>
-    </div>
+        <div id="action-buttons" class="grid grid-cols-2 gap-4 hidden">
+            <button id="skip-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-outline">דלג</button>
+            <button id="correct-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-red">הצלחנו!</button>
+        </div>
+    </div>
 
-    <div id="how-to-play-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-        <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold text-gray-800">איך משחקים?</h2>
-                <button id="close-how-to-play-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
-            </div>
-            <div class="space-y-4 text-gray-700 text-sm md:text-base max-h-[70vh] overflow-y-auto pr-2">
-                <div>
-                    <h3 class="font-bold text-red-600 text-base md:text-lg">המטרה</h3>
-                    <p>לגרום לקבוצה שלכם לנחש כמה שיותר מילים.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-red-600 text-base md:text-lg">איך משחקים?</h3>
-                    <ul class="list-disc list-inside space-y-2 pr-2">
-                        <li>מתחלקים לקבוצות (לפחות שני אנשים בכל קבוצה).</li>
-                        <li>בכל סבב שחקן אחר בקבוצה יהיה המסביר.</li>
-                        <li>המסביר צריך להסביר לקבוצה שלו כמה שיותר מילים תוך דקה. אם הם ניחשו את המילה הוא לוחץ "הצלחנו!" והקבוצה מקבלת נקודה.</li>
-                        <li><strong>אסור להגיד את המילה עצמה!</strong> גם לא מילים מאותו שורש, או חלקים של המילה. אסור גם לומר את המילה בשפה אחרת. (למשל אם המילה היא "אוכל" אפשר להגיד "מכניסים אותו לפה כשאתה רעב" אבל אסור להגיד "אוכלים אותו" או "FOOD").</li>
-                        <li>אם לא יודעים, אפשר ללחוץ "דלג" ולאבד נקודה.</li>
-                        <li>עברתם על החוקים? לחצו "דלג" כדי לאבד נקודה.</li>
-                        <li>אם לחצתם בטעות על הכפתור הלא נכון, אפשר לערוך את הנקודות בסוף הסיבוב.</li>
-                        <li>הקבוצה הראשונה שמגיעה למטרת הנקודות מנצחת!</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="how-to-play-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">איך משחקים?</h2>
+                <button id="close-how-to-play-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
+            </div>
+            <div class="space-y-4 text-gray-700 text-sm md:text-base max-h-[70vh] overflow-y-auto pr-2">
+                <div>
+                    <h3 class="font-bold text-red-600 text-base md:text-lg">המטרה</h3>
+                    <p>לגרום לקבוצה שלכם לנחש כמה שיותר מילים.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-red-600 text-base md:text-lg">איך משחקים?</h3>
+                    <ul class="list-disc list-inside space-y-2 pr-2">
+                        <li>מתחלקים לקבוצות (לפחות שני אנשים בכל קבוצה).</li>
+                        <li>בכל סבב שחקן אחר בקבוצה יהיה המסביר.</li>
+                        <li>המסביר צריך להסביר לקבוצה שלו כמה שיותר מילים תוך דקה. אם הם ניחשו את המילה הוא לוחץ "הצלחנו!" והקבוצה מקבלת נקודה.</li>
+                        <li><strong>אסור להגיד את המילה עצמה!</strong> גם לא מילים מאותו שורש, או חלקים של המילה. אסור גם לומר את המילה בשפה אחרת. (למשל אם המילה היא "אוכל" אפשר להגיד "מכניסים אותו לפה כשאתה רעב" אבל אסור להגיד "אוכלים אותו" או "FOOD").</li>
+                        <li>אם לא יודעים, אפשר ללחוץ "דלג" ולאבד נקודה.</li>
+                        <li>עברתם על החוקים? לחצו "דלג" כדי לאבד נקודה.</li>
+                        <li>אם לחצתם בטעות על הכפתור הלא נכון, אפשר לערוך את הנקודות בסוף הסיבוב.</li>
+                        <li>הקבוצה הראשונה שמגיעה למטרת הנקודות מנצחת!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div id="custom-words-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-        <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold text-gray-800">הוספת מילים</h2>
-                <button id="close-custom-words-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
-            </div>
-            <div class="space-y-4 text-gray-700">
-                <p class="text-sm">הכניסו מילים מותאמות אישית, מילה אחת בכל שורה.</p>
-                <textarea id="custom-words-textarea" class="w-full h-40 p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition" placeholder="לדוגמה:&#10;פיל&#10;מחשב&#10;אהבה"></textarea>
-                <button id="save-custom-words-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                    שמור והוסף
-                </button>
-            </div>
-        </div>
-    </div>
+    <div id="custom-words-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">הוספת מילים</h2>
+                <button id="close-custom-words-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
+            </div>
+            <div class="space-y-4 text-gray-700">
+                <p class="text-sm">הכניסו מילים מותאמות אישית, מילה אחת בכל שורה.</p>
+                <textarea id="custom-words-textarea" class="w-full h-40 p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition" placeholder="לדוגמה:&#10;פיל&#10;מחשב&#10;אהבה"></textarea>
+                <button id="save-custom-words-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
+                    שמור והוסף
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <div id="edit-scores-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-        <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold text-gray-800">עריכת ניקוד</h2>
-                <button id="close-edit-scores-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
-            </div>
-            <div id="edit-scores-list" class="space-y-4">
-            </div>
-            <button id="save-scores-btn" class="w-full mt-6 py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                שמור שינויים
-            </button>
-        </div>
-    </div>
+    <div id="edit-scores-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">עריכת ניקוד</h2>
+                <button id="close-edit-scores-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
+            </div>
+            <div id="edit-scores-list" class="space-y-4">
+            </div>
+            <button id="save-scores-btn" class="w-full mt-6 py-3 px-6 text-xl shadow-lg transform btn btn-red">
+                שמור שינויים
+            </button>
+        </div>
+    </div>
 
 
-    <div id="turn-over-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-        <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full modal-content">
-            <h2 class="text-4xl font-black text-gray-800 mb-2">הזמן נגמר!</h2>
-            <p class="text-lg text-gray-600 mb-4">
-                כל הכבוד, <span id="finished-team-name" class="font-bold"></span>!
-            </p>
-            <p class="text-gray-500 mb-6">
-                הצלחתם <span id="turn-score" class="font-bold text-2xl" style="color: var(--alias-red);">0</span> מילים.
-            </p>
-            <button id="next-turn-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                התור הבא
-            </button>
-        </div>
-    </div>
+    <div id="turn-over-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full modal-content">
+            <h2 class="text-4xl font-black text-gray-800 mb-2">הזמן נגמר!</h2>
+            <p class="text-lg text-gray-600 mb-4">
+                כל הכבוד, <span id="finished-team-name" class="font-bold"></span>!
+            </p>
+            <p class="text-gray-500 mb-6">
+                הצלחתם <span id="turn-score" class="font-bold text-2xl" style="color: var(--alias-red);">0</span> מילים.
+            </p>
+            <button id="next-turn-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
+                התור הבא
+            </button>
+        </div>
+    </div>
 
-    <div id="countdown-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
-        <div id="countdown-display" class="text-9xl font-black text-white" style="text-shadow: 0 0 20px rgba(0,0,0,0.5);">3</div>
-    </div>
+    <div id="countdown-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+        <div id="countdown-display" class="text-9xl font-black text-white" style="text-shadow: 0 0 20px rgba(0,0,0,0.5);">3</div>
+    </div>
 
-    <div id="winning-screen" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
-        <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full transform scale-95 opacity-0 modal-content" id="winning-modal-content">
-            <div class="text-6xl mb-4">🏆</div>
-            <h2 class="text-4xl font-black text-gray-800 mb-2">ניצחון!</h2>
-            <p class="text-lg text-gray-600 mb-6">
-                קבוצת <span id="winning-team-name" class="font-bold text-2xl" style="color: var(--alias-red);"></span> ניצחה!
-            </p>
-            <button id="play-again-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                שחקו שוב
-            </button>
-        </div>
-    </div>
+    <div id="winning-screen" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+        <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full transform scale-95 opacity-0 modal-content" id="winning-modal-content">
+            <div class="text-6xl mb-4">🏆</div>
+            <h2 class="text-4xl font-black text-gray-800 mb-2">ניצחון!</h2>
+            <p class="text-lg text-gray-600 mb-6">
+                קבוצת <span id="winning-team-name" class="font-bold text-2xl" style="color: var(--alias-red);"></span> ניצחה!
+            </p>
+            <button id="play-again-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
+                שחקו שוב
+            </button>
+        </div>
+    </div>
 
 </div>
 
 <footer class="fixed bottom-0 left-0 right-0 bg-gray-100 p-2 text-center z-40 border-t border-gray-200" style="padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));">
-    <a href="https://hutzpa.games/he" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 hover:text-red-600 font-semibold underline">חוצפה גיימס - פיתוח משחקים לעסקים</a>
+    <a href="https://hutzpa.games/he" target="_blank" rel="noopener noreferrer" class="text-sm text-blue-600 hover:text-red-600 font-semibold underline">חוצפה גיימס - פיתוח משחקים לעסקים</a>
 </footer>
 
 
 <script>
-    // Your existing game logic script...
+    // Your existing game logic script...
 const defaultWords = ["שולחן", "כסא", "מחשב", "טלפון", "אהבה", "לרוץ", "שמח", "מכונית", "כלב", "חתול", "שמש", "ירח", "ספר", "בית ספר", "ים", "חופש", "אוכל", "ארנק", "משקפיים", "עגבניה", "מלפפון", "ענן", "גשם", "מטריה", "כדורגל", "כדורסל", "מטוס", "רכבת", "אופניים", "מוזיקה", "גיטרה", "פסנתר", "יום הולדת", "מתנה", "בלון", "עוגה", "חתונה", "תינוק", "משפחה", "חברים", "עבודה", "כסף", "בנק", "קניון", "חנות", "בגד ים", "מגבת", "כובע", "נעליים", "גרביים", "חולצה", "מכנסיים", "שמלה", "טלוויזיה", "סרט", "חדשות", "אינטרנט", "מקלדת", "עכבר", "מדפסת", "וילון", "חלון", "דלת", "מפתח", "מיטה", "שמיכה", "כרית", "ארון", "מנורה", "מראה", "מברשת שיניים", "סבון", "שמפו", "מלחמה", "שלום", "צבא", "חייל", "מדינה", "דגל", "תקווה", "חלום", "כעס", "פחד", "בדיחה", "צחוק", "דמעה", "חיוך", "לב", "מוח", "יד", "רגל", "אף", "אוזן", "פה", "עין", "שיער", "ציפורן", "אצבע", "קיץ", "חורף", "אביב", "סתיו", "פרח", "עץ", "דשא", "נהר", "הר", "מדבר", "ג'ונגל", "מפה", "מצפן", "כוכב", "גלקסיה", "כדור הארץ", "חללית", "אסטרונאוט", "מדען", "רופא", "מורה", "שוטר", "כבאי", "טבח", "זמר", "שחקן", "רקדן", "צייר", "סופר", "אריה", "נמר", "פיל", "ג'ירפה", "קוף", "זברה", "היפופוטם", "תנין", "נחש", "צב", "דולפין", "כריש", "לוויתן", "פינגווין", "דוב", "זאב", "שועל", "צבי", "ינשוף", "נשר", "מהנדס", "עורך דין", "מעצב", "מתכנת", "אמן", "גנן", "ספר", "אופה", "קונדיטור", "פסטה", "פיצה", "המבורגר", "סושי", "שניצל", "אורז", "תפוח אדמה", "בטטה", "גזר", "בצל", "שום", "פלפל", "חציל", "קישוא", "ברוקולי", "כרובית", "תירס", "אפונה", "חומוס", "טחינה", "פלאפל", "שווארמה", "קפה", "תה", "מיץ", "יין", "בירה", "ירושלים", "תל אביב", "חיפה", "באר שבע", "אילת", "מצרים", "ירדן", "ארצות הברית", "סין", "יפן", "רוסיה", "צרפת", "אנגליה", "איטליה", "ספרד", "גרמניה", "בית קפה", "מסעדה", "ספריה", "מוזיאון", "תיאטרון", "קולנוע", "בריכה", "פארק", "גן חיות", "שדה תעופה", "תחנת רכבת", "גולגולת", "עמוד שדרה", "צלעות", "כתף", "מרפק", "שורש כף היד", "ברך", "קרסול", "עקב", "ריאות", "כבד", "קיבה", "אגם", "נחל", "מפל", "גבעה", "צוק", "חוף", "אי", "יער", "שדה", "כרם", "מערה", "הר געש", "כוכב", "צעיף", "כפפות", "עניבה", "חגורה", "צמיד", "שרשרת", "עגילים", "טבעת", "שעון", "תיק", "תרמיל", "מזוודה", "מטפחת", "פטיש", "מברג", "מסור", "צבת", "מקדחה", "מטר", "שפכטל", "אומץ", "סבלנות", "קנאה", "גאווה", "בלבול", "הפתעה", "אכזבה", "סקרנות", "ביטחון", "עצלנות", "נדיב", "קמצן", "לכתוב", "לקרוא", "לצייר", "לשיר", "לרקוד", "לבשל", "לאפות", "לנקות", "לסדר", "לקנות", "למכור", "לטייל", "לנהוג", "לטוס", "לשחות", "לצלול", "לטפס", "לגלוש", "להחליק", "לחשוב", "לזכור", "לשכוח", "להבין", "להסביר", "לשאול", "לענות", "להקשיב", "לדבר", "לצעוק", "ללחוש", "ספה", "כורסה", "שטיח", "תמונה", "עציץ", "אגרטל", "סיר", "מחבת", "צלחת", "קערה", "כוס", "ספל", "קומקום", "מיקרוגל", "תנור", "מקרר", "מקפיא", "מדיח כלים", "מכונת כביסה", "מייבש", "מגהץ", "קרש גיהוץ", "שואב אבק", "מטאטא", "יעה", "דלי", "סמרטוט", "טניס", "שחייה", "ריצה", "אופניים", "יוגה", "פילאטיס", "הרמת משקולות", "גלישה", "סקי", "שייט", "דייג", "צילום", "נגינה", "משחק מחשב", "טיולים", "קמפינג", "דמוקרטיה", "קפיטליזם", "סוציאליזם", "היסטוריה", "גאוגרפיה", "מתמטיקה", "פיזיקה", "כימיה", "ביולוגיה", "פילוסופיה", "פסיכולוגיה", "אומנות", "מדע", "טכנולוגיה", "חוק", "צדק", "חופש", "שוויון", "אחריות", "הצלחה", "כישלון", "עתיד", "עבר", "הווה", "אוטובוס", "מונית", "משאית", "קטנוע", "מסוק", "ספינה", "יאכטה", "ראש ממשלה", "קורקינט", "גורד שחקים", "מגדל", "ארמון", "טירה", "אוהל", "בית חולים", "מרפאה", "משטרה", "עירייה", "כנסת", "בית משפט", "פסטיבל", "קונצרט", "הצגה", "תערוכה", "הפגנה", "בחירות", "מסיבה", "אזכרה", "טקס", "אולימפיאדה", "עץ", "מתכת", "פלסטיק", "זכוכית", "בד", "צמר", "עור", "אבן", "חול", "מים", "אוויר", "אש", "אדום", "כחול", "צהוב", "ירוק", "כתום", "סגול", "ורוד", "חום", "שחור", "לבן", "אפור", "כסף", "זהב", "אבא", "אמא", "אח", "אחות", "סבא", "סבתא", "דוד", "דודה", "בן דוד", "בת דודה", "אחיין", "אחיינית", "דרכון", "תעודת זהות", "רישיון נהיגה", "כרטיס אשראי", "מזומן", "חשבון", "קבלה", "אחריות", "חוזה", "סוד", "שקר", "אמת", "רעיון", "בעיה", "פתרון", "שאלה", "תשובה", "סיפור", "שיר", "סמל", "סימן", "ארוחת בוקר", "ארוחת צהריים", "ארוחת ערב", "קינוח", "מנה ראשונה", "מנה עיקרית", "אלרגיה", "ויטמין", "חלבון", "פחמימה", "שומן", "דיאטה", "מתכון", "תבלין", "רוטב", "מלח", "סוכר", "קמח", "שמן", "חמאה", "גבינה", "ביצה", "חלב", "יוגורט", "לחם", "עוגיה", "שוקולד", "גלידה", "סוכריה", "מסטיק", "אנרגיה", "כוח", "מהירות", "גובה", "רוחב", "עומק", "משקל", "טמפרטורה", "לחץ", "רעש", "שקט", "אור", "חושך", "צורה", "גודל", "כמות", "איכות", "מחיר", "הנחה", "מבצע", "חשבונית", "עודף", "טיפ", "מס", "תקציב", "הוצאה", "הכנסה", "חיסכון", "השקעה", "בורסה", "מניה", "ריבית", "הלוואה", "משכנתא", "ביטוח", "פנסיה", "פרישה" ];
 
-        let words = [...defaultWords];
-        let customWords = [];
-        let availableWords = [];
+        let words = [...defaultWords];
+        let customWords = [];
+        let availableWords = [];
 
-        const state = { teams: [], currentTeamIndex: 0, timerInterval: null, timeLeft: 60, gameActive: false, turnScore: 0, roundTime: 60, winningScore: 20, inLastRound: false, inTieBreaker: false };
+        const state = { teams: [], currentTeamIndex: 0, timerInterval: null, timeLeft: 60, gameActive: false, turnScore: 0, roundTime: 60, winningScore: 20, inLastRound: false, inTieBreaker: false };
 
-        const successSound = new Audio('success.mp3');
-        const loseSound = new Audio('lose.mp3');
-        const victorySound = new Audio('victory.mp3');
-        const tickingSound = new Audio('ticking.mp3');
+        const successSound = new Audio('success.mp3');
+        const loseSound = new Audio('lose.mp3');
+        const victorySound = new Audio('victory.mp3');
+        const tickingSound = new Audio('ticking.mp3');
 
-        const setupScreen = document.getElementById('setup-screen');
-        const gameScreen = document.getElementById('game-screen');
-        const turnOverModal = document.getElementById('turn-over-modal');
-        const winningScreen = document.getElementById('winning-screen');
-        const winningModalContent = document.getElementById('winning-modal-content');
-        const howToPlayModal = document.getElementById('how-to-play-modal');
-        const customWordsModal = document.getElementById('custom-words-modal');
-        const teamInputsContainer = document.getElementById('team-inputs-container');
-        const addTeamBtn = document.getElementById('add-team-btn');
-        const scoreOptions = document.getElementById('score-options');
-        const startGameBtn = document.getElementById('start-game-btn');
-        const howToPlayBtn = document.getElementById('how-to-play-btn');
-        const closeHowToPlayBtn = document.getElementById('close-how-to-play-btn');
-        const addWordsBtn = document.getElementById('add-words-btn');
-        const closeCustomWordsBtn = document.getElementById('close-custom-words-btn');
-        const saveCustomWordsBtn = document.getElementById('save-custom-words-btn');
-        const customWordsTextarea = document.getElementById('custom-words-textarea');
-        const scoresContainer = document.getElementById('scores-container');
-        const timerDisplay = document.getElementById('timer');
-        const wordDisplay = document.getElementById('word-display');
-        const wordCard = document.getElementById('word-card');
-        const actionButtons = document.getElementById('action-buttons');
-        const currentTeamNameCard = document.getElementById('current-team-name-card');
-        const correctBtn = document.getElementById('correct-btn');
-        const skipBtn = document.getElementById('skip-btn');
-        const finishedTeamName = document.getElementById('finished-team-name');
-        const turnScoreDisplay = document.getElementById('turn-score');
-        const nextTurnBtn = document.getElementById('next-turn-btn');
-        const winningTeamName = document.getElementById('winning-team-name');
-        const playAgainBtn = document.getElementById('play-again-btn');
-        const countdownModal = document.getElementById('countdown-modal');
-        const countdownDisplay = document.getElementById('countdown-display');
+        const setupScreen = document.getElementById('setup-screen');
+        const gameScreen = document.getElementById('game-screen');
+        const turnOverModal = document.getElementById('turn-over-modal');
+        const winningScreen = document.getElementById('winning-screen');
+        const winningModalContent = document.getElementById('winning-modal-content');
+        const howToPlayModal = document.getElementById('how-to-play-modal');
+        const customWordsModal = document.getElementById('custom-words-modal');
+        const teamInputsContainer = document.getElementById('team-inputs-container');
+        const addTeamBtn = document.getElementById('add-team-btn');
+        const scoreOptions = document.getElementById('score-options');
+        const startGameBtn = document.getElementById('start-game-btn');
+        const howToPlayBtn = document.getElementById('how-to-play-btn');
+        const closeHowToPlayBtn = document.getElementById('close-how-to-play-btn');
+        const addWordsBtn = document.getElementById('add-words-btn');
+        const closeCustomWordsBtn = document.getElementById('close-custom-words-btn');
+        const saveCustomWordsBtn = document.getElementById('save-custom-words-btn');
+        const customWordsTextarea = document.getElementById('custom-words-textarea');
+        const scoresContainer = document.getElementById('scores-container');
+        const timerDisplay = document.getElementById('timer');
+        const wordDisplay = document.getElementById('word-display');
+        const wordCard = document.getElementById('word-card');
+        const actionButtons = document.getElementById('action-buttons');
+        const currentTeamNameCard = document.getElementById('current-team-name-card');
+        const correctBtn = document.getElementById('correct-btn');
+        const skipBtn = document.getElementById('skip-btn');
+        const finishedTeamName = document.getElementById('finished-team-name');
+        const turnScoreDisplay = document.getElementById('turn-score');
+        const nextTurnBtn = document.getElementById('next-turn-btn');
+        const winningTeamName = document.getElementById('winning-team-name');
+        const playAgainBtn = document.getElementById('play-again-btn');
+        const countdownModal = document.getElementById('countdown-modal');
+        const countdownDisplay = document.getElementById('countdown-display');
 
-        const editScoresBtn = document.getElementById('edit-scores-btn');
-        const editScoresModal = document.getElementById('edit-scores-modal');
-        const closeEditScoresBtn = document.getElementById('close-edit-scores-btn');
-        const saveScoresBtn = document.getElementById('save-scores-btn');
-        const editScoresList = document.getElementById('edit-scores-list');
+        const editScoresBtn = document.getElementById('edit-scores-btn');
+        const editScoresModal = document.getElementById('edit-scores-modal');
+        const closeEditScoresBtn = document.getElementById('close-edit-scores-btn');
+        const saveScoresBtn = document.getElementById('save-scores-btn');
+        const editScoresList = document.getElementById('edit-scores-list');
 
-        startGameBtn.addEventListener('click', startGame);
-        wordCard.addEventListener('click', flipCardAndStartTurn);
-        correctBtn.addEventListener('click', handleCorrect);
-        skipBtn.addEventListener('click', handleSkip);
-        nextTurnBtn.addEventListener('click', setupNextTurn);
-        playAgainBtn.addEventListener('click', resetGame);
-        howToPlayBtn.addEventListener('click', () => howToPlayModal.classList.remove('hidden'));
-        closeHowToPlayBtn.addEventListener('click', () => howToPlayModal.classList.add('hidden'));
-        addWordsBtn.addEventListener('click', () => customWordsModal.classList.remove('hidden'));
-        closeCustomWordsBtn.addEventListener('click', () => customWordsModal.classList.add('hidden'));
-        saveCustomWordsBtn.addEventListener('click', saveCustomWords);
-        addTeamBtn.addEventListener('click', addTeamInput);
-        teamInputsContainer.addEventListener('click', (e) => {
-            if (e.target && e.target.classList.contains('remove-team-btn')) {
-                e.target.parentElement.remove();
-            }
-        });
-        scoreOptions.addEventListener('click', (e) => {
-            if (e.target.classList.contains('score-option')) {
-                scoreOptions.querySelectorAll('.score-option').forEach(btn => btn.classList.remove('selected'));
-                e.target.classList.add('selected');
-            }
-        });
-        editScoresBtn.addEventListener('click', openEditScoresModal);
-        closeEditScoresBtn.addEventListener('click', () => editScoresModal.classList.add('hidden'));
-        saveScoresBtn.addEventListener('click', saveScores);
-        editScoresList.addEventListener('click', handleScoreChangeInModal);
+        startGameBtn.addEventListener('click', startGame);
+        wordCard.addEventListener('click', flipCardAndStartTurn);
+        correctBtn.addEventListener('click', handleCorrect);
+        skipBtn.addEventListener('click', handleSkip);
+        nextTurnBtn.addEventListener('click', setupNextTurn);
+        playAgainBtn.addEventListener('click', resetGame);
+        howToPlayBtn.addEventListener('click', () => howToPlayModal.classList.remove('hidden'));
+        closeHowToPlayBtn.addEventListener('click', () => howToPlayModal.classList.add('hidden'));
+        addWordsBtn.addEventListener('click', () => customWordsModal.classList.remove('hidden'));
+        closeCustomWordsBtn.addEventListener('click', () => customWordsModal.classList.add('hidden'));
+        saveCustomWordsBtn.addEventListener('click', saveCustomWords);
+        addTeamBtn.addEventListener('click', addTeamInput);
+        teamInputsContainer.addEventListener('click', (e) => {
+            if (e.target && e.target.classList.contains('remove-team-btn')) {
+                e.target.parentElement.remove();
+            }
+        });
+        scoreOptions.addEventListener('click', (e) => {
+            if (e.target.classList.contains('score-option')) {
+                scoreOptions.querySelectorAll('.score-option').forEach(btn => btn.classList.remove('selected'));
+                e.target.classList.add('selected');
+            }
+        });
+        editScoresBtn.addEventListener('click', openEditScoresModal);
+        closeEditScoresBtn.addEventListener('click', () => editScoresModal.classList.add('hidden'));
+        saveScoresBtn.addEventListener('click', saveScores);
+        editScoresList.addEventListener('click', handleScoreChangeInModal);
 
-        function playSound(sound) {
-            sound.currentTime = 0;
-            sound.play();
-        }
+        function playSound(sound) {
+            sound.currentTime = 0;
+            sound.play();
+        }
 
-        function addTeamInput() {
-            const teamCount = teamInputsContainer.children.length;
-            const newTeamInput = document.createElement('div');
-            newTeamInput.className = 'flex items-center gap-2';
-            newTeamInput.innerHTML = `
-                <input type="text" placeholder="שם קבוצה ${teamCount + 1}" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
-                <button class="remove-team-btn text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button>
-            `;
-            teamInputsContainer.appendChild(newTeamInput);
-        }
+        function addTeamInput() {
+            const teamCount = teamInputsContainer.children.length;
+            const newTeamInput = document.createElement('div');
+            newTeamInput.className = 'flex items-center gap-2';
+            newTeamInput.innerHTML = `
+                <input type="text" placeholder="שם קבוצה ${teamCount + 1}" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                <button class="remove-team-btn text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button>
+            `;
+            teamInputsContainer.appendChild(newTeamInput);
+        }
 
-        function saveCustomWords() {
-            const newWords = customWordsTextarea.value.split('\n').map(word => word.trim()).filter(word => word.length > 0);
-            if (newWords.length > 0) {
-                const newUniqueWords = newWords.filter(w => !customWords.includes(w));
-                customWords.push(...newUniqueWords);
-                words = [...new Set([...defaultWords, ...customWords])];
-                const originalText = saveCustomWordsBtn.textContent;
-                saveCustomWordsBtn.textContent = 'נשמר!';
-                saveCustomWordsBtn.disabled = true;
-                saveCustomWordsBtn.classList.remove('btn-red');
-                saveCustomWordsBtn.classList.add('bg-green-500');
-                setTimeout(() => {
-                    customWordsModal.classList.add('hidden');
-                    saveCustomWordsBtn.textContent = originalText;
-                    saveCustomWordsBtn.classList.add('btn-red');
-                    saveCustomWordsBtn.classList.remove('bg-green-500');
-                    saveCustomWordsBtn.disabled = false;
-                    customWordsTextarea.value = '';
-                }, 1500);
-            } else {
-                 customWordsModal.classList.add('hidden');
-            }
-        }
+        function saveCustomWords() {
+            const newWords = customWordsTextarea.value.split('\n').map(word => word.trim()).filter(word => word.length > 0);
+            if (newWords.length > 0) {
+                const newUniqueWords = newWords.filter(w => !customWords.includes(w));
+                customWords.push(...newUniqueWords);
+                words = [...new Set([...defaultWords, ...customWords])];
+                const originalText = saveCustomWordsBtn.textContent;
+                saveCustomWordsBtn.textContent = 'נשמר!';
+                saveCustomWordsBtn.disabled = true;
+                saveCustomWordsBtn.classList.remove('btn-red');
+                saveCustomWordsBtn.classList.add('bg-green-500');
+                setTimeout(() => {
+                    customWordsModal.classList.add('hidden');
+                    saveCustomWordsBtn.textContent = originalText;
+                    saveCustomWordsBtn.classList.add('btn-red');
+                    saveCustomWordsBtn.classList.remove('bg-green-500');
+                    saveCustomWordsBtn.disabled = false;
+                    customWordsTextarea.value = '';
+                }, 1500);
+            } else {
+                 customWordsModal.classList.add('hidden');
+            }
+        }
 
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
 
-        function getNextWord() {
-            if (availableWords.length === 0) {
-                console.log("Word deck empty. Reshuffling...");
-                availableWords = [...words];
-                shuffle(availableWords);
-            }
-            return availableWords.pop();
-        }
+        function getNextWord() {
+            if (availableWords.length === 0) {
+                console.log("Word deck empty. Reshuffling...");
+                availableWords = [...words];
+                shuffle(availableWords);
+            }
+            return availableWords.pop();
+        }
 
-        function startGame() {
-            const selectedScore = scoreOptions.querySelector('.selected').dataset.value;
-            state.roundTime = 60;
-            state.winningScore = parseInt(selectedScore) || 20;
-            state.teams = [];
-            state.inLastRound = false;
-            state.inTieBreaker = false;
-            document.getElementById('tie-breaker-banner').classList.add('hidden');
-            document.getElementById('last-round-banner').classList.add('hidden');
-            const teamNameInputs = document.querySelectorAll('.team-name-input');
+        function startGame() {
+            const selectedScore = scoreOptions.querySelector('.selected').dataset.value;
+            state.roundTime = 60;
+            state.winningScore = parseInt(selectedScore) || 20;
+            state.teams = [];
+            state.inLastRound = false;
+            state.inTieBreaker = false;
+            document.getElementById('tie-breaker-banner').classList.add('hidden');
+            document.getElementById('last-round-banner').classList.add('hidden');
+            const teamNameInputs = document.querySelectorAll('.team-name-input');
 
-            teamNameInputs.forEach((input, index) => {
-                state.teams.push({ name: input.value || `קבוצה ${index + 1}`, score: 0 });
-            });
+            teamNameInputs.forEach((input, index) => {
+                state.teams.push({ name: input.value || `קבוצה ${index + 1}`, score: 0 });
+            });
 
-            // The following line that shuffles the team order has been removed.
-            // shuffle(state.teams);
+            // The following line that shuffles the team order has been removed.
+            // shuffle(state.teams);
 
-            // Re-assign IDs based on the new order
-            state.teams.forEach((team, index) => {
-                team.id = index;
-            });
+            // Re-assign IDs based on the new order
+            state.teams.forEach((team, index) => {
+                team.id = index;
+            });
 
-            renderScoreboard();
-            timerDisplay.textContent = state.roundTime;
-            setupScreen.classList.add('hidden');
-            gameScreen.classList.remove('hidden');
-            editScoresBtn.classList.remove('hidden');
-            availableWords = [...words];
-            shuffle(availableWords);
-            updateTurnIndicator();
-        }
+            renderScoreboard();
+            timerDisplay.textContent = state.roundTime;
+            setupScreen.classList.add('hidden');
+            gameScreen.classList.remove('hidden');
+            editScoresBtn.classList.remove('hidden');
+            availableWords = [...words];
+            shuffle(availableWords);
+            updateTurnIndicator();
+        }
 
-        function renderScoreboard() {
-            scoresContainer.innerHTML = '';
-            state.teams.forEach(team => {
-                const scoreBox = document.createElement('div');
-                scoreBox.id = `score-box-${team.id}`;
-                scoreBox.className = 'score-box p-3 rounded-lg text-center shadow-md';
-                scoreBox.innerHTML = `
-                    <div id="team-name-${team.id}" class="font-bold text-base md:text-lg truncate">${team.name}</div>
-                    <div id="team-score-${team.id}" class="text-2xl font-black">${team.score}</div>
-                `;
-                scoresContainer.appendChild(scoreBox);
-            });
-        }
+        function renderScoreboard() {
+            scoresContainer.innerHTML = '';
+            state.teams.forEach(team => {
+                const scoreBox = document.createElement('div');
+                scoreBox.id = `score-box-${team.id}`;
+                scoreBox.className = 'score-box p-3 rounded-lg text-center shadow-md';
+                scoreBox.innerHTML = `
+                    <div id="team-name-${team.id}" class="font-bold text-base md:text-lg truncate">${team.name}</div>
+                    <div id="team-score-${team.id}" class="text-2xl font-black">${team.score}</div>
+                `;
+                scoresContainer.appendChild(scoreBox);
+            });
+        }
 
-        function updateTurnIndicator() {
-            document.querySelectorAll('.score-box').forEach(box => box.classList.remove('active'));
-            const currentTeam = state.teams[state.currentTeamIndex];
-            currentTeamNameCard.textContent = currentTeam.name;
-            const currentScoreBox = document.getElementById(`score-box-${currentTeam.id}`);
-            if(currentScoreBox) {
-                currentScoreBox.classList.add('active');
-            }
-        }
+        function updateTurnIndicator() {
+            document.querySelectorAll('.score-box').forEach(box => box.classList.remove('active'));
+            const currentTeam = state.teams[state.currentTeamIndex];
+            currentTeamNameCard.textContent = currentTeam.name;
+            const currentScoreBox = document.getElementById(`score-box-${currentTeam.id}`);
+            if(currentScoreBox) {
+                currentScoreBox.classList.add('active');
+            }
+        }
 
-        function startRoundCountdown() {
-            editScoresBtn.classList.add('hidden');
-            countdownModal.classList.remove('hidden');
+        function startRoundCountdown() {
+            editScoresBtn.classList.add('hidden');
+            countdownModal.classList.remove('hidden');
 
-            let countdown = 3;
-            countdownDisplay.textContent = countdown;
+            let countdown = 3;
+            countdownDisplay.textContent = countdown;
 
-            const countdownInterval = setInterval(() => {
-                countdown--;
-                if (countdown > 0) {
-                    countdownDisplay.textContent = countdown;
-                } else {
-                    clearInterval(countdownInterval);
-                    countdownModal.classList.add('hidden');
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                if (countdown > 0) {
+                    countdownDisplay.textContent = countdown;
+                } else {
+                    clearInterval(countdownInterval);
+                    countdownModal.classList.add('hidden');
 
-                    tickingSound.play().catch(e => console.log("Audio play failed"));
-                    tickingSound.pause();
-                    tickingSound.currentTime = 0;
+                    tickingSound.play().catch(e => console.log("Audio play failed"));
+                    tickingSound.pause();
+                    tickingSound.currentTime = 0;
 
-                    wordCard.classList.add('is-flipped');
-                    actionButtons.classList.remove('hidden');
-                    wordDisplay.textContent = getNextWord();
-                    startTimer();
-                }
-            }, 1000);
-        }
+                    wordCard.classList.add('is-flipped');
+                    actionButtons.classList.remove('hidden');
+                    wordDisplay.textContent = getNextWord();
+                    startTimer();
+                }
+            }, 1000);
+        }
 
-        function flipCardAndStartTurn() {
-            if (state.gameActive) return;
-            startRoundCountdown();
-        }
+        function flipCardAndStartTurn() {
+            if (state.gameActive) return;
+            startRoundCountdown();
+        }
 
-        function startTimer() {
-            state.gameActive = true;
-            state.timeLeft = state.roundTime;
-            timerDisplay.textContent = state.timeLeft;
-            timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200');
+        function startTimer() {
+            state.gameActive = true;
+            state.timeLeft = state.roundTime;
+            timerDisplay.textContent = state.timeLeft;
+            timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200');
 
-            tickingSound.pause();
-            tickingSound.currentTime = 0;
+            tickingSound.pause();
+            tickingSound.currentTime = 0;
 
-            state.timerInterval = setInterval(() => {
-                state.timeLeft--;
-                timerDisplay.textContent = state.timeLeft;
+            state.timerInterval = setInterval(() => {
+                state.timeLeft--;
+                timerDisplay.textContent = state.timeLeft;
 
-                if (state.timeLeft === 10) {
-                    playSound(tickingSound);
-                }
+                if (state.timeLeft === 10) {
+                    playSound(tickingSound);
+                }
 
-                if (state.timeLeft <= 10 && !timerDisplay.parentElement.classList.contains('animate-pulse')) {
-                    timerDisplay.parentElement.classList.add('animate-pulse', 'bg-red-200');
-                }
-                if (state.timeLeft <= 0) {
-                    endTurn();
-                }
-            }, 1000);
-        }
+                if (state.timeLeft <= 10 && !timerDisplay.parentElement.classList.contains('animate-pulse')) {
+                    timerDisplay.parentElement.classList.add('animate-pulse', 'bg-red-200');
+                }
+                if (state.timeLeft <= 0) {
+                    endTurn();
+                }
+            }, 1000);
+        }
 
-        function showScoreAnimation(teamId, amount) {
-            const scoreBox = document.getElementById(`score-box-${teamId}`);
-            if (!scoreBox) return;
-            const animationEl = document.createElement('div');
-            animationEl.classList.add('score-change');
-            if (amount > 0) {
-                animationEl.textContent = `+${amount}`;
-                animationEl.classList.add('plus-one');
-            } else {
-                animationEl.textContent = `${amount}`;
-                animationEl.classList.add('minus-one');
-            }
-            scoreBox.appendChild(animationEl);
-            setTimeout(() => {
-                animationEl.remove();
-            }, 800);
-        }
+        function showScoreAnimation(teamId, amount) {
+            const scoreBox = document.getElementById(`score-box-${teamId}`);
+            if (!scoreBox) return;
+            const animationEl = document.createElement('div');
+            animationEl.classList.add('score-change');
+            if (amount > 0) {
+                animationEl.textContent = `+${amount}`;
+                animationEl.classList.add('plus-one');
+            } else {
+                animationEl.textContent = `${amount}`;
+                animationEl.classList.add('minus-one');
+            }
+            scoreBox.appendChild(animationEl);
+            setTimeout(() => {
+                animationEl.remove();
+            }, 800);
+        }
 
-        function updateLastRoundBanner() {
-            const banner = document.getElementById('last-round-banner');
-            if (!state.inLastRound) {
-                banner.classList.add('hidden');
-                return;
-            }
+        function updateLastRoundBanner() {
+            const banner = document.getElementById('last-round-banner');
+            if (!state.inLastRound) {
+                banner.classList.add('hidden');
+                return;
+            }
 
-            const maxScore = Math.max(...state.teams.map(team => team.score));
-            if (maxScore < state.winningScore) {
-                banner.classList.add('hidden');
-                state.inLastRound = false; // No team is at the goal anymore, cancel last round
-                return;
-            }
+            const maxScore = Math.max(...state.teams.map(team => team.score));
+            if (maxScore < state.winningScore) {
+                banner.classList.add('hidden');
+                state.inLastRound = false; // No team is at the goal anymore, cancel last round
+                return;
+            }
 
-            const leadingTeams = state.teams.filter(team => team.score === maxScore);
-            let bannerText = '';
+            const leadingTeams = state.teams.filter(team => team.score === maxScore);
+            let bannerText = '';
 
-            if (leadingTeams.length === 1) {
-                bannerText = `סיכוי אחרון! ${leadingTeams[0].name} עומדת לנצח!`;
-            } else {
-                bannerText = `סיכוי אחרון! תיקו בצמרת עם ${maxScore} נקודות!`;
-            }
+            if (leadingTeams.length === 1) {
+                bannerText = `סיכוי אחרון! ${leadingTeams[0].name} עומדת לנצח!`;
+            } else {
+                bannerText = `סיכוי אחרון! תיקו בצמרת עם ${maxScore} נקודות!`;
+            }
 
-            banner.textContent = bannerText;
-            banner.classList.remove('hidden');
-        }
+            banner.textContent = bannerText;
+            banner.classList.remove('hidden');
+        }
 
-        function handleCorrect() {
-            if (!state.gameActive) return;
-            playSound(successSound);
-            const currentTeam = state.teams[state.currentTeamIndex];
-            currentTeam.score++;
-            state.turnScore++;
-            showScoreAnimation(currentTeam.id, 1);
+        function handleCorrect() {
+            if (!state.gameActive) return;
+            playSound(successSound);
+            const currentTeam = state.teams[state.currentTeamIndex];
+            currentTeam.score++;
+            state.turnScore++;
+            showScoreAnimation(currentTeam.id, 1);
 
-            if (!state.inLastRound && currentTeam.score >= state.winningScore) {
-                state.inLastRound = true;
-            }
+            if (!state.inLastRound && currentTeam.score >= state.winningScore) {
+                state.inLastRound = true;
+            }
 
-            if (state.inLastRound) {
-                updateLastRoundBanner();
-            }
+            if (state.inLastRound) {
+                updateLastRoundBanner();
+            }
 
-            setTimeout(() => {
-                updateScoreDisplay();
-            }, 150);
+            setTimeout(() => {
+                updateScoreDisplay();
+            }, 150);
 
-            if (!state.gameActive) return;
-            wordDisplay.textContent = getNextWord();
-        }
+            if (!state.gameActive) return;
+            wordDisplay.textContent = getNextWord();
+        }
 
-        function handleSkip() {
-            if (!state.gameActive) return;
-            playSound(loseSound);
-            const currentTeam = state.teams[state.currentTeamIndex];
-            if (currentTeam.score > 0) {
-                currentTeam.score--;
-                showScoreAnimation(currentTeam.id, -1);
+        function handleSkip() {
+            if (!state.gameActive) return;
+            playSound(loseSound);
+            const currentTeam = state.teams[state.currentTeamIndex];
+            if (currentTeam.score > 0) {
+                currentTeam.score--;
+                showScoreAnimation(currentTeam.id, -1);
 
-                if (state.inLastRound) {
-                    updateLastRoundBanner();
-                }
+                if (state.inLastRound) {
+                    updateLastRoundBanner();
+                }
 
-                setTimeout(() => {
-                   updateScoreDisplay();
-                }, 150);
-            }
-            wordDisplay.textContent = getNextWord();
-        }
+                setTimeout(() => {
+                   updateScoreDisplay();
+                }, 150);
+            }
+            wordDisplay.textContent = getNextWord();
+        }
 
-        function updateScoreDisplay() {
-            state.teams.forEach(team => {
-                 const teamScoreEl = document.getElementById(`team-score-${team.id}`);
-                 if(teamScoreEl) teamScoreEl.textContent = team.score;
-            });
-        }
+        function updateScoreDisplay() {
+            state.teams.forEach(team => {
+                 const teamScoreEl = document.getElementById(`team-score-${team.id}`);
+                 if(teamScoreEl) teamScoreEl.textContent = team.score;
+            });
+        }
 
-        function endTurn() {
-            clearInterval(state.timerInterval);
-            state.gameActive = false;
-            const currentTeam = state.teams[state.currentTeamIndex];
-            finishedTeamName.textContent = currentTeam.name;
-            turnScoreDisplay.textContent = state.turnScore;
-            turnOverModal.classList.remove('hidden');
-        }
+        function endTurn() {
+            clearInterval(state.timerInterval);
+            state.gameActive = false;
+            const currentTeam = state.teams[state.currentTeamIndex];
+            finishedTeamName.textContent = currentTeam.name;
+            turnScoreDisplay.textContent = state.turnScore;
+            turnOverModal.classList.remove('hidden');
+        }
 
-        function setupNextTurn() {
-            turnOverModal.classList.add('hidden');
-            editScoresBtn.classList.remove('hidden');
+        function setupNextTurn() {
+            turnOverModal.classList.add('hidden');
+            editScoresBtn.classList.remove('hidden');
 
-            // FIX: Reset turn score at the beginning to handle all execution paths,
-            // including the early exit for tie-breaker rounds.
-            state.turnScore = 0;
+            // FIX: Reset turn score at the beginning to handle all execution paths,
+            // including the early exit for tie-breaker rounds.
+            state.turnScore = 0;
 
-            const isLastTeamOfRound = state.currentTeamIndex === state.teams.length - 1;
-            const wasInTieBreaker = state.inTieBreaker;
+            const isLastTeamOfRound = state.currentTeamIndex === state.teams.length - 1;
+            const wasInTieBreaker = state.inTieBreaker;
 
-            // Check for a winner at the end of a full round
-            if (isLastTeamOfRound) {
-                let shouldCheckForWinner = false;
-                if (wasInTieBreaker) {
-                    shouldCheckForWinner = true;
-                } else {
-                    const teamsAboveGoal = state.teams.filter(team => team.score >= state.winningScore);
-                    if (teamsAboveGoal.length > 0) {
-                        shouldCheckForWinner = true;
-                    }
-                }
+            // Check for a winner at the end of a full round
+            if (isLastTeamOfRound) {
+                let shouldCheckForWinner = false;
+                if (wasInTieBreaker) {
+                    shouldCheckForWinner = true;
+                } else {
+                    const teamsAboveGoal = state.teams.filter(team => team.score >= state.winningScore);
+                    if (teamsAboveGoal.length > 0) {
+                        shouldCheckForWinner = true;
+                    }
+                }
 
-                if (shouldCheckForWinner) {
-                    const maxScore = Math.max(...state.teams.map(team => team.score));
-                    const potentialWinners = state.teams.filter(team => team.score === maxScore);
+                if (shouldCheckForWinner) {
+                    const maxScore = Math.max(...state.teams.map(team => team.score));
+                    const potentialWinners = state.teams.filter(team => team.score === maxScore);
 
-                    if (potentialWinners.length === 1 && maxScore >= state.winningScore) {
-                        // Single winner found.
-                        endGame(potentialWinners[0]);
-                        return; // Stop execution to prevent setting up a new turn.
-                    } else if (potentialWinners.length > 1) {
-                        // A tie occurred, set up a tie-breaker round.
-                        state.inTieBreaker = true;
-                        state.currentTeamIndex = 0; // Reset index for the new round.
+                    if (potentialWinners.length === 1 && maxScore >= state.winningScore) {
+                        // Single winner found.
+                        endGame(potentialWinners[0]);
+                        return; // Stop execution to prevent setting up a new turn.
+                    } else if (potentialWinners.length > 1) {
+                        // A tie occurred, set up a tie-breaker round.
+                        state.inTieBreaker = true;
+                        state.currentTeamIndex = 0; // Reset index for the new round.
 
-                        // Notify user about the tie-breaker.
-                        if (!wasInTieBreaker) {
-                            alert('תיקו! משחקים סיבוב שובר שוויון. הקבוצה עם הניקוד הגבוה ביותר בסוף הסיבוב תנצח!');
-                        } else {
-                            alert('עדיין תיקו! משחקים סיבוב שובר שוויון נוסף.');
-                        }
+                        // Notify user about the tie-breaker.
+                        if (!wasInTieBreaker) {
+                            alert('תיקו! משחקים סיבוב שובר שוויון. הקבוצה עם הניקוד הגבוה ביותר בסוף הסיבוב תנצח!');
+                        } else {
+                            alert('עדיין תיקו! משחקים סיבוב שובר שוויון נוסף.');
+                        }
 
-                        // Show and set text for the tie-breaker banner
-                        const tieBreakerBanner = document.getElementById('tie-breaker-banner');
-                        tieBreakerBanner.textContent = 'שובר שוויון! הניקוד הגבוה ביותר בסיבוב זה מנצח!';
-                        tieBreakerBanner.classList.remove('hidden');
+                        // Show and set text for the tie-breaker banner
+                        const tieBreakerBanner = document.getElementById('tie-breaker-banner');
+                        tieBreakerBanner.textContent = 'שובר שוויון! הניקוד הגבוה ביותר בסיבוב זה מנצח!';
+                        tieBreakerBanner.classList.remove('hidden');
 
-                        // Prepare UI for the start of the tie-breaker round.
-                        updateTurnIndicator();
-                        timerDisplay.textContent = state.roundTime;
-                        timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200');
-                        actionButtons.classList.add('hidden');
-                        wordCard.classList.remove('is-flipped');
-                        return; // Stop execution to prevent regular turn setup.
-                    }
-                }
-            }
+                        // Prepare UI for the start of the tie-breaker round.
+                        updateTurnIndicator();
+                        timerDisplay.textContent = state.roundTime;
+                        timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200');
+                        actionButtons.classList.add('hidden');
+                        wordCard.classList.remove('is-flipped');
+                        return; // Stop execution to prevent regular turn setup.
+                    }
+                }
+            }
 
-            // --- If not the end of the game, proceed with the regular next turn setup ---
-            state.currentTeamIndex = (state.currentTeamIndex + 1) % state.teams.length;
-            updateTurnIndicator();
-            timerDisplay.textContent = state.roundTime;
-            timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200');
-            actionButtons.classList.add('hidden');
-            wordCard.classList.remove('is-flipped');
-        }
+            // --- If not the end of the game, proceed with the regular next turn setup ---
+            state.currentTeamIndex = (state.currentTeamIndex + 1) % state.teams.length;
+            updateTurnIndicator();
+            timerDisplay.textContent = state.roundTime;
+            timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200');
+            actionButtons.classList.add('hidden');
+            wordCard.classList.remove('is-flipped');
+        }
 
-        function endGame(winningTeam) {
-            clearInterval(state.timerInterval);
-            tickingSound.pause();
-            playSound(victorySound);
-            state.gameActive = false;
-            document.getElementById('last-round-banner').classList.add('hidden');
-            document.getElementById('tie-breaker-banner').classList.add('hidden');
-            winningTeamName.textContent = winningTeam.name;
-            turnOverModal.classList.add('hidden');
-            editScoresBtn.classList.add('hidden');
-            winningScreen.classList.remove('hidden');
-            setTimeout(() => {
-                winningModalContent.classList.remove('scale-95', 'opacity-0');
-            }, 50);
-        }
+        function endGame(winningTeam) {
+            clearInterval(state.timerInterval);
+            tickingSound.pause();
+            playSound(victorySound);
+            state.gameActive = false;
+            document.getElementById('last-round-banner').classList.add('hidden');
+            document.getElementById('tie-breaker-banner').classList.add('hidden');
+            winningTeamName.textContent = winningTeam.name;
+            turnOverModal.classList.add('hidden');
+            editScoresBtn.classList.add('hidden');
+            winningScreen.classList.remove('hidden');
+            setTimeout(() => {
+                winningModalContent.classList.remove('scale-95', 'opacity-0');
+            }, 50);
+        }
 
-        function resetGame() {
-            state.inLastRound = false;
-            document.getElementById('last-round-banner').classList.add('hidden');
-            document.getElementById('tie-breaker-banner').classList.add('hidden');
-            state.inTieBreaker = false;
-            state.teams = [];
-            state.currentTeamIndex = 0;
-            state.gameActive = false;
-            state.turnScore = 0;
-            clearInterval(state.timerInterval);
-            tickingSound.pause();
-            winningScreen.classList.add('hidden');
-            gameScreen.classList.add('hidden');
-            editScoresBtn.classList.add('hidden');
-            winningModalContent.classList.add('scale-95', 'opacity-0');
-            wordCard.classList.remove('is-flipped');
-            actionButtons.classList.add('hidden');
-            timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200');
-            setupScreen.classList.remove('hidden');
-        }
+        function resetGame() {
+            state.inLastRound = false;
+            document.getElementById('last-round-banner').classList.add('hidden');
+            document.getElementById('tie-breaker-banner').classList.add('hidden');
+            state.inTieBreaker = false;
+            state.teams = [];
+            state.currentTeamIndex = 0;
+            state.gameActive = false;
+            state.turnScore = 0;
+            clearInterval(state.timerInterval);
+            tickingSound.pause();
+            winningScreen.classList.add('hidden');
+            gameScreen.classList.add('hidden');
+            editScoresBtn.classList.add('hidden');
+            winningModalContent.classList.add('scale-95', 'opacity-0');
+            wordCard.classList.remove('is-flipped');
+            actionButtons.classList.add('hidden');
+            timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200');
+            setupScreen.classList.remove('hidden');
+        }
 
-        function openEditScoresModal() {
-            editScoresList.innerHTML = '';
-            state.teams.forEach(team => {
-                const teamEditRow = document.createElement('div');
-                teamEditRow.className = 'flex items-center justify-between bg-gray-100 p-3 rounded-lg';
-                teamEditRow.innerHTML = `
-                    <span class="font-bold text-lg">${team.name}</span>
-                    <div class="flex items-center gap-4">
-                        <button data-team-id="${team.id}" data-action="minus" class="w-8 h-8 rounded-full bg-red-200 text-red-700 font-bold text-xl flex items-center justify-center">-</button>
-                        <span class="text-2xl font-black w-10 text-center" data-score-for-team="${team.id}">${team.score}</span>
-                        <button data-team-id="${team.id}" data-action="plus" class="w-8 h-8 rounded-full bg-green-200 text-green-700 font-bold text-xl flex items-center justify-center">+</button>
-                    </div>
-                `;
-                editScoresList.appendChild(teamEditRow);
-            });
-            editScoresModal.classList.remove('hidden');
-        }
+        function openEditScoresModal() {
+            editScoresList.innerHTML = '';
+            state.teams.forEach(team => {
+                const teamEditRow = document.createElement('div');
+                teamEditRow.className = 'flex items-center justify-between bg-gray-100 p-3 rounded-lg';
+                teamEditRow.innerHTML = `
+                    <span class="font-bold text-lg">${team.name}</span>
+                    <div class="flex items-center gap-4">
+                        <button data-team-id="${team.id}" data-action="minus" class="w-8 h-8 rounded-full bg-red-200 text-red-700 font-bold text-xl flex items-center justify-center">-</button>
+                        <span class="text-2xl font-black w-10 text-center" data-score-for-team="${team.id}">${team.score}</span>
+                        <button data-team-id="${team.id}" data-action="plus" class="w-8 h-8 rounded-full bg-green-200 text-green-700 font-bold text-xl flex items-center justify-center">+</button>
+                    </div>
+                `;
+                editScoresList.appendChild(teamEditRow);
+            });
+            editScoresModal.classList.remove('hidden');
+        }
 
-        function handleScoreChangeInModal(e) {
-            const action = e.target.dataset.action;
-            const teamId = e.target.dataset.teamId;
-            if (!action || !teamId) return;
-            const scoreSpan = editScoresList.querySelector(`[data-score-for-team="${teamId}"]`);
-            let currentScore = parseInt(scoreSpan.textContent, 10);
-            if (action === 'plus') {
-                currentScore++;
-            } else if (action === 'minus' && currentScore > 0) {
-                currentScore--;
-            }
-            scoreSpan.textContent = currentScore;
-        }
+        function handleScoreChangeInModal(e) {
+            const action = e.target.dataset.action;
+            const teamId = e.target.dataset.teamId;
+            if (!action || !teamId) return;
+            const scoreSpan = editScoresList.querySelector(`[data-score-for-team="${teamId}"]`);
+            let currentScore = parseInt(scoreSpan.textContent, 10);
+            if (action === 'plus') {
+                currentScore++;
+            } else if (action === 'minus' && currentScore > 0) {
+                currentScore--;
+            }
+            scoreSpan.textContent = currentScore;
+        }
 
-        function saveScores() {
-            const scoreSpans = editScoresList.querySelectorAll('[data-score-for-team]');
-            scoreSpans.forEach(span => {
-                const teamId = parseInt(span.dataset.scoreForTeam, 10);
-                const newScore = parseInt(span.textContent, 10);
-                const team = state.teams.find(t => t.id === teamId);
-                if (team) {
-                    team.score = newScore;
-                }
-            });
-            updateScoreDisplay();
-            editScoresModal.classList.add('hidden');
+        function saveScores() {
+            const scoreSpans = editScoresList.querySelectorAll('[data-score-for-team]');
+            scoreSpans.forEach(span => {
+                const teamId = parseInt(span.dataset.scoreForTeam, 10);
+                const newScore = parseInt(span.textContent, 10);
+                const team = state.teams.find(t => t.id === teamId);
+                if (team) {
+                    team.score = newScore;
+                }
+            });
+            updateScoreDisplay();
+            editScoresModal.classList.add('hidden');
 
-            const anyTeamReachedGoal = state.teams.some(t => t.score >= state.winningScore);
-            if (anyTeamReachedGoal) {
-                state.inLastRound = true;
-                updateLastRoundBanner();
-            } else {
-                state.inLastRound = false;
-                document.getElementById('last-round-banner').classList.add('hidden');
-            }
-        }
+            const anyTeamReachedGoal = state.teams.some(t => t.score >= state.winningScore);
+            if (anyTeamReachedGoal) {
+                state.inLastRound = true;
+                updateLastRoundBanner();
+            } else {
+                state.inLastRound = false;
+                document.getElementById('last-round-banner').classList.add('hidden');
+            }
+        }
 </script>
 
 <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(registration => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, err => {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
-    }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, err => {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
