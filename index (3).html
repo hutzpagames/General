@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hutzpa Games - We Turn Fun Into Business For Your Business</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #0284c7, #4f46e5); /* Brighter gradient for light bg */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+             /* Subtle pattern for light theme */
+            background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 0);
+            background-size: 25px 25px;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
+                <a href="#" class="flex items-center gap-2">
+                    <svg class="w-6 h-6 text-sky-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                    Hutzpa Games
+                </a>
+            </h1>
+            <nav class="hidden md:flex space-x-8 items-center text-gray-600">
+                <a href="#services" class="hover:text-sky-500 transition-colors">Services</a>
+                <a href="#portfolio" class="hover:text-sky-500 transition-colors">Portfolio</a>
+                <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">Get a Quote</a>
+            </nav>
+            <button class="md:hidden text-gray-600">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="pt-24">
+        <section class="hero-bg relative text-center py-20 md:py-32">
+            <div class="container mx-auto px-6 z-10">
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-4 text-gray-900 animate-fade-in-down">
+                    Don't Just Market. <span class="gradient-text">Amaze.</span>
+                </h2>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-600 mb-8 animate-fade-in-up">
+                    We build fun, addictive mini-games for businesses that turn passive scrollers into active, loyal fans. It's marketing with a little more hutzpa.
+                </p>
+                <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg text-lg inline-block transition-transform transform hover:scale-105 animate-bounce-in">
+                    Get Your Custom Game
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">How We Turn <span class="gradient-text">Play</span> Into <span class="gradient-text">Profit</span></h3>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">We create gaming experiences tailored to your business goals.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover-effect shadow-md">
+                        <div class="bg-sky-100 text-sky-600 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Branded Mini-Games</h4>
+                        <p class="text-gray-500">Custom games that showcase your brand, products, and story. Perfect for making an unforgettable first impression.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover-effect shadow-md">
+                        <div class="bg-indigo-100 text-indigo-600 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Gamified Marketing</h4>
+                        <p class="text-gray-500">Launch campaigns that are actually fun. Use games to drive traffic, capture leads, and boost social shares.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover-effect shadow-md">
+                        <div class="bg-sky-100 text-sky-600 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Interactive Training</h4>
+                        <p class="text-gray-500">Make employee onboarding and training engaging. Complex topics become easier to learn through play.</p>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover-effect shadow-md">
+                        <div class="bg-indigo-100 text-indigo-600 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Event Engagement</h4>
+                        <p class="text-gray-500">Draw crowds at trade shows and virtual events. A fun game is the best icebreaker you'll find.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">Our Work</h3>
+                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">From corporate giants to bold startups, we create fun for everyone.</p>
+                </div>
+                <div class="flex justify-center">
+                    <!-- Portfolio Item 1 -->
+                    <div class="bg-white rounded-xl p-6 group card-hover-effect w-full max-w-md flex items-center space-x-6 shadow-lg border border-gray-200">
+                        <div class="flex-shrink-0">
+                            <img src="Logo.png" alt="Tip of the Tongue Game Logo" class="h-24 w-24 rounded-2xl shadow-lg" style="image-rendering: -webkit-optimize-contrast;">
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-900 mb-1">Tip of the Tongue</h4>
+                            <p class="text-sky-600 font-medium mb-2">Client: Leading Israeli Brand</p>
+                            <p class="text-gray-500 text-sm">A viral trivia and word-guessing game designed to boost brand engagement and social sharing across Israel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 lg:p-16 max-w-4xl mx-auto shadow-2xl">
+                    <div class="text-center">
+                        <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">Ready to Add Some Hutzpa?</h3>
+                        <p class="text-gray-500 mt-2 mb-8 max-w-2xl mx-auto">Tell us about your project. We'll tell you how a game can make it unforgettable. No pressure, just possibilities.</p>
+                    </div>
+                    <form id="contact-form" action="#" method="POST">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                                <input type="text" name="name" id="name" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:outline-none transition" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" name="email" id="email" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:outline-none transition" placeholder="john@example.com" required>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                                <input type="text" name="company" id="company" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:outline-none transition" placeholder="Your Company Inc.">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Tell us about your idea</label>
+                                <textarea name="message" id="message" rows="4" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-sky-500 focus:outline-none transition" placeholder="We're looking to create a game for..." required></textarea>
+                            </div>
+                        </div>
+                        <div class="text-center mt-8">
+                            <button type="submit" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-12 rounded-lg text-lg transition-transform transform hover:scale-105">Let's Make Magic</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
+            <p>&copy; 2025 Hutzpa Games. All Rights Reserved. Built with guts and glory.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Contact form functionality
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const company = document.getElementById('company').value;
+                const message = document.getElementById('message').value;
+
+                const subject = `New Inquiry from Hutzpa Games - ${name}`;
+                const body = `Hello Hutzpa Games,
+
+A new potential client has reached out through the website.
+
+Name: ${name}
+Email: ${email}
+Company: ${company}
+
+Message:
+${message}`;
+
+                // This creates a mailto link to open the user's default email client
+                window.location.href = `mailto:hutzpagames@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            });
+        }
+    </script>
+
+</body>
+</html>
