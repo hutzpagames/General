@@ -45,7 +45,7 @@
         html, body {
             height: 100%;
             margin: 0;
-            overflow: hidden; /* Prevent the whole page from scrolling */
+            overflow: hidden;
             font-family: 'Rubik', sans-serif;
             touch-action: manipulation;
             background-color: var(--alias-light-gray);
@@ -57,12 +57,12 @@
             height: 100%;
         }
         
-        /* --- NEW AD OVERLAY STYLES --- */
+        /* --- AD OVERLAY STYLES --- */
         .ad-overlay {
-            position: fixed; /* Lifts the element out of the layout */
+            position: fixed;
             left: 0;
             right: 0;
-            z-index: 10; /* Ensures ad is on top of other content */
+            z-index: 10;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -75,22 +75,18 @@
             border-bottom: 1px solid #e5e7eb;
         }
         
-        /* Prevents the "availableWidth=0" error */
         .adsbygoogle {
             width: 100%;
         }
 
-        /* --- UPDATED APP WRAPPER --- */
+        /* --- APP WRAPPER --- */
         #app-wrapper {
             flex-grow: 1; 
-            overflow-y: auto; /* Makes ONLY this area scrollable */
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch; 
-            
-            /* KEY CHANGE: Add padding to prevent the top ad from covering the game */
             padding-top: 70px; 
             padding-left: 1rem;
             padding-right: 1rem;
-            /* Add padding at the bottom for spacing and to avoid the iPhone home bar */
             padding-bottom: calc(1rem + env(safe-area-inset-bottom));
         }
 
@@ -99,7 +95,7 @@
            overflow-y: visible;
         }
 
-        /* --- ALL YOUR ORIGINAL APP STYLES BELOW --- */
+        /* --- ORIGINAL APP STYLES --- */
         #app-container {
             display: flex;
             flex-direction: column;
@@ -128,17 +124,7 @@
         .score-change.minus-one { color: var(--alias-red); animation: float-up-right 0.8s ease-out forwards; }
         @keyframes float-up-left { 0% { opacity: 1; transform: translate(-120%, -50%); } 100% { opacity: 0; transform: translate(-120%, -150%); } }
         @keyframes float-up-right { 0% { opacity: 1; transform: translate(20%, -50%); } 100% { opacity: 0; transform: translate(20%, -150%); } }
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
     </style>
 </head>
 
@@ -209,13 +195,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div id="how-to-play-modal" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
                 </div>
-            
-            </div>
+             </div>
     </main>
 </div> 
 
 <script>
-    // Your entire existing game logic script...
+    // Your entire existing game logic script goes here...
+    // I've removed it for brevity, but you should paste your original game JS here.
 </script>
 
 <script>
@@ -239,13 +225,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
     });
 
-    // Close modals with Escape key
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
-            const openModals = document.querySelectorAll('[role="dialog"]:not(.hidden)');
-            openModals.forEach(modal => {
+            document.querySelectorAll('[role="dialog"]:not(.hidden)').forEach(modal => {
                 modal.classList.add('hidden');
             });
+        }
+    });
+</script>
+
+<script>
+    // This script checks if the ad container is empty and hides it if so.
+    document.addEventListener('DOMContentLoaded', () => {
+        const adContainer = document.querySelector('.ad-overlay-top');
+        const appWrapper = document.getElementById('app-wrapper');
+        const adSlot = document.querySelector('.ad-overlay-top .adsbygoogle');
+
+        if (adContainer && appWrapper && adSlot) {
+            const observer = new MutationObserver(() => {
+                if (adSlot.getAttribute('data-ad-status') === 'unfilled') {
+                    console.log('Ad slot was not filled. Hiding container and removing padding.');
+                    adContainer.style.display = 'none';
+                    appWrapper.style.paddingTop = '1rem';
+                    observer.disconnect();
+                }
+            });
+            observer.observe(adSlot, { attributes: true });
         }
     });
 </script>
