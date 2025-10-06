@@ -1,39 +1,14 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5QXV8XX5');</script>
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="267927be-58f1-486c-a44b-3def1a91602a" data-blockingmode="auto" type="text/javascript"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J5QVVCDFEY');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>קצה הלשון - המשחק</title>
-    
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#d92d20"/>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="קצה הלשון">
-    <link rel="apple-touch-icon" href="icon-192x192.png">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878123086661063"
-     crossorigin="anonymous"></script>
-     
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
             --alias-red: #d92d20;
@@ -57,18 +32,12 @@
             height: 100%;
         }
     
-
-        /* --- APP WRAPPER --- */
         #app-wrapper {
             flex-grow: 1; 
             overflow-y: auto;
             -webkit-overflow-scrolling: touch; 
-            padding-top: 1rem; /* Start with minimal padding */
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding: 1rem;
             padding-bottom: calc(1rem + env(safe-area-inset-bottom));
-            /* Add transition for smooth padding change */
-            transition: padding-top 0.3s ease;
         }
 
         #setup-screen, #game-screen {
@@ -76,7 +45,6 @@
            overflow-y: visible;
         }
 
-        /* --- ORIGINAL APP STYLES --- */
         #app-container {
             display: flex;
             flex-direction: column;
@@ -107,6 +75,30 @@
         @keyframes float-up-right { 0% { opacity: 1; transform: translate(20%, -50%); } 100% { opacity: 0; transform: translate(20%, -150%); } }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
     </style>
+
+    <title>קצה הלשון - המשחק</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d92d20"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="קצה הלשון">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5QXV8XX5');</script>
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="267927be-58f1-486c-a44b-3def1a91602a" data-blockingmode="auto" type="text/javascript"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J5QVVCDFEY');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878123086661063"
+     crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -320,48 +312,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         } catch (e) {
             console.error("AdSense push error:", e);
         }
+
+        // The logic for handling ad visibility has been removed from here
+        // as it was part of a previous overlay implementation.
     });
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
             document.querySelectorAll('[role="dialog"]:not(.hidden)').forEach(modal => {
                 modal.classList.add('hidden');
-            });
-        }
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const adContainer = document.querySelector('.ad-overlay-top');
-        const appWrapper = document.getElementById('app-wrapper');
-        const adSlot = document.querySelector('.ad-overlay-top .adsbygoogle');
-
-        if (adContainer && appWrapper && adSlot) {
-            const observer = new MutationObserver((mutationsList, obs) => {
-                const adIsFilled = adSlot.children.length > 0 && adSlot.clientHeight > 1;
-                const adIsUnfilled = adSlot.getAttribute('data-ad-status') === 'unfilled';
-
-                if (adIsFilled) {
-                    console.log('Ad content detected. Showing container.');
-                    // Make the container visible
-                    adContainer.style.visibility = 'visible';
-                    adContainer.style.opacity = '1';
-                    
-                    // Add padding to the app wrapper to push content down
-                    const adHeight = adContainer.offsetHeight;
-                    appWrapper.style.paddingTop = `${adHeight}px`;
-                    obs.disconnect(); 
-                } else if (adIsUnfilled) {
-                    console.log('Ad slot explicitly unfilled. Keeping container hidden.');
-                    obs.disconnect();
-                }
-            });
-
-            observer.observe(adSlot, {
-                attributes: true,
-                childList: true,
-                subtree: true
             });
         }
     });
