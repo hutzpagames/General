@@ -63,11 +63,15 @@
             left: 0;
             right: 0;
             z-index: 10;
-            display: none; /* MODIFIED: Hide by default to prevent flicker */
+            display: flex;
             justify-content: center;
             align-items: center;
             min-height: 50px;
             background-color: var(--alias-light-gray);
+            /* MODIFIED: Hide using visibility to preserve dimensions for the ad script */
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .ad-overlay-top {
@@ -85,10 +89,12 @@
             flex-grow: 1; 
             overflow-y: auto;
             -webkit-overflow-scrolling: touch; 
-            padding-top: 1rem; /* MODIFIED: Start with minimal padding */
+            padding-top: 1rem; /* Start with minimal padding */
             padding-left: 1rem;
             padding-right: 1rem;
             padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+            /* Add transition for smooth padding change */
+            transition: padding-top 0.3s ease;
         }
 
         #setup-screen, #game-screen {
@@ -372,8 +378,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 if (adIsFilled) {
                     console.log('Ad content detected. Showing container.');
-                    adContainer.style.display = 'flex';
-                    // Calculate the ad container's actual height and add it as padding
+                    // Make the container visible
+                    adContainer.style.visibility = 'visible';
+                    adContainer.style.opacity = '1';
+                    
+                    // Add padding to the app wrapper to push content down
                     const adHeight = adContainer.offsetHeight;
                     appWrapper.style.paddingTop = `${adHeight}px`;
                     obs.disconnect(); 
