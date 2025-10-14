@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -16,7 +14,6 @@
             --alias-dark: #2c2c2c;
             --alias-light-gray: #f7f7f7;
         }
-
         html, body {
             height: 100%;
             margin: 0;
@@ -25,13 +22,12 @@
             touch-action: manipulation;
             background-color: var(--alias-light-gray);
         }
-
         #layout-container { display: flex; flex-direction: column; height: 100%; }
         #app-wrapper { flex-grow: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1rem; padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
         .alias-title { font-weight: 900; color: var(--alias-red); text-shadow: 3px 3px 0px rgba(0,0,0,0.05); }
-        .card { -webkit-perspective: 1000; perspective: 1000; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .card { perspective: 1000px; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
         .card.is-flipped { transform: rotateY(180deg); }
-        .card__face { -webkit-backface-visibility: hidden; backface-visibility: hidden; position: absolute; width: 100%; height: 100%; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border: 2px solid var(--alias-dark); }
+        .card__face { backface-visibility: hidden; position: absolute; width: 100%; height: 100%; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border: 2px solid var(--alias-dark); }
         .card__face--front { background-color: var(--alias-white); color: var(--alias-dark); }
         .card__face--back { transform: rotateY(180deg); background-color: var(--alias-red); color: var(--alias-white); border-color: var(--alias-red); }
         .btn { transition: all 0.15s ease-in-out; border-radius: 0.75rem; font-weight: 700; }
@@ -41,22 +37,22 @@
         .score-box { background-color: var(--alias-white); border: 2px solid #e5e7eb; color: var(--alias-dark); transition: all 0.3s ease-in-out; border-radius: 0.5rem; position: relative; overflow: hidden; }
         .score-box.active { border: 2px solid var(--alias-red); }
         .modal-content { transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; }
-        .btn-outline.selected { background-color: var(--alias-red); color: var(--alias-white); }
         .draggable { cursor: grab; }
         .dragging { opacity: 0.5; }
         .drop-zone { border: 2px dashed #ccc; min-height: 80px; }
+        .qr-container { width: 100%; max-width: 300px; margin: 0 auto; aspect-ratio: 1 / 1; }
+        #qr-scanner, #host-qr-scanner { width: 100%; height: 100%; }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
     </style>
     <title>קצה הלשון - המשחק</title>
 </head>
-
 <body>
 <div id="layout-container">
     <main id="app-wrapper">
         <div id="app-container" class="w-full max-w-lg mx-auto">
             <!-- Landing Screen -->
             <div id="landing-screen" class="text-center">
-                 <h1 class="text-6xl mb-4 alias-title">קצה הלשון</h1>
+                <h1 class="text-6xl mb-4 alias-title">קצה הלשון</h1>
                 <p class="text-gray-500 mb-8">נחשו מילים עם חברים!</p>
                 <div class="space-y-4">
                     <button id="create-session-btn" class="w-full py-4 px-6 text-2xl shadow-lg transform btn btn-red">צור משחק חדש</button>
@@ -64,10 +60,10 @@
                 </div>
             </div>
 
-             <!-- Host Setup Screen -->
+            <!-- Host Setup Screen -->
             <div id="setup-screen" class="hidden bg-white p-6 md:p-8 rounded-xl shadow-lg text-center">
-                 <h2 class="text-3xl font-bold mb-6">הגדרות משחק</h2>
-                 <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-6">הגדרות משחק</h2>
+                <div class="mb-8">
                     <label for="player-name-input" class="block text-sm font-medium text-gray-700 mb-2">השם שלך (המארח)</label>
                     <input type="text" id="player-name-input" placeholder="הכנס את שמך" class="w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
                 </div>
@@ -86,43 +82,51 @@
 
             <!-- Join Screen (Peer) -->
             <div id="join-screen" class="hidden text-center">
-                 <h2 class="text-3xl font-bold mb-6">הצטרפות למשחק</h2>
-                <div class="mb-4">
-                     <label for="peer-name-input" class="block text-sm font-medium text-gray-700 mb-2">השם שלך</label>
-                    <input type="text" id="peer-name-input" placeholder="הכנס את שמך" class="w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                <h2 class="text-3xl font-bold mb-6">הצטרפות למשחק</h2>
+                <div id="peer-name-section">
+                    <label for="peer-name-input" class="block text-sm font-medium text-gray-700 mb-2">השם שלך</label>
+                    <input type="text" id="peer-name-input" placeholder="הכנס את שמך" class="w-full mb-4 p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                    <button id="generate-qr-offer-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">צור קוד הצטרפות</button>
                 </div>
-                <div id="qr-scanner-container" class="w-full max-w-sm mx-auto aspect-square bg-gray-200 rounded-lg overflow-hidden mb-4">
-                    <div id="qr-scanner"></div>
+
+                <div id="peer-qr-offer-section" class="hidden">
+                    <p class="text-gray-600 mb-4">בקש מהמארח לסרוק את קוד ה-QR הזה.</p>
+                    <div id="peer-qr-offer-code" class="qr-container bg-gray-100 p-2 rounded-lg"></div>
+                    <p id="peer-status" class="text-gray-500 mt-4">ממתין שהמארח יסרוק...</p>
                 </div>
-                <p class="text-gray-500">סרוק את קוד ה-QR שמוצג על מסך המארח.</p>
-                 <div id="peer-qr-code-container" class="hidden text-center mt-6">
-                    <p class="text-lg font-semibold mb-2">החיבור נוצר!</p>
-                    <p class="text-gray-600 mb-4">כעת, בקש מהמארח לסרוק את קוד ה-QR הזה כדי להשלים את ההתחברות.</p>
-                    <div id="peer-qr-code" class="flex justify-center"></div>
+                
+                <div id="peer-scan-answer-section" class="hidden">
+                     <p class="text-gray-600 mb-4">כעת, סרוק את קוד התשובה מהמארח.</p>
+                     <div class="qr-container bg-gray-200 rounded-lg overflow-hidden" id="qr-scanner-container">
+                         <div id="qr-scanner"></div>
+                     </div>
                 </div>
             </div>
 
             <!-- Lobby Screen (Host) -->
             <div id="lobby-screen" class="hidden">
-                 <h2 class="text-3xl font-bold text-center mb-6">לובי המשחק</h2>
+                <h2 class="text-3xl font-bold text-center mb-6">לובי המשחק</h2>
                 <div class="grid md:grid-cols-2 gap-6 items-start">
                     <div>
-                         <h3 class="font-bold text-xl mb-4">1. סרוק כדי להצטרף</h3>
-                        <div class="bg-white p-4 rounded-lg shadow-md flex justify-center mb-4">
-                            <div id="host-qr-code"></div>
-                        </div>
-                        <div id="host-scan-answer-container" class="hidden">
-                             <h3 class="font-bold text-xl mb-4">2. סרוק את התשובה של השחקן</h3>
-                            <div id="host-qr-scanner-container" class="w-full max-w-xs mx-auto aspect-square bg-gray-200 rounded-lg overflow-hidden mb-4">
-                                <div id="host-qr-scanner"></div>
+                        <div id="host-connection-area">
+                            <h3 class="font-bold text-xl mb-2 text-center">חיבור שחקנים</h3>
+                            <div id="host-scan-offer-section">
+                                <p class="text-center text-gray-600 mb-4">סרוק קוד של שחקן כדי לחבר אותו.</p>
+                                <div class="qr-container bg-gray-200 rounded-lg overflow-hidden" id="host-qr-scanner-container">
+                                    <div id="host-qr-scanner"></div>
+                                </div>
+                            </div>
+                            <div id="host-qr-answer-section" class="hidden text-center">
+                                 <p class="text-gray-600 mb-4">בקש מהשחקן לסרוק את קוד התשובה הזה.</p>
+                                 <div id="host-qr-answer-code" class="qr-container bg-gray-100 p-2 rounded-lg"></div>
+                                 <button id="scan-next-player-btn" class="w-full mt-4 py-3 btn btn-outline">סרוק שחקן הבא</button>
                             </div>
                         </div>
                     </div>
                     <div>
                         <h3 class="font-bold text-xl mb-2">שחקנים וקבוצות</h3>
-                        <div id="unassigned-players" class="p-4 bg-gray-200 rounded-lg mb-4 drop-zone">
+                        <div id="unassigned-players" class="p-4 bg-gray-200 rounded-lg mb-4 drop-zone min-h-[80px]">
                              <h4 class="font-semibold text-gray-700 mb-2">שחקנים שמחכים</h4>
-                             <!-- Players will be added here -->
                         </div>
                         <div id="teams-container" class="space-y-4">
                             <div id="team-1" class="p-4 bg-white rounded-lg shadow-md drop-zone">
@@ -190,15 +194,9 @@
             <div id="turn-over-modal" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
                 <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full modal-content">
                     <h2 class="text-4xl font-black text-gray-800 mb-2">הזמן נגמר!</h2>
-                    <p class="text-lg text-gray-600 mb-4">
-                        כל הכבוד, <span id="finished-player-name" class="font-bold"></span>!
-                    </p>
-                    <p class="text-gray-500 mb-6">
-                        הצלחתם <span id="turn-score" class="font-bold text-2xl" style="color: var(--alias-red);">0</span> מילים.
-                    </p>
-                    <button id="next-turn-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                        התור הבא
-                    </button>
+                    <p class="text-lg text-gray-600 mb-4"> כל הכבוד, <span id="finished-player-name" class="font-bold"></span>! </p>
+                    <p class="text-gray-500 mb-6"> הצלחתם <span id="turn-score" class="font-bold text-2xl text-[--alias-red]">0</span> מילים. </p>
+                    <button id="next-turn-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">התור הבא</button>
                 </div>
             </div>
 
@@ -206,23 +204,19 @@
                 <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full transform scale-95 opacity-0 modal-content" id="winning-modal-content">
                     <div class="text-6xl mb-4">🏆</div>
                     <h2 class="text-4xl font-black text-gray-800 mb-2">ניצחון!</h2>
-                    <p class="text-lg text-gray-600 mb-6">
-                        קבוצת <span id="winning-team-name" class="font-bold text-2xl" style="color: var(--alias-red);"></span> ניצחה!
-                    </p>
-                    <button id="play-again-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                        שחקו שוב
-                    </button>
+                    <p class="text-lg text-gray-600 mb-6"> קבוצת <span id="winning-team-name" class="font-bold text-2xl text-[--alias-red]"></span> ניצחה! </p>
+                    <button id="play-again-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">שחקו שוב</button>
                 </div>
             </div>
-
         </div>
     </main>
 </div> 
 
-<script src="./scripts/qrcode.min.js"></script>
-<script src="./scripts/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script src="./scripts/network.js"></script>
 <script src="./scripts/main.js"></script>
 
 </body>
 </html>
+
