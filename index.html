@@ -1,232 +1,222 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="scroll-smooth">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hutzpa Games - We Turn Fun Into Business For Your Business</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    
-    <script data-cookieconsent="ignore">
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag("consent", "default", {
-            ad_personalization: "denied",
-            ad_storage: "denied",
-            ad_user_data: "denied",
-            analytics_storage: "denied",
-            functionality_storage: "denied",
-            personalization_storage: "denied",
-            security_storage: "granted",
-            wait_for_update: 500,
-        });
-        gtag("set", "ads_data_redaction", true);
-        gtag("set", "url_passthrough", false);
-    </script>
-
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="267927be-58f1-486c-a44b-3def1a91602a" data-blockingmode="auto" type="text/javascript"></script>
-
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5QXV8XX5');</script>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J5QVVCDFEY');
-    </script>
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878123086661063"
-     crossorigin="anonymous"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Tailwind slate-50 */
+        :root {
+            --alias-red: #d92d20;
+            --alias-white: #ffffff;
+            --alias-dark: #2c2c2c;
+            --alias-light-gray: #f7f7f7;
         }
-        .gradient-text {
-            background: linear-gradient(90deg, #0284c7, #4f46e5); /* Brighter gradient for light bg */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Rubik', sans-serif;
+            touch-action: manipulation;
+            background-color: var(--alias-light-gray);
         }
-        .hero-bg {
-             /* Subtle pattern for light theme */
-            background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 0);
-            background-size: 25px 25px;
-        }
-        .card-hover-effect {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-hover-effect:hover,
-        .card-hover-effect:focus-within {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+        #layout-container { display: flex; flex-direction: column; height: 100%; }
+        #app-wrapper { flex-grow: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 1rem; padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
+        .alias-title { font-weight: 900; color: var(--alias-red); text-shadow: 3px 3px 0px rgba(0,0,0,0.05); }
+        .card { perspective: 1000px; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+        .card.is-flipped { transform: rotateY(180deg); }
+        .card__face { backface-visibility: hidden; position: absolute; width: 100%; height: 100%; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border: 2px solid var(--alias-dark); }
+        .card__face--front { background-color: var(--alias-white); color: var(--alias-dark); }
+        .card__face--back { transform: rotateY(180deg); background-color: var(--alias-red); color: var(--alias-white); border-color: var(--alias-red); }
+        .btn { transition: all 0.15s ease-in-out; border-radius: 0.75rem; font-weight: 700; }
+        .btn:active { transform: scale(0.96); filter: brightness(0.95); }
+        .btn-red { background-color: var(--alias-red); color: var(--alias-white); }
+        .btn-outline { background-color: var(--alias-white); color: var(--alias-red); border: 2px solid var(--alias-red); }
+        .score-box { background-color: var(--alias-white); border: 2px solid #e5e7eb; color: var(--alias-dark); transition: all 0.3s ease-in-out; border-radius: 0.5rem; position: relative; overflow: hidden; }
+        .score-box.active { border: 2px solid var(--alias-red); }
+        .modal-content { transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; }
+        .draggable { cursor: grab; }
+        .dragging { opacity: 0.5; }
+        .drop-zone { border: 2px dashed #ccc; min-height: 80px; }
+        .qr-container { width: 100%; max-width: 300px; margin: 0 auto; aspect-ratio: 1 / 1; }
+        #qr-scanner, #host-qr-scanner { width: 100%; height: 100%; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
     </style>
+    <title>קצה הלשון - המשחק</title>
 </head>
-<body class="text-gray-700">
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QXV8XX5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
-                <a href="#" class="flex items-center gap-2">
-                    <img src="./Logo.svg" alt="Hutzpa Games Logo" class="h-12 w-auto" />
-                    Hutzpa Games
-                </a>
-            </h1>
-            <nav id="main-nav" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex-col items-center space-y-4 
-                                    md:static md:flex-row md:space-y-0 md:space-x-8 md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
-                <a href="#services" class="text-gray-600 hover:text-sky-500 transition-colors">Services</a>
-                <a href="#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">Portfolio</a>
-                <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">Get a Quote</a>
-                <a href="./he" class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91 3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
-                    HE
-                </a>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 z-50" aria-label="Open menu" aria-expanded="false">
-                <svg id="hamburger-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-                <svg id="close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+<body>
+<div id="layout-container">
+    <main id="app-wrapper">
+        <div id="app-container" class="w-full max-w-lg mx-auto">
+            <!-- Landing Screen -->
+            <div id="landing-screen" class="text-center">
+                <h1 class="text-6xl mb-4 alias-title">קצה הלשון</h1>
+                <p class="text-gray-500 mb-8">נחשו מילים עם חברים!</p>
+                <div class="space-y-4">
+                    <button id="create-session-btn" class="w-full py-4 px-6 text-2xl shadow-lg transform btn btn-red">צור משחק חדש</button>
+                    <button id="join-session-btn" class="w-full py-4 px-6 text-2xl shadow-lg transform btn btn-outline">הצטרף למשחק</button>
+                </div>
+            </div>
+
+            <!-- Host Setup Screen -->
+            <div id="setup-screen" class="hidden bg-white p-6 md:p-8 rounded-xl shadow-lg text-center">
+                <h2 class="text-3xl font-bold mb-6">הגדרות משחק</h2>
+                <div class="mb-8">
+                    <label for="player-name-input" class="block text-sm font-medium text-gray-700 mb-2">השם שלך (המארח)</label>
+                    <input type="text" id="player-name-input" placeholder="הכנס את שמך" class="w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                </div>
+                <div class="mb-8">
+                    <fieldset>
+                        <legend class="block text-sm font-medium text-gray-700 mb-2">נקודות לניצחון</legend>
+                        <div id="score-options" class="flex justify-center gap-2 max-w-xs mx-auto">
+                            <button class="score-option w-full py-3 btn btn-outline" data-value="10">10</button>
+                            <button class="score-option w-full py-3 btn btn-outline selected" data-value="20">20</button>
+                            <button class="score-option w-full py-3 btn btn-outline" data-value="50">50</button>
+                        </div>
+                    </fieldset>
+                </div>
+                <button id="go-to-lobby-btn" class="w-full py-4 px-6 text-2xl shadow-lg transform btn btn-red">עבור ללובי</button>
+            </div>
+
+            <!-- Join Screen (Peer) -->
+            <div id="join-screen" class="hidden text-center">
+                <h2 class="text-3xl font-bold mb-6">הצטרפות למשחק</h2>
+                <div id="peer-name-section">
+                    <label for="peer-name-input" class="block text-sm font-medium text-gray-700 mb-2">השם שלך</label>
+                    <input type="text" id="peer-name-input" placeholder="הכנס את שמך" class="w-full mb-4 p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                    <button id="generate-qr-offer-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">צור קוד הצטרפות</button>
+                </div>
+
+                <div id="peer-qr-offer-section" class="hidden">
+                    <p class="text-gray-600 mb-4">בקש מהמארח לסרוק את קוד ה-QR הזה.</p>
+                    <div id="peer-qr-offer-code" class="qr-container bg-gray-100 p-2 rounded-lg"></div>
+                    <p id="peer-status" class="text-gray-500 mt-4">ממתין שהמארח יסרוק...</p>
+                </div>
+                
+                <div id="peer-scan-answer-section" class="hidden">
+                     <p class="text-gray-600 mb-4">כעת, סרוק את קוד התשובה מהמארח.</p>
+                     <div class="qr-container bg-gray-200 rounded-lg overflow-hidden" id="qr-scanner-container">
+                         <div id="qr-scanner"></div>
+                     </div>
+                </div>
+            </div>
+
+            <!-- Lobby Screen (Host) -->
+            <div id="lobby-screen" class="hidden">
+                <h2 class="text-3xl font-bold text-center mb-6">לובי המשחק</h2>
+                <div class="grid md:grid-cols-2 gap-6 items-start">
+                    <div>
+                        <div id="host-connection-area">
+                            <h3 class="font-bold text-xl mb-2 text-center">חיבור שחקנים</h3>
+                            <div id="host-scan-offer-section">
+                                <p class="text-center text-gray-600 mb-4">סרוק קוד של שחקן כדי לחבר אותו.</p>
+                                <div class="qr-container bg-gray-200 rounded-lg overflow-hidden" id="host-qr-scanner-container">
+                                    <div id="host-qr-scanner"></div>
+                                </div>
+                            </div>
+                            <div id="host-qr-answer-section" class="hidden text-center">
+                                 <p class="text-gray-600 mb-4">בקש מהשחקן לסרוק את קוד התשובה הזה.</p>
+                                 <div id="host-qr-answer-code" class="qr-container bg-gray-100 p-2 rounded-lg"></div>
+                                 <button id="scan-next-player-btn" class="w-full mt-4 py-3 btn btn-outline">סרוק שחקן הבא</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">שחקנים וקבוצות</h3>
+                        <div id="unassigned-players" class="p-4 bg-gray-200 rounded-lg mb-4 drop-zone min-h-[80px]">
+                             <h4 class="font-semibold text-gray-700 mb-2">שחקנים שמחכים</h4>
+                        </div>
+                        <div id="teams-container" class="space-y-4">
+                            <div id="team-1" class="p-4 bg-white rounded-lg shadow-md drop-zone">
+                                 <h4 class="font-bold text-red-600">קבוצה א'</h4>
+                            </div>
+                             <div id="team-2" class="p-4 bg-white rounded-lg shadow-md drop-zone">
+                                 <h4 class="font-bold text-blue-600">קבוצה ב'</h4>
+                            </div>
+                        </div>
+                         <button id="start-game-btn" class="w-full mt-6 py-4 px-6 text-2xl shadow-lg transform btn btn-red">התחל משחק</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Screen (Host View) -->
+            <div id="game-screen-host" class="hidden w-full">
+                <div class="flex items-start justify-center gap-3 mb-6">
+                    <div id="scores-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 flex-grow"></div>
+                    <div class="text-center bg-white rounded-lg p-2 shadow-md flex-shrink-0">
+                        <div class="text-5xl font-black text-gray-800" id="timer">60</div>
+                        <div class="text-sm text-gray-500">שניות</div>
+                    </div>
+                </div>
+                <div class="relative h-64 mb-6">
+                    <div class="card w-full h-full" id="word-card">
+                         <div class="card__face card__face--front flex items-center justify-center p-6">
+                            <div class="text-center">
+                                <h2 class="text-2xl md:text-3xl font-bold">התור של <span id="current-player-name"></span> (<span id="current-team-name"></span>)</h2>
+                                <p class="text-gray-500 mt-2">המתן עד שהשחקן יתחיל את תורו מהמכשיר שלו.</p>
+                            </div>
+                        </div>
+                        <div class="card__face card__face--back flex items-center justify-center p-6">
+                            <h2 id="word-display-host" class="text-5xl font-extrabold text-center">מילה</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game Screen (Peer View) -->
+            <div id="game-screen-peer" class="hidden w-full text-center">
+                 <div class="relative h-80 mb-6">
+                     <div class="card w-full h-full" id="peer-word-card">
+                         <div class="card__face card__face--front flex items-center justify-center p-6">
+                            <div id="peer-waiting-view">
+                                 <h2 class="text-2xl md:text-3xl font-bold mb-4">המשחק מתחיל...</h2>
+                                 <p class="text-gray-500 mt-2">המתן לתורך. כרגע משחק: <span id="peer-current-player-name" class="font-bold"></span></p>
+                            </div>
+                             <div id="peer-my-turn-view" class="hidden">
+                                 <h2 class="text-3xl font-bold">התור שלך!</h2>
+                                 <p class="text-gray-500 mt-2">לחץ כאן כדי להפוך את הקלף ולהתחיל.</p>
+                            </div>
+                        </div>
+                        <div class="card__face card__face--back flex items-center justify-center p-6">
+                            <h2 id="word-display-peer" class="text-5xl font-extrabold text-center">מילה</h2>
+                        </div>
+                    </div>
+                </div>
+                 <div id="peer-action-buttons" class="hidden grid grid-cols-2 gap-4">
+                    <button id="skip-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-outline">דלג</button>
+                    <button id="correct-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-red">הצלחנו!</button>
+                </div>
+            </div>
+            
+            <!-- Modals -->
+            <div id="turn-over-modal" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+                <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full modal-content">
+                    <h2 class="text-4xl font-black text-gray-800 mb-2">הזמן נגמר!</h2>
+                    <p class="text-lg text-gray-600 mb-4"> כל הכבוד, <span id="finished-player-name" class="font-bold"></span>! </p>
+                    <p class="text-gray-500 mb-6"> הצלחתם <span id="turn-score" class="font-bold text-2xl text-[--alias-red]">0</span> מילים. </p>
+                    <button id="next-turn-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">התור הבא</button>
+                </div>
+            </div>
+
+            <div id="winning-screen" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+                <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full transform scale-95 opacity-0 modal-content" id="winning-modal-content">
+                    <div class="text-6xl mb-4">🏆</div>
+                    <h2 class="text-4xl font-black text-gray-800 mb-2">ניצחון!</h2>
+                    <p class="text-lg text-gray-600 mb-6"> קבוצת <span id="winning-team-name" class="font-bold text-2xl text-[--alias-red]"></span> ניצחה! </p>
+                    <button id="play-again-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">שחקו שוב</button>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <main class="pt-24">
-        <section class="hero-bg relative text-center py-20 md:py-32">
-            <div class="container mx-auto px-6 z-10">
-                <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-4 text-gray-900 animate-fade-in-down">
-                    Don't Just Market. <span class="gradient-text">Amaze.</span>
-                </h2>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-600 mb-8 animate-fade-in-up">
-                    We build fun, addictive mini-games for businesses that turn passive scrollers into active, loyal fans. It's marketing with a little more hutzpa.
-                </p>
-                <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg text-lg inline-block transition-transform transform hover:scale-105 animate-bounce-in">
-                    Get Your Custom Game
-                </a>
-            </div>
-        </section>
-
-        <section id="services" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">How We Turn <span class="gradient-text">Play</span> Into <span class="gradient-text">Profit</span></h3>
-                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">We create gaming experiences tailored to your business goals.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover-effect shadow-md">
-                        <div class="bg-sky-100 text-sky-600 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>
-                        </div>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Branded Mini-Games</h4>
-                        <p class="text-gray-500">Custom games that showcase your brand, products, and story. Perfect for making an unforgettable first impression.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover-effect shadow-md">
-                        <div class="bg-indigo-100 text-indigo-600 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                        </div>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Gamified Marketing</h4>
-                        <p class="text-gray-500">Launch campaigns that are actually fun. Use games to drive traffic, capture leads, and boost social shares.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover-effect shadow-md">
-                        <div class="bg-sky-100 text-sky-600 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                        </div>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Interactive Training</h4>
-                        <p class="text-gray-500">Make employee onboarding and training engaging. Complex topics become easier to learn through play.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover-effect shadow-md">
-                        <div class="bg-indigo-100 text-indigo-600 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                        </div>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Event Engagement</h4>
-                        <p class="text-gray-500">Draw crowds at trade shows and virtual events. A fun game is the best icebreaker you'll find.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="portfolio" class="py-20 bg-slate-100">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">Our Work</h3>
-                    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">From corporate giants to bold startups, we create fun for everyone.</p>
-                </div>
-                <div class="flex justify-center">
-                    <a href="./קצה-הלשון" class="bg-white rounded-xl p-6 group card-hover-effect w-full max-w-md flex items-center space-x-6 shadow-lg border border-gray-200">
-                        <div class="flex-shrink-0">
-                            <img src="Game-Logos/KtzeHalashon.png" alt="Tip of the Tongue Game Logo" class="h-24 w-24 rounded-2xl shadow-lg" style="image-rendering: -webkit-optimize-contrast;">
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-semibold text-gray-900 mb-1">Tip of the Tongue</h4>
-                            <p class="text-sky-600 font-medium mb-2">Client: Leading Israeli Brand</p>
-                            <p class="text-gray-500 text-sm">A viral trivia and word-guessing game designed to boost brand engagement and social sharing across Israel.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 lg:p-16 max-w-4xl mx-auto shadow-2xl">
-                    <div class="text-center mb-8">
-                        <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">Want some Hutzpa?</h3>
-                        <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Tell us about your project. We'll tell you how a game can make it unforgettable. No pressure, just possibilities.</p>
-                    </div>
-                    <iframe data-tally-src="https://tally.so/embed/mKdoe8?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="276" frameborder="0" marginheight="0" marginwidth="0" title="Contact form English"></iframe>
-                </div>
-            </div>
-        </section>
     </main>
+</div> 
 
-    <footer class="bg-white border-t border-gray-200">
-        <div class="container mx-auto px-6 py-8 text-center text-gray-500">
-            <p>&copy; 2025 Hutzpa Games. All Rights Reserved. Built with guts and glory.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Simple script for smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Mobile menu toggle
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mainNav = document.getElementById('main-nav');
-        const hamburgerIcon = document.getElementById('hamburger-icon');
-        const closeIcon = document.getElementById('close-icon');
-
-        if (menuButton && mainNav) {
-            menuButton.addEventListener('click', () => {
-                mainNav.classList.toggle('hidden');
-                hamburgerIcon.classList.toggle('hidden');
-                closeIcon.classList.toggle('hidden');
-                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-                menuButton.setAttribute('aria-expanded', !isExpanded);
-            });
-        }
-    </script>
-    
-    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="./scripts/network.js"></script>
+<script src="./scripts/main.js"></script>
 
 </body>
 </html>
+
