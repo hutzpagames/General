@@ -262,6 +262,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <button id="skip-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-outline">דלג</button>
                     <button id="correct-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-red">הצלחנו!</button>
                 </div>
+
+                <div id="end-round-actions" class="hidden mt-6">
+                    <button id="show-summary-btn" class="w-full max-w-xs mx-auto py-4 px-6 text-xl shadow-lg transform btn btn-red">
+                        המשך
+                    </button>
+                </div>
             </div>
 
             <div id="how-to-play-modal" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
@@ -407,6 +413,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const gameBoardContainer = document.getElementById('game-board-container');
         const gameBoard = document.getElementById('game-board');
         const pawnsContainer = document.getElementById('pawns-container');
+        const endRoundActions = document.getElementById('end-round-actions');
+        const showSummaryBtn = document.getElementById('show-summary-btn');
         
         // --- EVENT LISTENERS ---
         startGameBtn.addEventListener('click', startGame); 
@@ -427,6 +435,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         closeEditScoresBtn.addEventListener('click', () => editScoresModal.classList.add('hidden')); 
         saveScoresBtn.addEventListener('click', saveScores); 
         editScoresList.addEventListener('click', handleScoreChangeInModal); 
+        showSummaryBtn.addEventListener('click', () => {
+            turnOverModal.classList.remove('hidden');
+            endRoundActions.classList.add('hidden');
+        });
 
         // --- SETUP FUNCTIONS ---
         function addTeamInput() { 
@@ -631,6 +643,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         function startRoundCountdown() { 
             editScoresBtn.classList.add('hidden'); 
+            endRoundActions.classList.add('hidden');
             countdownModal.classList.remove('hidden'); 
             let countdown = 3; 
             countdownDisplay.textContent = countdown; 
@@ -768,8 +781,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             finishedTeamName.textContent = currentTeam.name; 
             turnScoreDisplay.textContent = state.turnScore; 
             
-            // Show the modal immediately, it will appear over the board
-            turnOverModal.classList.remove('hidden');
+            // Show the continue button instead of the modal
+            endRoundActions.classList.remove('hidden');
         } 
         
         function setupNextTurn() { 
@@ -857,6 +870,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             gameBoardContainer.classList.add('hidden');
             wordCardContainer.classList.remove('hidden');
             pawnsContainer.innerHTML = '';
+            endRoundActions.classList.add('hidden');
             winningModalContent.classList.add('scale-95', 'opacity-0'); 
             wordCard.classList.remove('is-flipped'); 
             actionButtons.classList.add('hidden'); 
@@ -950,7 +964,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 </html>
-
-
-
 
