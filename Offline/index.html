@@ -75,15 +75,15 @@
         @keyframes float-up-right { 0% { opacity: 1; transform: translate(20%, -50%); } 100% { opacity: 0; transform: translate(20%, -150%); } }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
         
-        /* New Board Styles */
+        /* Board Styles */
         #game-board-container {
             border: 4px solid #e5e7eb;
-            background-color: #f9fafb; /* Lighter gray for the board background */
+            background-color: #f9fafb;
         }
         #game-board {
             width: 100%;
             height: 100%;
-            display: block; /* Fixes small gap below canvas */
+            display: block;
         }
         #pawns-container {
             position: absolute;
@@ -91,7 +91,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Pawns don't block interactions */
+            pointer-events: none;
         }
         .pawn {
             position: absolute;
@@ -100,8 +100,8 @@
             border-radius: 50%;
             border: 3px solid white;
             box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-            transition: top 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), left 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy transition */
-            transform: translate(-50%, -50%); /* Center the pawn on its coordinates */
+            transition: top 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), left 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transform: translate(-50%, -50%);
             z-index: 10;
             display: flex;
             align-items: center;
@@ -244,7 +244,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div id="pawns-container"></div>
                 </div>
 
-                <div class="relative h-64 mb-6">
+                <div id="word-card-container" class="relative h-64 mb-6">
                     <div class="card w-full h-full" id="word-card">
                         <div class="card__face card__face--front flex items-center justify-center p-6">
                             <div class="text-center">
@@ -387,6 +387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const timerDisplay = document.getElementById('timer');
         const wordDisplay = document.getElementById('word-display');
         const wordCard = document.getElementById('word-card');
+        const wordCardContainer = document.getElementById('word-card-container');
         const actionButtons = document.getElementById('action-buttons');
         const currentTeamNameCard = document.getElementById('current-team-name-card');
         const correctBtn = document.getElementById('correct-btn');
@@ -482,7 +483,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const ctx = canvas.getContext('2d');
             
             const rect = canvas.getBoundingClientRect();
-            if (rect.width === 0 || rect.height === 0) return; // Don't draw if not visible
+            if (rect.width === 0 || rect.height === 0) return;
             canvas.width = rect.width;
             canvas.height = rect.height;
 
@@ -585,13 +586,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             gameScreen.classList.remove('hidden'); 
             editScoresBtn.classList.remove('hidden'); 
             
-            gameBoardContainer.classList.remove('hidden');
-            // Use requestAnimationFrame to ensure the container is visible before drawing
-            requestAnimationFrame(() => {
-                drawGameBoard();
-                createPawns();
-                updateAllPawnPositions();
-            });
+            drawGameBoard();
+            createPawns();
+            updateAllPawnPositions();
 
             availableWords = [...words]; 
             shuffle(availableWords); 
@@ -750,6 +747,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         function endTurn() { 
             clearInterval(state.timerInterval); 
             state.gameActive = false; 
+            
+            // Show board at the end of the round
+            wordCardContainer.classList.add('hidden');
+            gameBoardContainer.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                drawGameBoard(); // Redraw in case of resize
+                updateAllPawnPositions();
+            });
+
             const currentTeam = state.teams[state.currentTeamIndex]; 
             finishedTeamName.textContent = currentTeam.name; 
             turnScoreDisplay.textContent = state.turnScore; 
@@ -760,6 +766,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             turnOverModal.classList.add('hidden'); 
             editScoresBtn.classList.remove('hidden'); 
             state.turnScore = 0; 
+
+            // Hide board and show card for the next round
+            gameBoardContainer.classList.add('hidden');
+            wordCardContainer.classList.remove('hidden');
+
             const isLastTeamOfRound = state.currentTeamIndex === state.teams.length - 1; 
             const wasInTieBreaker = state.inTieBreaker; 
             if (isLastTeamOfRound) { 
@@ -834,6 +845,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             gameScreen.classList.add('hidden'); 
             editScoresBtn.classList.add('hidden'); 
             gameBoardContainer.classList.add('hidden');
+            wordCardContainer.classList.remove('hidden');
             pawnsContainer.innerHTML = '';
             winningModalContent.classList.add('scale-95', 'opacity-0'); 
             wordCard.classList.remove('is-flipped'); 
@@ -927,5 +939,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 </html>
-
 
