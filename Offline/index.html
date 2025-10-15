@@ -80,6 +80,19 @@
             border: 4px solid #e5e7eb;
             background-color: #f9fafb; /* Lighter gray for the board background */
         }
+        #game-board {
+            width: 100%;
+            height: 100%;
+            display: block; /* Fixes small gap below canvas */
+        }
+        #pawns-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Pawns don't block interactions */
+        }
         .pawn {
             position: absolute;
             width: 28px;
@@ -914,4 +927,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 </html>
+
 
