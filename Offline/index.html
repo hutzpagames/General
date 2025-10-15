@@ -724,7 +724,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if (state.inLastRound) { 
                 updateLastRoundBanner(); 
             } 
-            updateScoreDisplay(currentTeam.id, currentTeam.score);
+            updateScoreDisplay();
             if (!state.gameActive) return; 
             wordDisplay.textContent = getNextWord(); 
         } 
@@ -738,41 +738,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 if (state.inLastRound) { 
                     updateLastRoundBanner(); 
                 } 
-                updateScoreDisplay(currentTeam.id, currentTeam.score);
+                updateScoreDisplay();
             } 
             wordDisplay.textContent = getNextWord(); 
         } 
         
-        function updateScoreDisplay(teamIdToUpdate, newScore) { 
-            if (teamIdToUpdate !== undefined) {
-                const teamScoreEl = document.getElementById(`team-score-${teamIdToUpdate}`);
-                if (teamScoreEl) teamScoreEl.textContent = newScore;
-                updatePawnPosition(teamIdToUpdate, newScore);
-            } else {
-                state.teams.forEach(team => {
-                    const teamScoreEl = document.getElementById(`team-score-${team.id}`);
-                    if (teamScoreEl) teamScoreEl.textContent = team.score;
-                });
-                updateAllPawnPositions();
-            }
+        function updateScoreDisplay() { 
+            state.teams.forEach(team => {
+                const teamScoreEl = document.getElementById(`team-score-${team.id}`);
+                if (teamScoreEl) teamScoreEl.textContent = team.score;
+            });
         } 
         
         function endTurn() { 
             clearInterval(state.timerInterval); 
             state.gameActive = false; 
-            
-            // Show board at the end of the round
+            actionButtons.classList.add('hidden');
+
+            // Show board and animate pawns
             wordCardContainer.classList.add('hidden');
             gameBoardContainer.classList.remove('hidden');
+
             requestAnimationFrame(() => {
                 drawGameBoard(); // Redraw in case of resize
-                updateAllPawnPositions();
+                updateAllPawnPositions(); // This triggers the animation
             });
 
             const currentTeam = state.teams[state.currentTeamIndex]; 
             finishedTeamName.textContent = currentTeam.name; 
             turnScoreDisplay.textContent = state.turnScore; 
-            turnOverModal.classList.remove('hidden'); 
+            
+            // Show the modal after a 5-second delay to watch the animation
+            setTimeout(() => {
+                turnOverModal.classList.remove('hidden');
+            }, 5000);
         } 
         
         function setupNextTurn() { 
@@ -903,6 +902,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 } 
             }); 
             updateScoreDisplay(); 
+            updateAllPawnPositions();
             editScoresModal.classList.add('hidden'); 
             const anyTeamReachedGoal = state.teams.some(t => t.score >= state.winningScore); 
             if (anyTeamReachedGoal) { 
@@ -952,5 +952,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 </html>
+
 
 
