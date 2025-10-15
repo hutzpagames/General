@@ -111,6 +111,44 @@
             color: white;
             text-shadow: 0 0 3px rgba(0,0,0,0.7);
         }
+
+        /* Color Picker Styles */
+        .color-swatch {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .color-swatch:hover {
+            transform: scale(1.1);
+        }
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            width: 9rem;
+            bottom: 100%;
+            margin-bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .color-palette-btn {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .color-palette-btn:hover {
+            transform: scale(1.1);
+        }
+        .color-palette-btn.selected {
+            border-color: var(--alias-dark);
+        }
+
     </style>
 
     <title>קצה הלשון - המשחק</title>
@@ -173,13 +211,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="text-gray-500 mb-8">נחשו מילים עם חברים!</p>
 
                 <div id="team-inputs-container" class="space-y-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <label for="team1-name" class="sr-only">שם קבוצה 1</label>
-                        <input type="text" id="team1-name" placeholder="שם קבוצה 1" value="קבוצה א'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                    <div class="team-input-row flex items-center gap-3" data-color="#3B82F6">
+                        <div class="color-picker-wrapper relative">
+                            <button class="color-swatch w-10 h-10 rounded-full border-2 border-gray-300" style="background-color: #3B82F6;"></button>
+                            <div class="color-palette hidden absolute z-10"></div>
+                        </div>
+                        <input type="text" placeholder="שם קבוצה 1" value="קבוצה א'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
                     </div>
-                    <div class="flex items-center gap-2">
-                        <label for="team2-name" class="sr-only">שם קבוצה 2</label>
-                        <input type="text" id="team2-name" placeholder="שם קבוצה 2" value="קבוצה ב'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                     <div class="team-input-row flex items-center gap-3" data-color="#16A34A">
+                        <div class="color-picker-wrapper relative">
+                            <button class="color-swatch w-10 h-10 rounded-full border-2 border-gray-300" style="background-color: #16A34A;"></button>
+                            <div class="color-palette hidden absolute z-10"></div>
+                        </div>
+                        <input type="text" placeholder="שם קבוצה 2" value="קבוצה ב'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
                     </div>
                 </div>
                 <button id="add-team-btn" class="w-full mb-6 py-2 px-4 text-md text-red-600 font-semibold rounded-lg border-2 border-dashed border-red-300 hover:bg-red-50 transition">
@@ -369,9 +413,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         let words = [...defaultWords]; let customWords = []; let availableWords = []; 
         const state = { teams: [], currentTeamIndex: 0, timerInterval: null, timeLeft: 60, gameActive: false, turnScore: 0, roundTime: 60, winningScore: 20, inLastRound: false, inTieBreaker: false };
         const boardPositions = [];
-        const pawnColors = ['#4F46E5', '#059669', '#D97706', '#9333EA', '#DB2777', '#64748B'];
-        const spotColors = ['#EF4444', '#F97316', '#EAB308', '#84CC16', '#22C55E', '#14B8A6', '#06B6D4', '#3B82F6', '#8B5CF6', '#EC4899'];
-
+        const pawnColors = ['#3B82F6', '#16A34A', '#F97316', '#9333EA', '#DB2777', '#64748B', '#EF4444', '#EAB308'];
 
         // --- DOM ELEMENT REFERENCES ---
         const setupScreen = document.getElementById('setup-screen');
@@ -418,6 +460,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const endRoundActions = document.getElementById('end-round-actions');
         const showSummaryBtn = document.getElementById('show-summary-btn');
         
+        // --- SETUP FUNCTIONS ---
+        function generateColorPaletteHTML(selectedColor) {
+            return pawnColors.map(color => `
+                <button
+                    class="color-palette-btn ${color === selectedColor ? 'selected' : ''}"
+                    data-color="${color}"
+                    style="background-color: ${color};"
+                    aria-label="בחר צבע ${color}"
+                ></button>
+            `).join('');
+        }
+
+        function initializeColorPickers() {
+            document.querySelectorAll('.team-input-row').forEach(row => {
+                const palette = row.querySelector('.color-palette');
+                const selectedColor = row.dataset.color;
+                palette.innerHTML = generateColorPaletteHTML(selectedColor);
+            });
+        }
+
+        function addTeamInput() { 
+            const teamCount = teamInputsContainer.children.length; 
+            const newTeamColor = pawnColors[teamCount % pawnColors.length];
+            const newTeamInput = document.createElement('div'); 
+            newTeamInput.className = 'team-input-row flex items-center gap-3'; 
+            newTeamInput.dataset.color = newTeamColor;
+            newTeamInput.innerHTML = `
+                <div class="color-picker-wrapper relative">
+                    <button class="color-swatch w-10 h-10 rounded-full border-2 border-gray-300" style="background-color: ${newTeamColor};"></button>
+                    <div class="color-palette hidden absolute z-10">${generateColorPaletteHTML(newTeamColor)}</div>
+                </div>
+                <input type="text" placeholder="שם קבוצה ${teamCount + 1}" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                <button class="remove-team-btn text-gray-400 hover:text-red-500 text-2xl font-bold p-2">&times;</button>
+            `; 
+            teamInputsContainer.appendChild(newTeamInput); 
+        } 
+        
         // --- EVENT LISTENERS ---
         startGameBtn.addEventListener('click', startGame); 
         wordCard.addEventListener('click', flipCardAndStartTurn); 
@@ -431,7 +510,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         closeCustomWordsBtn.addEventListener('click', () => customWordsModal.classList.add('hidden')); 
         saveCustomWordsBtn.addEventListener('click', saveCustomWords); 
         addTeamBtn.addEventListener('click', addTeamInput); 
-        teamInputsContainer.addEventListener('click', (e) => { if (e.target && e.target.classList.contains('remove-team-btn')) { e.target.parentElement.remove(); } }); 
+        
+        teamInputsContainer.addEventListener('click', (e) => {
+            const target = e.target;
+            if (target.classList.contains('remove-team-btn')) {
+                target.closest('.team-input-row').remove();
+                return;
+            }
+            if (target.classList.contains('color-swatch')) {
+                const palette = target.nextElementSibling;
+                document.querySelectorAll('.color-palette').forEach(p => {
+                    if (p !== palette) p.classList.add('hidden');
+                });
+                palette.classList.toggle('hidden');
+                return;
+            }
+            if (target.classList.contains('color-palette-btn')) {
+                const newColor = target.dataset.color;
+                const row = target.closest('.team-input-row');
+                const swatch = row.querySelector('.color-swatch');
+                row.dataset.color = newColor;
+                swatch.style.backgroundColor = newColor;
+                const palette = target.parentElement;
+                palette.querySelectorAll('.color-palette-btn').forEach(btn => btn.classList.remove('selected'));
+                target.classList.add('selected');
+                palette.classList.add('hidden');
+            }
+        });
+
         scoreOptions.addEventListener('click', (e) => { if (e.target.classList.contains('score-option')) { scoreOptions.querySelectorAll('.score-option').forEach(btn => btn.classList.remove('selected')); e.target.classList.add('selected'); } }); 
         editScoresBtn.addEventListener('click', openEditScoresModal); 
         closeEditScoresBtn.addEventListener('click', () => editScoresModal.classList.add('hidden')); 
@@ -441,15 +547,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             turnOverModal.classList.remove('hidden');
             endRoundActions.classList.add('hidden');
         });
-
-        // --- SETUP FUNCTIONS ---
-        function addTeamInput() { 
-            const teamCount = teamInputsContainer.children.length; 
-            const newTeamInput = document.createElement('div'); 
-            newTeamInput.className = 'flex items-center gap-2'; 
-            newTeamInput.innerHTML = ` <label for="team${teamCount + 1}-name" class="sr-only">שם קבוצה ${teamCount + 1}</label> <input type="text" id="team${teamCount + 1}-name" placeholder="שם קבוצה ${teamCount + 1}" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"> <button class="remove-team-btn text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button> `; 
-            teamInputsContainer.appendChild(newTeamInput); 
-        } 
         
         function saveCustomWords() { 
             const newWords = customWordsTextarea.value.split('\n').map(word => word.trim()).filter(word => word.length > 0); 
@@ -495,24 +592,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         function drawGameBoard() {
             const canvas = gameBoard;
             const ctx = canvas.getContext('2d');
-            
             const rect = canvas.getBoundingClientRect();
             if (rect.width === 0 || rect.height === 0) return;
             canvas.width = rect.width;
             canvas.height = rect.height;
-
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
-            
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             boardPositions.length = 0;
-
             const totalSteps = state.winningScore;
-            
-            // --- New Spiral Logic for even spacing ---
             const maxRadius = Math.min(centerX, centerY) * 0.9;
-            const minRadius = 25; // How big the center "finish" area is
-            const stepLength = (Math.PI * (maxRadius + minRadius)) / totalSteps * 1.2; // Approximate distance between spots
+            const minRadius = 25;
+            const stepLength = (Math.PI * (maxRadius + minRadius)) / totalSteps * 1.2;
             let angle = Math.PI;
             let radius = maxRadius;
 
@@ -520,27 +611,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 const x = centerX + radius * Math.cos(angle);
                 const y = centerY + radius * Math.sin(angle);
                 boardPositions.push([x, y]);
-
-                // Update for next point
                 const delta_angle = stepLength / radius;
                 angle += delta_angle;
                 radius -= (maxRadius - minRadius) / totalSteps;
             }
 
-
-            // --- Drawing Logic with new colors ---
             boardPositions.forEach((pos, i) => {
                 const [x, y] = pos;
                 ctx.beginPath();
-                const spotRadius = i === totalSteps ? 18 : 13; // Make finish spot bigger
+                const spotRadius = i === totalSteps ? 18 : 13;
                 ctx.arc(x, y, spotRadius, 0, 2 * Math.PI);
 
                 if (i === 0) {
-                    ctx.fillStyle = '#10B981'; // Green for 'Start'
+                    ctx.fillStyle = '#10B981';
                 } else if (i === totalSteps) {
-                    ctx.fillStyle = '#FBBF24'; // Gold for finish area
+                    ctx.fillStyle = '#FBBF24';
                 } else {
-                    ctx.fillStyle = spotColors[(i - 1) % spotColors.length];
+                    ctx.fillStyle = (i % 2 !== 0) ? 'var(--alias-white)' : 'var(--alias-red)';
                 }
                 
                 ctx.fill();
@@ -548,35 +635,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 ctx.lineWidth = 2;
                 ctx.stroke();
 
-                // Draw the number on the spot
                 ctx.font = 'bold 11px Rubik';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
                 ctx.shadowBlur = 3;
-                ctx.fillStyle = 'white';
-
 
                 if (i === 0) {
+                    ctx.fillStyle = 'white';
                     ctx.font = 'bold 9px Rubik';
                     ctx.fillText('התחלה', x, y);
                 } else if (i === totalSteps) {
+                    ctx.fillStyle = 'var(--alias-dark)';
                     ctx.font = 'bold 16px Rubik';
-                    ctx.fillText('🏆', x, y + 1); // Finish with a trophy
+                    ctx.fillText('🏆', x, y + 1);
                 } else {
+                    ctx.fillStyle = (i % 2 !== 0) ? 'var(--alias-dark)' : 'var(--alias-white)';
                     ctx.fillText(i.toString(), x, y);
                 }
-                ctx.shadowBlur = 0; // Reset shadow
+                ctx.shadowBlur = 0;
             });
         }
 
         function createPawns() {
             pawnsContainer.innerHTML = '';
-            state.teams.forEach((team, index) => {
+            state.teams.forEach(team => {
                 const pawn = document.createElement('div');
                 pawn.id = `pawn-${team.id}`;
                 pawn.className = 'pawn';
-                pawn.style.backgroundColor = pawnColors[index % pawnColors.length];
+                pawn.style.backgroundColor = team.color;
                 pawn.textContent = team.name.charAt(0);
                 pawnsContainer.appendChild(pawn);
             });
@@ -585,10 +672,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         function updatePawnPosition(teamId, score) {
             const pawn = document.getElementById(`pawn-${teamId}`);
             if (!pawn || boardPositions.length === 0) return;
-            
             const safeScore = Math.max(0, Math.min(score, boardPositions.length - 1));
             const [x, y] = boardPositions[safeScore];
-            
             pawn.style.left = `${x}px`;
             pawn.style.top = `${y}px`;
         }
@@ -609,10 +694,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             state.inTieBreaker = false; 
             document.getElementById('tie-breaker-banner').classList.add('hidden'); 
             document.getElementById('last-round-banner').classList.add('hidden'); 
-            const teamNameInputs = document.querySelectorAll('.team-name-input'); 
-            teamNameInputs.forEach((input, index) => { 
-                state.teams.push({ name: input.value || `קבוצה ${index + 1}`, score: 0 }); 
-            }); 
+            
+            const teamInputRows = document.querySelectorAll('.team-input-row');
+            teamInputRows.forEach((row, index) => {
+                const input = row.querySelector('.team-name-input');
+                const color = row.dataset.color;
+                state.teams.push({
+                    name: input.value || `קבוצה ${index + 1}`,
+                    score: 0,
+                    color: color
+                });
+            });
+
             state.teams.forEach((team, index) => { 
                 team.id = index; 
             }); 
@@ -634,11 +727,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         function renderScoreboard() { 
             scoresContainer.innerHTML = ''; 
-            state.teams.forEach((team, i) => { 
+            state.teams.forEach(team => { 
                 const scoreBox = document.createElement('div'); 
                 scoreBox.id = `score-box-${team.id}`; 
                 scoreBox.className = 'score-box p-3 rounded-lg text-center shadow-md'; 
-                scoreBox.innerHTML = ` <div class="flex items-center justify-center gap-2"> <span class="w-4 h-4 rounded-full" style="background-color: ${pawnColors[i % pawnColors.length]}"></span> <div id="team-name-${team.id}" class="font-bold text-base md:text-lg truncate">${team.name}</div> </div> <div id="team-score-${team.id}" class="text-2xl font-black">${team.score}</div> `; 
+                scoreBox.innerHTML = ` <div class="flex items-center justify-center gap-2"> <span class="w-4 h-4 rounded-full" style="background-color: ${team.color}"></span> <div id="team-name-${team.id}" class="font-bold text-base md:text-lg truncate">${team.name}</div> </div> <div id="team-score-${team.id}" class="text-2xl font-black">${team.score}</div> `; 
                 scoresContainer.appendChild(scoreBox); 
             }); 
         } 
@@ -780,20 +873,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             state.gameActive = false; 
             actionButtons.classList.add('hidden');
 
-            // Show board and animate pawns
             wordCardContainer.classList.add('hidden');
             gameBoardContainer.classList.remove('hidden');
 
             requestAnimationFrame(() => {
-                drawGameBoard(); // Redraw in case of resize
-                updateAllPawnPositions(); // This triggers the animation
+                drawGameBoard(); 
+                updateAllPawnPositions();
             });
 
             const currentTeam = state.teams[state.currentTeamIndex]; 
             finishedTeamName.textContent = currentTeam.name; 
             turnScoreDisplay.textContent = state.turnScore; 
             
-            // Show the continue button instead of the modal
             endRoundActions.classList.remove('hidden');
         } 
         
@@ -802,7 +893,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             editScoresBtn.classList.remove('hidden'); 
             state.turnScore = 0; 
 
-            // Hide board and show card for the next round
             gameBoardContainer.classList.add('hidden');
             wordCardContainer.classList.remove('hidden');
 
@@ -971,10 +1061,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 });
             }
         });
+
+        // Initialize things that need to run on load
+        initializeColorPickers();
     });
 </script>
 
 </body>
 </html>
-
 
