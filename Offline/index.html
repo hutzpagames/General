@@ -494,7 +494,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             boardPositions.length = 0;
 
-            const totalSteps = state.winningScore + 5;
+            const totalSteps = state.winningScore; // Only draw spots up to the winning score
             const angleIncrement = 0.5; // How tight the spiral is
             let angle = Math.PI; // Start from the left
 
@@ -508,12 +508,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 boardPositions.push([x, y]);
 
                 ctx.beginPath();
-                const spotRadius = i >= state.winningScore ? 15 : 12; // Make finish spot bigger
+                const spotRadius = i === state.winningScore ? 16 : 12; // Make finish spot bigger
                 ctx.arc(x, y, spotRadius, 0, 2 * Math.PI);
 
                 if (i === 0) {
                     ctx.fillStyle = '#10B981'; // Green for 'Start'
-                } else if (i >= state.winningScore) {
+                } else if (i === state.winningScore) {
                     ctx.fillStyle = '#FBBF24'; // Gold for finish area
                 } else {
                     ctx.fillStyle = (i % 2 !== 0) ? 'var(--alias-white)' : 'var(--alias-red)'; // Swapped to make spot 1 white
@@ -533,7 +533,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     ctx.fillStyle = 'white';
                     ctx.font = 'bold 9px Rubik';
                     ctx.fillText('התחלה', x, y);
-                } else if (i >= state.winningScore) {
+                } else if (i === state.winningScore) {
                     ctx.fillStyle = 'var(--alias-dark)';
                     ctx.fillText('🏆', x, y + 1); // Finish with a trophy
                 } else {
@@ -768,10 +768,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             finishedTeamName.textContent = currentTeam.name; 
             turnScoreDisplay.textContent = state.turnScore; 
             
-            // Show the modal after a 5-second delay to watch the animation
-            setTimeout(() => {
-                turnOverModal.classList.remove('hidden');
-            }, 5000);
+            // Show the modal immediately, it will appear over the board
+            turnOverModal.classList.remove('hidden');
         } 
         
         function setupNextTurn() { 
@@ -952,6 +950,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 </html>
+
 
 
 
