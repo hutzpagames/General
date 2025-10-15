@@ -495,41 +495,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             boardPositions.length = 0;
 
             const totalSteps = state.winningScore + 5;
-            const angleStep = 0.5;
-            let radiusStep = maxRadius / (totalSteps * angleStep / (2 * Math.PI));
-            let radius = 20;
-            let angle = 0;
+            const angleIncrement = 0.5; // How tight the spiral is
+            let angle = Math.PI; // Start from the left
 
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, 15, 0, 2 * Math.PI);
-            ctx.fillStyle = '#10B981';
-            ctx.fill();
-            ctx.font = 'bold 12px Rubik';
-            ctx.fillStyle = 'white';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('0', centerX, centerY);
-            boardPositions.push([centerX, centerY]);
-
-            for (let i = 1; i <= totalSteps; i++) {
-                const x = centerX + radius * Math.cos(angle);
-                const y = centerY + radius * Math.sin(angle);
+            const totalAngleSwept = angleIncrement * totalSteps;
+            const radiusReductionPerRadian = maxRadius / totalAngleSwept;
+            let currentRadius = maxRadius;
+            
+            for (let i = 0; i <= totalSteps; i++) {
+                const x = centerX + currentRadius * Math.cos(angle);
+                const y = centerY + currentRadius * Math.sin(angle);
                 boardPositions.push([x, y]);
-                
+
                 ctx.beginPath();
-                ctx.arc(x, y, 12, 0, 2 * Math.PI);
-                ctx.fillStyle = (i % 2 === 0) ? 'var(--alias-white)' : 'var(--alias-red)';
+                const spotRadius = i >= state.winningScore ? 15 : 12; // Make finish spot bigger
+                ctx.arc(x, y, spotRadius, 0, 2 * Math.PI);
+
+                if (i === 0) {
+                    ctx.fillStyle = '#10B981'; // Green for 'Start'
+                } else if (i >= state.winningScore) {
+                    ctx.fillStyle = '#FBBF24'; // Gold for finish area
+                } else {
+                    ctx.fillStyle = (i % 2 !== 0) ? 'var(--alias-white)' : 'var(--alias-red)'; // Swapped to make spot 1 white
+                }
+                
                 ctx.fill();
                 ctx.strokeStyle = '#E5E7EB';
                 ctx.lineWidth = 2;
                 ctx.stroke();
 
-                ctx.fillStyle = (i % 2 === 0) ? 'var(--alias-dark)' : 'var(--alias-white)';
+                // Draw the number on the spot
                 ctx.font = 'bold 10px Rubik';
-                ctx.fillText(i.toString(), x, y);
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
 
-                angle += angleStep;
-                radius += radiusStep * angleStep / (2 * Math.PI) * 0.8;
+                if (i === 0) {
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 9px Rubik';
+                    ctx.fillText('התחלה', x, y);
+                } else if (i >= state.winningScore) {
+                    ctx.fillStyle = 'var(--alias-dark)';
+                    ctx.fillText('🏆', x, y + 1); // Finish with a trophy
+                } else {
+                    ctx.fillStyle = (i % 2 !== 0) ? 'var(--alias-dark)' : 'var(--alias-white)';
+                    ctx.fillText(i.toString(), x, y);
+                }
+                
+                angle += angleIncrement;
+                currentRadius -= radiusReductionPerRadian * angleIncrement;
             }
         }
 
@@ -939,4 +952,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 </html>
+
 
