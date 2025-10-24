@@ -74,6 +74,34 @@
         @keyframes float-up-left { 0% { opacity: 1; transform: translate(-120%, -50%); } 100% { opacity: 0; transform: translate(-120%, -150%); } }
         @keyframes float-up-right { 0% { opacity: 1; transform: translate(20%, -50%); } 100% { opacity: 0; transform: translate(20%, -150%); } }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        
+        /* Custom CSS for Collapsed Content */
+        summary {
+            list-style: none; /* Hide default marker */
+            /* Adjusted styling for smaller footprint */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem; /* Smaller font */
+            padding: 0.5rem 0; /* Reduced vertical padding */
+        }
+        /* Hide default marker in most browsers */
+        summary::marker, summary::-webkit-details-marker {
+            display: none;
+            content: "";
+        }
+        /* Add a custom icon for open/closed state */
+        summary:after {
+            content: '▼';
+            margin-right: 0.5rem;
+            transition: transform 0.2s;
+            font-size: 0.6rem; /* Smaller icon */
+            color: #d92d20;
+        }
+        details[open] > summary:after {
+            content: '▲';
+            transform: rotate(0deg);
+        }
     </style>
 
     <title>קצה הלשון - המשחק</title>
@@ -176,9 +204,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="#tally-open=nrzGoM&tally-hide-title=1&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=0&tally-form-events-forwarding=1" id="suggestions-btn" class="w-full block py-3 px-6 text-lg shadow-md transform btn btn-outline text-center">
                         הצעות לשיפור
                     </a>
-                </div>
-                <div class="mt-8 pt-6 border-t border-gray-200 text-center">
-                    <a href="http://hutzpa.games/PrivacyPolicies/KtzeHalashon" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-red-600 text-sm underline">מדיניות פרטיות</a>
                 </div>
             </div>
 
@@ -310,6 +335,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </button>
                 </div>
             </div>
+        
+            <!-- COLLAPSIBLE PUBLISHER CONTENT SECTION (MOVED & STYLED FOR SMALLER FOOTPRINT) -->
+            <details id="publisher-content-details" class="mt-4 bg-white rounded-xl shadow-md border border-gray-200 p-4 text-right">
+                <summary class="list-none cursor-pointer text-sm font-medium text-gray-700 hover:text-red-500 transition p-1 -m-1">
+                    מידע נוסף: על המשחק והגיימיפיקציה (לחץ לפתיחה)
+                </summary>
+                
+                <div class="pt-4 mt-4 border-t border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">הערך והתוכן הייחודי של 'קצה הלשון'</h3>
+                    <p class="text-gray-700 mb-4 text-sm leading-relaxed">
+                        'קצה הלשון' הוא הרבה יותר ממשחק מילים; זוהי פלטפורמה חברתית וקצבית שהפכה במהירות ללהיט בקרב משפחות, חברים וקבוצות עבודה ברחבי ישראל. המשחק פותח על ידי **חוצפה גיימס** במטרה כפולה: לספק חווית בידור איכותית ומאתגרת, וכן להדגים את הכוח של גיימיפיקציה ככלי ליצירת מעורבות גבוהה.
+                    </p>
+                    <p class="text-gray-700 mb-4 text-sm leading-relaxed">
+                        <strong>מה הופך אותו לתוכן איכותי?</strong> המשחק מעמיד את כישורי ההסברה והחשיבה המהירה של המשתתפים במבחן. עם מגבלת זמן של 60 שניות לסיבוב והצורך להימנע משימוש במילים אסורות, נוצרת דינמיקה קבוצתית מצחיקה ומותחת. המילים המופיעות בכרטיסים נבחרו בקפידה מתוך מגוון רחב של נושאים, מה שהופך כל סיבוב למפתיע ותורם להרחבת אוצר המילים והשפה העברית.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">גיימיפיקציה כשפה של הדור הדיגיטלי</h3>
+                    <p class="text-gray-700 mb-4 text-sm leading-relaxed">
+                        בעידן שבו טווחי הקשב הולכים ומצטמצמים, תוכן אינטראקטיבי ומשחקי הוא הדרך היעילה ביותר ללכוד ולשמר את תשומת הלב של הקהל. חוצפה גיימס מתמחה בהפיכת מסרים מורכבים, הדרכות יבשות ואסטרטגיות שיווק סטנדרטיות למשחקים קצרים, זכירים ומעוררי שיתוף. כל משחק שאנו מפתחים, כולל 'קצה הלשון', מעוצב מראש כדי לייצר **תעבורה חוזרת (Retention)** ו**מעורבות אורגנית (Social Sharing)**. אנו מאמינים כי משחקים הם לא רק בידור, אלא כלי שיווקי ואסטרטגי רב עוצמה המייצר חוויית משתמש עשירה. אסטרטגיה זו היא הליבה של הערך המוסף שלנו כחברת תוכן ופיתוח.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed text-sm">
+                        אנו בחוצפה גיימס רואים במשחק זה את התגלמות הפילוסופיה שלנו: להפוך כל אינטראקציה – בין אם חברתית ובין אם שיווקית – לחוויה בלתי נשכחת ובעלת ערך אמיתי למשתמש. זהו תוכן ייחודי ובעל ערך שאינו רק משמש להצגת מודעות, אלא יוצר מעורבות עמוקה עם קהל המשתמשים.
+                    </p>
+                </div>
+                
+                <div class="mt-8 pt-4 border-t border-gray-200 text-center">
+                    <a href="http://hutzpa.games/PrivacyPolicies/KtzeHalashon" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-red-600 text-xs underline font-medium">מדיניות פרטיות ושימוש</a>
+                </div>
+            </details>
+            <!-- END COLLAPSIBLE PUBLISHER CONTENT SECTION -->
+
         </div>
     </main>
 </div> 
@@ -332,6 +388,7 @@ let words = [...defaultWords]; let customWords = []; let availableWords = []; co
 </script>
 
 <script>
+    // Ensure AdSense push happens on load
     window.addEventListener('load', () => {
         try {
             (adsbygoogle = window.adsbygoogle || []).push({});
