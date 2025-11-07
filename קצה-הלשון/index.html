@@ -148,8 +148,6 @@
       gtag('config', 'G-J5QVVCDFEY');
     </script>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6878123086661063"
-     crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -458,15 +456,6 @@ function playSound(sound) { sound.currentTime = 0; sound.play().catch(e => conso
 </script>
 
 <script>
-    // Ensure AdSense push happens on load
-    window.addEventListener('load', () => {
-        try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-            console.error("AdSense push error:", e);
-        }
-    });
-
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
             document.querySelectorAll('[role="dialog"]:not(.hidden)').forEach(modal => {
