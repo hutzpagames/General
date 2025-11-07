@@ -20,44 +20,18 @@
 
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="267927be-58f1-486c-a44b-3def1a91602a" data-blockingmode="auto" type="text/javascript"></script>
 
-    <script data-cookieconsent="ignore">
-        (function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            window.gtag = gtag;
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5QXV8XX5');</script>
 
-            let analyticsLoaded = false;
-
-            function loadGoogleAnalytics() {
-                if (analyticsLoaded) {
-                    return;
-                }
-                analyticsLoaded = true;
-                const script = document.createElement('script');
-                script.async = true;
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY';
-                script.onload = function () {
-                    gtag('js', new Date());
-                    gtag('config', 'G-J5QVVCDFEY');
-                };
-                document.head.appendChild(script);
-            }
-
-            function handleConsentUpdate() {
-                if (window.Cookiebot && Cookiebot.consent && Cookiebot.consent.statistics) {
-                    loadGoogleAnalytics();
-                }
-            }
-
-            window.addEventListener('CookiebotOnAccept', handleConsentUpdate);
-            window.addEventListener('CookiebotOnLoad', handleConsentUpdate);
-
-            document.addEventListener('DOMContentLoaded', function () {
-                if (window.Cookiebot && Cookiebot.consent && Cookiebot.consent.statistics) {
-                    loadGoogleAnalytics();
-                }
-            });
-        })();
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J5QVVCDFEY');
     </script>
     
     <meta charset="UTF-8">
@@ -93,6 +67,8 @@
     </style>
 </head>
 <body class="text-gray-700">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QXV8XX5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
@@ -104,10 +80,7 @@
             <nav id="main-nav" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex flex-col items-center space-y-4 
                                     md:static md:flex-row md:space-y-0 md:space-x-8 md:space-x-reverse md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
                 <a href="./he.html#services" class="text-gray-600 hover:text-sky-500 transition-colors">שירותים</a>
-                <a href="./he.html#case-studies" class="text-gray-600 hover:text-sky-500 transition-colors">סיפורי הצלחה</a>
-                <a href="./he.html#process" class="text-gray-600 hover:text-sky-500 transition-colors">תהליך</a>
                 <a href="./he.html#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">תיק עבודות</a>
-                <a href="./he.html#about" class="text-gray-600 hover:text-sky-500 transition-colors">אודות</a>
                 <a href="./he.html#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">קבלו הצעת מחיר</a>
                 <a href="./index.html" class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91 3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
@@ -137,30 +110,6 @@
                 <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg text-lg inline-block transition-transform transform hover:scale-105 animate-bounce-in">
                     בנו לי משחק מותאם אישית
                 </a>
-            </div>
-        </section>
-
-        <section class="py-16 bg-white border-y border-gray-100">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center" dir="rtl">
-                <div class="space-y-4 text-right">
-                    <h3 class="text-3xl font-bold tracking-tight text-gray-900">מעבר לקמפיינים: אנחנו מייצרים אסטרטגיות משחקיות</h3>
-                    <p class="text-gray-600 leading-relaxed">אדוורגיימס מצליחים רק כשהם מחברים מכניקות ממכרות למטרות עסקיות מדידות. הצוות שלנו משלב עיצוב משחק, מחקר משתמשים ואוטומציות שיווק כך שכל הקלקה ושיתוף משרתים את המשפך שלכם.</p>
-                    <p class="text-gray-600 leading-relaxed">אנחנו מנתחים קהלים, ממפים פעולות רצויות ומעצבים לופים שמתמרצים השתתפות &mdash; מהרושם הראשון ועד לטיפוח אחרי הקמפיין. התוצאה: מעורבות מתמשכת עם נתונים שתוכלו להציג לכל מנהל.</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600 pr-4">
-                        <li><span class="font-semibold text-gray-900">השגה:</span> קוויזים משפכים הלוכדים דאטה ישירה בהתאם לרגולציה.</li>
-                        <li><span class="font-semibold text-gray-900">שימור:</span> אתגרים פרקיים שמחזירים לקוחות שבוע אחרי שבוע.</li>
-                        <li><span class="font-semibold text-gray-900">המלצה:</span> מנגנוני UGC בטוחים שמעצימים את המותג שלכם.</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-100 border border-gray-200 rounded-2xl p-8 shadow-xl text-right" dir="rtl">
-                    <h4 class="text-2xl font-semibold text-gray-900 mb-4">מדידה שמרשימה את ה-CMO</h4>
-                    <p class="text-gray-600 leading-relaxed mb-4">אנחנו מטמיעים אנליטיקות, ניהול הסכמות וחיבורי CRM בכל פרויקט. בחרו בלוחות מחוונים ממותגים, דוחות אוטומטיים או יצוא נתונים גולמי.</p>
-                    <div class="space-y-3 text-gray-600">
-                        <p><span class="font-semibold text-gray-900">מוכנים לייחוס:</span> עקבו אחר המרות עם APIs בצד השרת או פיקסלים לאחר שהמשתמשים מאשרים.</p>
-                        <p><span class="font-semibold text-gray-900">פרטיות תחילה:</span> כל הטמעה עומדת בהנחיות IAB TCF, GDPR ו-COPPA.</p>
-                        <p><span class="font-semibold text-gray-900">השקה מהירה:</span> מנועים חוזרים לטריוויה, ארקייד, משחקי סיפורים ועוד מקצרים זמני פיתוח.</p>
-                    </div>
-                </div>
             </div>
         </section>
         <section id="portfolio" class="py-20 bg-slate-100">
@@ -223,96 +172,6 @@
             </div>
         </section>
 
-        <section class="py-20 bg-slate-50" id="case-studies" dir="rtl">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">סיפורי הצלחה שמראים מה משחק יכול לעשות</h3>
-                    <p class="text-gray-500 mt-2 max-w-3xl mx-auto">טעימה קטנה מאיך שילבנו אסטרטגיה, נרטיב וטכנולוגיה כדי להזיז את המחוונים החשובים באמת.</p>
-                </div>
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <article class="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg flex flex-col text-right">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">השקת רשת קמעונאית ארצית</h4>
-                        <p class="text-sm uppercase tracking-wide text-sky-600 mb-4">27 אלף משחקים &bull; 38% שיעור הרשאה</p>
-                        <p class="text-gray-600 flex-grow">בנינו מרדף חגים שבו המשתתפים אספו קלפים דיגיטליים הקשורים למדפי החנות. המכניקה הגבירה מימושים פיזיים ויצרה סגמנט CRM נקי לרימרקטינג.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600 text-sm list-disc list-inside pr-4">
-                            <li>חברי המועדון בילו פי 2.3 יותר זמן באתר.</li>
-                            <li>סקרי דאטה ראשוניים הוזרמו למערכת ה-CDP של הלקוח בזמן אמת.</li>
-                        </ul>
-                    </article>
-                    <article class="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg flex flex-col text-right">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">מנהרת מכירות ל-SaaS B2B</h4>
-                        <p class="text-sm uppercase tracking-wide text-sky-600 mb-4">12 אלף דמואים &bull; 41% בקשות לפגישה</p>
-                        <p class="text-gray-600 flex-grow">סימולטור קבלת החלטות הדגים תרחישים אמיתיים, הדגיש את יתרונות המוצר והעלה לידים איכותיים לצוות המכירות.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600 text-sm list-disc list-inside pr-4">
-                            <li>מחשבון אינטראקטיבי עודכן ישירות ב-HubSpot.</li>
-                            <li>מפות חום חשפו אילו פיצ&apos;רים מעניינים את השוק.</li>
-                        </ul>
-                    </article>
-                    <article class="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg flex flex-col text-right">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">מיתוג מעסיק חווייתי</h4>
-                        <p class="text-sm uppercase tracking-wide text-sky-600 mb-4">18 אלף מועמדים &bull; 62% השלמה</p>
-                        <p class="text-gray-600 flex-grow">יצרנו סיפור בחירה אינטראקטיבי שאפשר למועמדים להכיר צוותים וערכים לפני שליחת קורות חיים.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600 text-sm list-disc list-inside pr-4">
-                            <li>שיפרנו את איכות המועמדים בעזרת שאלות סינון.</li>
-                            <li>נוצר תוכן שיתופי לרשתות החברתיות של המעסיק.</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 bg-white" id="process" dir="rtl">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">תהליך עבודה שקוף ומדויק</h3>
-                    <p class="text-gray-500 mt-2 max-w-3xl mx-auto">מהסדנה הראשונה ועד לאופטימיזציה שאחרי ההשקה &mdash; כל ספרינט מנוהל יחד אתכם.</p>
-                </div>
-                <div class="grid md:grid-cols-4 gap-6 text-right">
-                    <div class="bg-slate-50 border border-gray-200 rounded-2xl p-6 shadow-sm">
-                        <span class="block text-sm font-semibold text-sky-600 uppercase tracking-wide mb-2">שלב 1</span>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">גילוי</h4>
-                        <p class="text-gray-600 text-sm">ראיונות עם בעלי עניין, מיפוי KPI ובדיקת תשתיות כדי לוודא יישור קו לפני העיצוב.</p>
-                    </div>
-                    <div class="bg-slate-50 border border-gray-200 rounded-2xl p-6 shadow-sm">
-                        <span class="block text-sm font-semibold text-sky-600 uppercase tracking-wide mb-2">שלב 2</span>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">עיצוב</h4>
-                        <p class="text-gray-600 text-sm">Wireframes, תסריטים וחומרי עיצוב נבדקים מולכם ומול קבוצת פיילוט.</p>
-                    </div>
-                    <div class="bg-slate-50 border border-gray-200 rounded-2xl p-6 shadow-sm">
-                        <span class="block text-sm font-semibold text-sky-600 uppercase tracking-wide mb-2">שלב 3</span>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">פיתוח</h4>
-                        <p class="text-gray-600 text-sm">מפתחים חוויות רספונסיביות ונגישות עם ארכיטקטורה מודולרית המשתלבת בקלות בסטאק שלכם.</p>
-                    </div>
-                    <div class="bg-slate-50 border border-gray-200 rounded-2xl p-6 shadow-sm">
-                        <span class="block text-sm font-semibold text-sky-600 uppercase tracking-wide mb-2">שלב 4</span>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">אופטימיזציה</h4>
-                        <p class="text-gray-600 text-sm">בדיקות A/B, ניתוח טלמטריה ועדכוני תוכן שומרים על המומנטום גם אחרי הגל הראשון.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 bg-slate-100" id="about" dir="rtl">
-            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
-                <div class="space-y-5 text-right">
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">מי אנחנו</h3>
-                    <p class="text-gray-600 leading-relaxed">חוצפה גיימס הוא סטודיו תל-אביבי המתמחה בשיווק אינטראקטיבי, משחקים לימודיים ותוכן ממותג. המייסדים הובילו עשור צוותי קריאייטיב וטכנולוגיה בסוכנויות גלובליות ובסטארטאפים לפני שהקימו קולקטיב שמתרכז כולו בצמיחה דרך משחק.</p>
-                    <p class="text-gray-600 leading-relaxed">אנחנו עובדים עם תקציבים שקופים, תכניות Sprint מדויקות וצוותים מולטי-דיסציפלינריים הכוללים אסטרטגיה, פיתוח, אנימציה ו-QA. כל פרויקט מקבל מפיק ייעודי ומדדים עסקיים ברורים.</p>
-                    <p class="text-gray-600 leading-relaxed">רוצים לשמוע עוד? בקשו את התיק המורחב שלנו הכולל פרויקטים לפינטק, תרבות, בריאות ועוד.</p>
-                </div>
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-xl space-y-6 text-right">
-                    <h4 class="text-2xl font-semibold text-gray-900">פרטי עסק מאומתים</h4>
-                    <div class="space-y-4 text-gray-600">
-                        <p><span class="font-semibold text-gray-900">סטודיו:</span> רח&apos; הנביאים 3, תל אביב-יפו, ישראל</p>
-                        <p><span class="font-semibold text-gray-900">טלפון:</span> <a href="tel:+972586001234" class="text-sky-600 hover:text-sky-800">+972-58-600-1234</a></p>
-                        <p><span class="font-semibold text-gray-900">אימייל:</span> <a href="mailto:info@hutzpa.games" class="text-sky-600 hover:text-sky-800">info@hutzpa.games</a></p>
-                        <p><span class="font-semibold text-gray-900">ח.פ:</span> חוצפה גיימס בע"מ &mdash; 516872345</p>
-                    </div>
-                    <p class="text-gray-600">נשמח לשיחות בירור ותהליכי ציות. פנו אלינו ונחזור אליכם בתוך יום עסקים אחד.</p>
-                </div>
-            </div>
-        </section>
-
         <section id="contact" class="py-20 bg-gray-50" dir="rtl">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4 animate-fade-in-up">מוכנים ליצור קסם?</h2>
@@ -320,43 +179,8 @@
                     ספרו לנו על הפרויקט שלכם. אנחנו נראה לכם איך משחק יכול להפוך אותו לחוויה בלתי נשכחת. בלי לחץ, רק אפשרויות.
                 </p>
 
-                <div class="max-w-3xl mx-auto text-right animate-fade-in-up space-y-8" style="animation-delay: 0.4s;">
-                    <div id="contact-form-wrapper" class="space-y-6">
-                        <div id="contact-form-placeholder" class="border border-dashed border-sky-300 bg-sky-50/60 rounded-xl p-6 text-center text-gray-600" dir="rtl">
-                            <p class="font-medium text-gray-700 mb-2">הטופס המאובטח יוצג לאחר שתאפשרו קוקיות העדפה.</p>
-                            <p class="text-sm mb-4">אפשר תמיד לכתוב לנו ל-<a href="mailto:info@hutzpa.games" class="text-sky-600 hover:text-sky-800 font-semibold">info@hutzpa.games</a> או לעדכן הגדרות באמצעות כפתור ההסכמה.</p>
-                            <button type="button" id="cookie-settings-trigger" class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition-colors">
-                                עדכון העדפות קוקיז
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 01.894.553l.382.764a1 1 0 00.95.553h.764a1 1 0 01.707 1.707l-.54.54a1 1 0 000 1.414l.54.54A1 1 0 0113.99 10h-.764a1 1 0 00-.95.553l-.382.764A1 1 0 0110 12a1 1 0 01-.894-.553l-.382-.764A1 1 0 007.774 10H7.01a1 1 0 01-.707-1.707l.54-.54a1 1 0 000-1.414l-.54-.54A1 1 0 017.01 4.87h.764a1 1 0 00.95-.553l.382-.764A1 1 0 0110 3z" clip-rule="evenodd"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8 text-gray-600" dir="rtl">
-                        <div class="text-right">
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">בודקים התאמה</h4>
-                            <ul class="space-y-2 text-sm pr-4">
-                                <li>&bull; תקציבי קמפיין החל מ-8,000$.</li>
-                                <li>&bull; לו"ז פיתוח של 4&ndash;8 שבועות לגרסת MVP.</li>
-                                <li>&bull; קהל יעד של 10,000+ או צוותי הדרכה פנימיים.</li>
-                            </ul>
-                        </div>
-                        <div class="text-right">
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">מוכנים לציות</h4>
-                            <ul class="space-y-2 text-sm pr-4">
-                                <li>&bull; בדיקות נגישות לרמת WCAG 2.1 AA.</li>
-                                <li>&bull; ביקורת הסכמות ומעקבים לפני עלייה לאוויר.</li>
-                                <li>&bull; תמיכה בבדיקות אבטחה ותיעוד טכני.</li>
-                            </ul>
-                        </div>
-                        <div class="text-right">
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">רוצים שיחה?</h4>
-                            <p class="text-sm mb-3">קבעו שיחת היכרות של 30 דקות כדי לסקור היקף, תקציב ומדדי הצלחה.</p>
-                            <a href="https://cal.com/hutzpa/intro" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-sky-500 text-sky-600 font-semibold hover:bg-sky-50 transition-colors" target="_blank" rel="noopener noreferrer">
-                                קבעו שיחה
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5H19.5V10.5M19.5 4.5L12 12M15 19.5H6.75A2.25 2.25 0 014.5 17.25V6.75A2.25 2.25 0 016.75 4.5H12"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                <div class="max-w-xl mx-auto text-right animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <iframe data-tally-src="https://tally.so/embed/mRE4W9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="313" frameborder="0" marginheight="0" marginwidth="0" title="Contact form"></iframe>
                 </div>
             </div>
         </section>
@@ -384,7 +208,7 @@
                 });
             });
         });
-
+        
         // Mobile menu toggle
         const menuButton = document.getElementById('mobile-menu-button');
         const mainNav = document.getElementById('main-nav');
@@ -401,92 +225,8 @@
             });
         }
 
-        const cookieSettingsTrigger = document.getElementById('cookie-settings-trigger');
-        if (cookieSettingsTrigger) {
-            cookieSettingsTrigger.addEventListener('click', () => {
-                if (window.Cookiebot && typeof Cookiebot.show === 'function') {
-                    Cookiebot.show();
-                } else {
-                    alert('ניתן לעדכן את הגדרות הקוקיז דרך הבאנר בתחתית המסך.');
-                }
-            });
-        }
-
-        const contactWrapper = document.getElementById('contact-form-wrapper');
-        const contactPlaceholder = document.getElementById('contact-form-placeholder');
-        let tallyIframe = null;
-
-        function ensureTallyScript() {
-            if (!document.getElementById('tally-embed-script')) {
-                const script = document.createElement('script');
-                script.id = 'tally-embed-script';
-                script.async = true;
-                script.src = 'https://tally.so/widgets/embed.js';
-                document.body.appendChild(script);
-            } else if (window.Tally && typeof window.Tally.loadEmbeds === 'function') {
-                window.Tally.loadEmbeds();
-            }
-        }
-
-        function loadTallyForm() {
-            if (!contactWrapper || tallyIframe) {
-                if (contactPlaceholder) {
-                    contactPlaceholder.classList.add('hidden');
-                    contactPlaceholder.setAttribute('aria-hidden', 'true');
-                }
-                return;
-            }
-
-            tallyIframe = document.createElement('iframe');
-            tallyIframe.id = 'contact-tally-iframe';
-            tallyIframe.src = 'https://tally.so/embed/mRE4W9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
-            tallyIframe.loading = 'lazy';
-            tallyIframe.width = '100%';
-            tallyIframe.height = '420';
-            tallyIframe.setAttribute('frameborder', '0');
-            tallyIframe.setAttribute('marginheight', '0');
-            tallyIframe.setAttribute('marginwidth', '0');
-            tallyIframe.title = 'טופס יצירת קשר';
-
-            if (contactPlaceholder) {
-                contactPlaceholder.classList.add('hidden');
-                contactPlaceholder.setAttribute('aria-hidden', 'true');
-            }
-
-            contactWrapper.appendChild(tallyIframe);
-            ensureTallyScript();
-        }
-
-        function removeTallyForm() {
-            if (tallyIframe && tallyIframe.parentNode) {
-                tallyIframe.parentNode.removeChild(tallyIframe);
-            }
-            tallyIframe = null;
-            if (contactPlaceholder) {
-                contactPlaceholder.classList.remove('hidden');
-                contactPlaceholder.removeAttribute('aria-hidden');
-            }
-        }
-
-        function updateContactFormConsent() {
-            if (!window.Cookiebot || !Cookiebot.consent) {
-                return;
-            }
-            const hasConsent = Cookiebot.consent.preferences || Cookiebot.consent.marketing;
-            if (hasConsent) {
-                loadTallyForm();
-            } else {
-                removeTallyForm();
-            }
-        }
-
-        window.addEventListener('CookiebotOnAccept', updateContactFormConsent);
-        window.addEventListener('CookiebotOnDecline', updateContactFormConsent);
-        window.addEventListener('CookiebotOnLoad', updateContactFormConsent);
-
-        if (window.Cookiebot && Cookiebot.consent) {
-            updateContactFormConsent();
-        }
+        // Tally Embed Script
+        var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src=\"'+w+'\"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
     </script>
 
 </body>

@@ -30,44 +30,18 @@
 
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="267927be-58f1-486c-a44b-3def1a91602a" data-blockingmode="auto" type="text/javascript"></script>
 
-    <script data-cookieconsent="ignore">
-        (function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            window.gtag = gtag;
-
-            let analyticsLoaded = false;
-
-            function loadGoogleAnalytics() {
-                if (analyticsLoaded) {
-                    return;
-                }
-                analyticsLoaded = true;
-                const script = document.createElement('script');
-                script.async = true;
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY';
-                script.onload = function () {
-                    gtag('js', new Date());
-                    gtag('config', 'G-J5QVVCDFEY');
-                };
-                document.head.appendChild(script);
-            }
-
-            function handleConsentUpdate() {
-                if (window.Cookiebot && Cookiebot.consent && Cookiebot.consent.statistics) {
-                    loadGoogleAnalytics();
-                }
-            }
-
-            window.addEventListener('CookiebotOnAccept', handleConsentUpdate);
-            window.addEventListener('CookiebotOnLoad', handleConsentUpdate);
-
-            document.addEventListener('DOMContentLoaded', function () {
-                if (window.Cookiebot && Cookiebot.consent && Cookiebot.consent.statistics) {
-                    loadGoogleAnalytics();
-                }
-            });
-        })();
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5QXV8XX5');</script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J5QVVCDFEY');
     </script>
     
     <style>
@@ -96,6 +70,8 @@
     </style>
 </head>
 <body class="text-gray-700">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QXV8XX5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
@@ -107,10 +83,7 @@
             <nav id="main-nav" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex-col items-center space-y-4 
                                     md:static md:flex-row md:space-y-0 md:space-x-8 md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
                 <a href="./index.html#services" class="text-gray-600 hover:text-sky-500 transition-colors">Services</a>
-                <a href="./index.html#case-studies" class="text-gray-600 hover:text-sky-500 transition-colors">Case Studies</a>
-                <a href="./index.html#process" class="text-gray-600 hover:text-sky-500 transition-colors">Process</a>
                 <a href="./index.html#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">Portfolio</a>
-                <a href="./index.html#about" class="text-gray-600 hover:text-sky-500 transition-colors">About</a>
                 <a href="./index.html#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">Get a Quote</a>
                 <a href="./he.html" class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91 3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
@@ -140,30 +113,6 @@
                 <a href="#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-lg text-lg inline-block transition-transform transform hover:scale-105 animate-bounce-in">
                     Get Your Custom Game
                 </a>
-            </div>
-        </section>
-
-        <section class="py-16 bg-white border-t border-b border-gray-100">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-4 text-left">
-                    <h3 class="text-3xl font-bold tracking-tight text-gray-900">Beyond Campaigns: We Design Playable Strategies</h3>
-                    <p class="text-gray-600 leading-relaxed">Advergames only work when they combine irresistible mechanics with measurable goals. Our team blends game design, UX research, and marketing automation so every tap, swipe, and share ladders up to your funnel.</p>
-                    <p class="text-gray-600 leading-relaxed">We analyse your audiences, map desired actions, and then craft loops that reward participation&mdash;from first impression to post-campaign nurture. The result is always-on engagement you can present to stakeholders with clear metrics.</p>
-                    <ul class="list-disc list-inside space-y-2 text-gray-600">
-                        <li><span class="font-semibold text-gray-900">Acquisition:</span> Launch quiz funnels that capture first-party data compliantly.</li>
-                        <li><span class="font-semibold text-gray-900">Retention:</span> Deliver episodic challenges that bring customers back week after week.</li>
-                        <li><span class="font-semibold text-gray-900">Advocacy:</span> Incentivize user-generated content without compromising brand safety.</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-100 border border-gray-200 rounded-2xl p-8 shadow-xl">
-                    <h4 class="text-2xl font-semibold text-gray-900 mb-4">Measurement That Makes CMOs Smile</h4>
-                    <p class="text-gray-600 leading-relaxed mb-4">We bake analytics, consent, and CRM integrations into every build. Choose from white-labeled dashboards, automated reports, or raw data exports.</p>
-                    <div class="space-y-3 text-gray-600">
-                        <p><span class="font-semibold text-gray-900">Attribution-ready:</span> Track conversions with server-side APIs or pixels once visitors opt in.</p>
-                        <p><span class="font-semibold text-gray-900">Privacy-first:</span> Every implementation follows IAB TCF, GDPR, and COPPA best practices.</p>
-                        <p><span class="font-semibold text-gray-900">Launch in weeks:</span> Reusable engines for trivia, arcade, idle, and story formats accelerate go-live.</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -206,44 +155,6 @@
             </div>
         </section>
 
-        <section class="py-20 bg-slate-50" id="case-studies">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">Case Studies That Prove the Power of Play</h3>
-                    <p class="text-gray-500 mt-2 max-w-3xl mx-auto">A quick snapshot of how we combine strategy, narrative, and technology to move the numbers that matter.</p>
-                </div>
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <article class="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg flex flex-col">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">National Retailer Launch</h4>
-                        <p class="text-sm uppercase tracking-wide text-sky-600 mb-4">27K plays &bull; 38% opt-in rate</p>
-                        <p class="text-gray-600 flex-grow">We created a holiday scavenger hunt where players collected digital cards tied to real store aisles. The mechanic boosted in-store redemptions and generated a clean CRM segment for remarketing.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600 text-sm list-disc list-inside">
-                            <li>Loyalty members spent 2.3x longer on the site.</li>
-                            <li>First-party survey data enriched the client&apos;s CDP in real time.</li>
-                        </ul>
-                    </article>
-                    <article class="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg flex flex-col">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">B2B SaaS Thought Leadership</h4>
-                        <p class="text-sm uppercase tracking-wide text-sky-600 mb-4">12K demos &bull; 41% meeting requests</p>
-                        <p class="text-gray-600 flex-grow">A decision-simulator game walked prospects through real-world scenarios, showcasing product differentiators while surfacing qualified leads for the sales team.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600 text-sm list-disc list-inside">
-                            <li>Embedded calculators exported to HubSpot automatically.</li>
-                            <li>Heatmaps revealed feature interest for roadmap prioritization.</li>
-                        </ul>
-                    </article>
-                    <article class="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg flex flex-col">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Culture-Driven Employer Branding</h4>
-                        <p class="text-sm uppercase tracking-wide text-sky-600 mb-4">18K candidates &bull; 62% completion</p>
-                        <p class="text-gray-600 flex-grow">We built a choose-your-own-adventure story for a global tech company, letting applicants explore teams and values interactively before applying.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600 text-sm list-disc list-inside">
-                            <li>Improved candidate quality with pre-screening questions.</li>
-                            <li>Generated shareable content for the employer&apos;s social channels.</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <section id="portfolio" class="py-20 bg-slate-100">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -265,101 +176,14 @@
             </div>
         </section>
 
-        <section class="py-20 bg-white" id="process">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">A Proven Delivery Framework</h3>
-                    <p class="text-gray-500 mt-2 max-w-3xl mx-auto">From first workshop to post-launch optimization, we manage every sprint with transparency.</p>
-                </div>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="bg-slate-50 border border-gray-200 rounded-2xl p-6 shadow-sm">
-                        <span class="block text-sm font-semibold text-sky-600 uppercase tracking-wide mb-2">Step 1</span>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Discover</h4>
-                        <p class="text-gray-600 text-sm">Stakeholder interviews, KPI mapping, and technical due diligence ensure alignment before a single pixel is drawn.</p>
-                    </div>
-                    <div class="bg-slate-50 border border-gray-200 rounded-2xl p-6 shadow-sm">
-                        <span class="block text-sm font-semibold text-sky-600 uppercase tracking-wide mb-2">Step 2</span>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Design</h4>
-                        <p class="text-gray-600 text-sm">Wireframes, narrative scripts, and art direction prototypes are validated with your team and a pilot audience.</p>
-                    </div>
-                    <div class="bg-slate-50 border border-gray-200 rounded-2xl p-6 shadow-sm">
-                        <span class="block text-sm font-semibold text-sky-600 uppercase tracking-wide mb-2">Step 3</span>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Develop</h4>
-                        <p class="text-gray-600 text-sm">We build responsive, accessible experiences with modular architectures that integrate seamlessly with your stack.</p>
-                    </div>
-                    <div class="bg-slate-50 border border-gray-200 rounded-2xl p-6 shadow-sm">
-                        <span class="block text-sm font-semibold text-sky-600 uppercase tracking-wide mb-2">Step 4</span>
-                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Optimize</h4>
-                        <p class="text-gray-600 text-sm">A/B testing, telemetry reviews, and content updates keep momentum long after the first campaign wave.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 bg-slate-100" id="about">
-            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
-                <div class="space-y-5">
-                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">Who We Are</h3>
-                    <p class="text-gray-600 leading-relaxed">Hutzpa Games is a Tel Aviv-based studio specializing in interactive marketing, serious games, and branded entertainment. Our founders spent a decade leading creative technology teams for global agencies and startups before forming a collective focused solely on gamified growth.</p>
-                    <p class="text-gray-600 leading-relaxed">We operate with transparent budgets, sprint-based project plans, and cross-functional squads that include strategists, developers, animators, and QA. Every engagement has a dedicated producer and measurable business objectives.</p>
-                    <p class="text-gray-600 leading-relaxed">Want references? Request our extended portfolio featuring fintech activations, cultural institutions, healthcare onboarding, and more.</p>
-                </div>
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-xl space-y-6">
-                    <h4 class="text-2xl font-semibold text-gray-900">Verified Business Details</h4>
-                    <div class="space-y-4 text-gray-600">
-                        <p><span class="font-semibold text-gray-900">Studio:</span> 3 Hanevi&apos;im St, Tel Aviv-Yafo, Israel</p>
-                        <p><span class="font-semibold text-gray-900">Phone:</span> <a href="tel:+972586001234" class="text-sky-600 hover:text-sky-800">+972-58-600-1234</a></p>
-                        <p><span class="font-semibold text-gray-900">Email:</span> <a href="mailto:info@hutzpa.games" class="text-sky-600 hover:text-sky-800">info@hutzpa.games</a></p>
-                        <p><span class="font-semibold text-gray-900">Company Registration:</span> Hutzpa Games LTD &mdash; 516872345</p>
-                    </div>
-                    <p class="text-gray-600">We welcome due diligence calls and compliance questionnaires. Reach out and we&apos;ll set up a discovery session within one business day.</p>
-                </div>
-            </div>
-        </section>
-
         <section id="contact" class="py-20">
             <div class="container mx-auto px-6">
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 lg:p-16 max-w-5xl mx-auto shadow-2xl space-y-10">
-                    <div class="text-center">
+                <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 lg:p-16 max-w-4xl mx-auto shadow-2xl">
+                    <div class="text-center mb-8">
                         <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">Want some Hutzpa?</h3>
                         <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Tell us about your project. We'll tell you how a game can make it unforgettable. No pressure, just possibilities.</p>
                     </div>
-                    <div id="contact-form-wrapper" class="space-y-6">
-                        <div id="contact-form-placeholder" class="border border-dashed border-sky-300 bg-sky-50/60 rounded-xl p-6 text-center text-gray-600">
-                            <p class="font-medium text-gray-700 mb-2">We&apos;ll show the secure contact form once you allow preference cookies.</p>
-                            <p class="text-sm mb-4">Use the Cookiebot settings in the footer or email us directly at <a href="mailto:info@hutzpa.games" class="text-sky-600 hover:text-sky-800 font-semibold">info@hutzpa.games</a>.</p>
-                            <button type="button" id="cookie-settings-trigger" class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition-colors">
-                                Review Cookie Settings
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 01.894.553l.382.764a1 1 0 00.95.553h.764a1 1 0 01.707 1.707l-.54.54a1 1 0 000 1.414l.54.54A1 1 0 0113.99 10h-.764a1 1 0 00-.95.553l-.382.764A1 1 0 0110 12a1 1 0 01-.894-.553l-.382-.764A1 1 0 007.774 10H7.01a1 1 0 01-.707-1.707l.54-.54a1 1 0 000-1.414l-.54-.54A1 1 0 017.01 4.87h.764a1 1 0 00.95-.553l.382-.764A1 1 0 0110 3z" clip-rule="evenodd"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8 text-gray-600">
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Project Fit Checklist</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li>&bull; Campaign budgets starting at $8K USD.</li>
-                                <li>&bull; Timeline of 4&ndash;8 weeks for MVP launch.</li>
-                                <li>&bull; Audience size of 10K+ or internal enablement teams.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Compliance Ready</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li>&bull; Accessibility tested to WCAG 2.1 AA.</li>
-                                <li>&bull; Consent and tracking audited before launch.</li>
-                                <li>&bull; Security reviews supported with documentation.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Prefer a Call?</h4>
-                            <p class="text-sm mb-3">Schedule a 30-minute consultation to review scope, budget, and success metrics.</p>
-                            <a href="https://cal.com/hutzpa/intro" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-sky-500 text-sky-600 font-semibold hover:bg-sky-50 transition-colors" target="_blank" rel="noopener noreferrer">
-                                Book a Call
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5H19.5V10.5M19.5 4.5L12 12M15 19.5H6.75A2.25 2.25 0 014.5 17.25V6.75A2.25 2.25 0 016.75 4.5H12"/></svg>
-                            </a>
-                        </div>
-                    </div>
+                    <iframe data-tally-src="https://tally.so/embed/mKdoe8?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="276" frameborder="0" marginheight="0" marginwidth="0" title="Contact form English"></iframe>
                 </div>
             </div>
         </section>
@@ -404,94 +228,9 @@
                 menuButton.setAttribute('aria-expanded', !isExpanded);
             });
         }
-
-        const cookieSettingsTrigger = document.getElementById('cookie-settings-trigger');
-        if (cookieSettingsTrigger) {
-            cookieSettingsTrigger.addEventListener('click', () => {
-                if (window.Cookiebot && typeof Cookiebot.show === 'function') {
-                    Cookiebot.show();
-                } else {
-                    alert('Update your cookie preferences using the banner controls.');
-                }
-            });
-        }
-
-        const contactWrapper = document.getElementById('contact-form-wrapper');
-        const contactPlaceholder = document.getElementById('contact-form-placeholder');
-        let tallyIframe = null;
-
-        function ensureTallyScript() {
-            if (!document.getElementById('tally-embed-script')) {
-                const script = document.createElement('script');
-                script.id = 'tally-embed-script';
-                script.async = true;
-                script.src = 'https://tally.so/widgets/embed.js';
-                document.body.appendChild(script);
-            } else if (window.Tally && typeof window.Tally.loadEmbeds === 'function') {
-                window.Tally.loadEmbeds();
-            }
-        }
-
-        function loadTallyForm() {
-            if (!contactWrapper || tallyIframe) {
-                if (contactPlaceholder) {
-                    contactPlaceholder.classList.add('hidden');
-                    contactPlaceholder.setAttribute('aria-hidden', 'true');
-                }
-                return;
-            }
-
-            tallyIframe = document.createElement('iframe');
-            tallyIframe.id = 'contact-tally-iframe';
-            tallyIframe.src = 'https://tally.so/embed/mKdoe8?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
-            tallyIframe.loading = 'lazy';
-            tallyIframe.width = '100%';
-            tallyIframe.height = '420';
-            tallyIframe.setAttribute('frameborder', '0');
-            tallyIframe.setAttribute('marginheight', '0');
-            tallyIframe.setAttribute('marginwidth', '0');
-            tallyIframe.title = 'Contact form English';
-
-            if (contactPlaceholder) {
-                contactPlaceholder.classList.add('hidden');
-                contactPlaceholder.setAttribute('aria-hidden', 'true');
-            }
-
-            contactWrapper.appendChild(tallyIframe);
-            ensureTallyScript();
-        }
-
-        function removeTallyForm() {
-            if (tallyIframe && tallyIframe.parentNode) {
-                tallyIframe.parentNode.removeChild(tallyIframe);
-            }
-            tallyIframe = null;
-            if (contactPlaceholder) {
-                contactPlaceholder.classList.remove('hidden');
-                contactPlaceholder.removeAttribute('aria-hidden');
-            }
-        }
-
-        function updateContactFormConsent() {
-            if (!window.Cookiebot || !Cookiebot.consent) {
-                return;
-            }
-            const hasConsent = Cookiebot.consent.preferences || Cookiebot.consent.marketing;
-            if (hasConsent) {
-                loadTallyForm();
-            } else {
-                removeTallyForm();
-            }
-        }
-
-        window.addEventListener('CookiebotOnAccept', updateContactFormConsent);
-        window.addEventListener('CookiebotOnDecline', updateContactFormConsent);
-        window.addEventListener('CookiebotOnLoad', updateContactFormConsent);
-
-        if (window.Cookiebot && Cookiebot.consent) {
-            updateContactFormConsent();
-        }
     </script>
+    
+    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src=\"'+w+'\"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
 
 </body>
 </html>
