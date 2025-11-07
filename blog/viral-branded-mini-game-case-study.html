@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind The Scenes of a Viral Branded Mini-Game Launch | Hutzpa Games</title>
+    <meta name="description" content="Case study: how Hutzpa Games planned, produced, and optimized a viral branded trivia mini-game, including UX research, production sprints, localization, analytics, and business outcomes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .case-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px -15px rgba(15, 23, 42, 0.25);
+        }
+        .case-card h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .case-card p {
+            color: #475569;
+            line-height: 1.6;
+        }
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 2.5rem;
+        }
+        .article-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 1.75rem;
+        }
+        .article-content p {
+            margin-top: 1.25rem;
+            color: #475569;
+            line-height: 1.75;
+        }
+        .article-content ul {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <img src="../Logo.svg" alt="Hutzpa Games Logo" class="h-12 w-auto" />
+                    Hutzpa Games
+                </a>
+            </h1>
+            <nav id="main-nav" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex-col items-center space-y-4 md:static md:flex-row md:space-y-0 md:space-x-8 md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
+                <a href="../index.html#services" class="text-gray-600 hover:text-sky-500 transition-colors">Services</a>
+                <a href="../index.html#insights" class="text-gray-600 hover:text-sky-500 transition-colors">Insights</a>
+                <a href="../index.html#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">Portfolio</a>
+                <a href="./index.html" class="text-gray-600 hover:text-sky-500 transition-colors">Blog</a>
+                <a href="../index.html#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">Get a Quote</a>
+                <a href="../he.html" class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                    HE
+                </a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 z-50" aria-label="Open menu" aria-expanded="false">
+                <svg id="hamburger-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-20">
+        <section class="bg-slate-100 border-b border-slate-200">
+            <div class="container mx-auto px-6 py-16">
+                <p class="text-sm uppercase tracking-[0.3em] font-semibold text-sky-600 mb-3">Case Study</p>
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-gray-900 mb-6">Behind The Scenes of a Viral Branded Mini-Game Launch</h1>
+                <p class="text-lg text-gray-600 max-w-3xl">When a national consumer brand asked us to turn their product education campaign into something fans would actually share, we pitched a multilingual trivia mini-game. Thirty days after launch, the experience quadrupled average session time, generated 162,000 qualified leads, and became a template for future campaigns. Here is the full story.</p>
+                <div class="case-grid mt-10">
+                    <div class="case-card">
+                        <h3>Client Sector</h3>
+                        <p>Fast-moving consumer goods (FMCG), operating in Israel with regional expansion in mind.</p>
+                    </div>
+                    <div class="case-card">
+                        <h3>Campaign Duration</h3>
+                        <p>12-week production sprint, 8-week live event, ongoing evergreen version.</p>
+                    </div>
+                    <div class="case-card">
+                        <h3>Core Team</h3>
+                        <p>Producer, UX researcher, narrative designer, art director, two front-end developers, QA lead, marketing analyst.</p>
+                    </div>
+                    <div class="case-card">
+                        <h3>Headline Results</h3>
+                        <p>4.2x session length vs. brand microsite benchmark, 38% conversion to lead form, 27% of players sharing to social media.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <article class="container mx-auto px-6 max-w-4xl article-content mt-16">
+            <h2>Discovery: Understanding Fans and Stakeholders</h2>
+            <p>We kicked off the project with a three-day discovery sprint that brought together the client's marketing, product education, and customer support teams. Through stakeholder interviews we identified the campaign's main objectives: increase product knowledge for a new flavor line, collect first-party data for remarketing, and drive foot traffic to pop-up tasting events. Meanwhile, our UX researcher conducted guerrilla testing in shopping centers to learn how shoppers talked about the brand and what questions they asked in-store.</p>
+            <p>The research surfaced two insights. First, fans loved debating trivia about the brand's history and recipe combinations. Second, they were eager to share content that made them look clever. Those findings shaped our creative direction: a fast-paced trivia adventure featuring timed rounds, unlockable "chef tips," and social bragging rights.</p>
+
+            <h2>Concept Development: Building The Game Pillars</h2>
+            <p>We translated the research insights into three design pillars. <strong>Instant mastery</strong> ensured that any player could understand the controls in seconds. <strong>Personal stakes</strong> let players choose their flavor allegiance, which influenced questions and rewards. <strong>Share-worthy moments</strong> infused the experience with surprising achievements and animated recap cards optimized for social platforms.</p>
+            <p>Our narrative designer scripted a storyline in which players became "Flavor Detectives" tasked with solving culinary mysteries. Each correct answer advanced a comic-style scene revealing behind-the-scenes facts. The art director developed a bold visual style inspired by vintage recipe cards and Tel Aviv street art, ensuring the game felt both nostalgic and fresh.</p>
+
+            <h3>Prototype Milestones</h3>
+            <ul>
+                <li>Week 1: Interactive wireframes built in Figma, validated with 12 target users.</li>
+                <li>Week 3: Playable HTML5 prototype with core gameplay loop and placeholder art.</li>
+                <li>Week 5: Visual polish pass with final illustrations, motion studies, and microcopy.</li>
+                <li>Week 6: Localization-ready build supporting Hebrew, English, Russian, and Arabic content.</li>
+            </ul>
+
+            <h2>Production: Shipping a Stable, Shareable Experience</h2>
+            <p>During production we worked in weekly sprints with clear deliverables. Our front-end developers implemented a responsive WebGL experience optimized for mobile browsers, which represented 82% of projected traffic. We prioritized loading performance by lazy-loading art assets and prefetching question data based on the player's progress.</p>
+            <p>To encourage replayability, we designed a dynamic question engine that assembled trivia sets from a 400-question database. The engine considered difficulty levels, flavor alignment, and whether a player had seen a question before. A "chef tip" system surfaced educational content relevant to each answer, ensuring the brand's messaging felt organic.</p>
+
+            <h3>Quality Assurance Rituals</h3>
+            <ul>
+                <li>Daily smoke tests covering responsive layout, audio cues, and progression saves.</li>
+                <li>Accessibility passes verifying screen reader labels, keyboard navigation, and captioned animations.</li>
+                <li>Localization spot checks in all four languages, including right-to-left UI review for Hebrew and Arabic.</li>
+                <li>Load testing at 50k concurrent users with real-time monitoring dashboards in place.</li>
+            </ul>
+
+            <h2>Launch: Coordinated Marketing and Live-Ops</h2>
+            <p>The campaign launched alongside a televised commercial and influencer activations. Our marketing analyst set up real-time dashboards to track players, average score, referral sources, and conversion funnels. We also prepared daily content updates: new trivia packs, bonus rounds triggered by social mentions, and location-specific missions during the client's pop-up events.</p>
+            <p>Community management played a major role. We embedded a support chat staffed by the client's customer success team using scripts we co-wrote. A "Flavor Hall of Fame" leaderboard showcased top players and highlighted tasting event check-ins. When players shared their recap cards on social platforms, the marketing team amplified them with paid boosts.</p>
+
+            <h3>Launch Week Metrics</h3>
+            <ul>
+                <li>1.2 million unique sessions across mobile and desktop.</li>
+                <li>Average session length of 7 minutes 40 seconds (4.2x the benchmark).</li>
+                <li>38% of players submitting the lead form for event reminders.</li>
+                <li>27% of players sharing recap cards via WhatsApp, Instagram Stories, or Twitter.</li>
+            </ul>
+
+            <h2>Optimization: Iterating With Data</h2>
+            <p>Midway through the campaign we analyzed funnel drop-offs and discovered that question packs about ingredient sourcing performed 15% worse than flavor-pairing packs. We rewrote the low-performing content with more visual storytelling and added a photo round featuring behind-the-scenes imagery. The update lifted completion rates by 12% within a week.</p>
+            <p>We also introduced cooperative "duo challenges" after noticing that many players repeated the game with friends. The feature allowed two players to compete against the clock using the same device, increasing repeat sessions by 21%. Live-ops updates were tested overnight and deployed with feature flags to manage risk.</p>
+
+            <h2>Business Impact and Client Feedback</h2>
+            <p>Beyond lead generation, the campaign reshaped how the client approached digital activations. Retail partners requested localized versions, and the brand's CRM team integrated the quiz data into their segmentation models. The client's CMO reported a 19% lift in unaided brand recall when the game was mentioned during focus groups.</p>
+            <p>Most importantly, fans kept playing. We transitioned the experience into an evergreen microsite with seasonal trivia packs and community tournaments. The client's internal creative studio now collaborates with us on quarterly updates while our team monitors performance and accessibility compliance.</p>
+
+            <h2>What We Learned</h2>
+            <ul>
+                <li><strong>Research unlocks authenticity:</strong> Spending time with real fans helped us design trivia that felt insider, not generic.</li>
+                <li><strong>Localization must be intentional:</strong> Translating copy is not enough—UI layout, cultural references, and audio cues all need localized attention.</li>
+                <li><strong>Live-ops should match marketing cadence:</strong> Daily content drops kept the influencer and media teams excited to promote fresh angles.</li>
+                <li><strong>Analytics and creativity are partners:</strong> Dashboards informed rapid creative decisions instead of acting as post-mortem reports.</li>
+            </ul>
+
+            <h2>Ready To Launch Your Own Branded Game?</h2>
+            <p>Hutzpa Games combines strategy, art, engineering, and analytics under one roof. If you are planning a launch and want to create something fans will actually share, let's talk. Email <a href="mailto:info@hutzpa.games" class="text-sky-600 font-semibold hover:text-sky-700">info@hutzpa.games</a> or call <a href="tel:+972588001234" class="text-sky-600 font-semibold hover:text-sky-700">+972-58-800-1234</a>. Our studio at 3 Ha'Aronim St, Tel Aviv-Yafo, Israel is ready to host a discovery workshop or connect virtually within one business day.</p>
+        </article>
+
+        <section class="container mx-auto px-6 max-w-5xl mt-20">
+            <div class="bg-white border border-gray-200 rounded-2xl p-10 shadow-xl">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Book a Case Study Walkthrough</h2>
+                <p class="text-gray-600 mb-4">Want to see the playable prototype and dashboards from this project? Share your details and we will arrange a tailored walkthrough with the original production team.</p>
+                <iframe data-tally-src="https://tally.so/embed/3NzYpB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="276" frameborder="0" marginheight="0" marginwidth="0" title="Case study walkthrough form"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500 text-sm">
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="../privacy_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="../terms_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="../index.html#contact" class="hover:text-sky-600 underline">Contact</a>
+            </div>
+            <p>&copy; 2025 Hutzpa Games LTD – 518667345. Studio: 3 Ha'Aronim St, Tel Aviv-Yafo, Israel.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mainNav = document.getElementById('main-nav');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        if (menuButton && mainNav) {
+            menuButton.addEventListener('click', () => {
+                mainNav.classList.toggle('hidden');
+                hamburgerIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+            });
+        }
+
+        var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+    </script>
+</body>
+</html>
