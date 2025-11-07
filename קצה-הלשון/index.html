@@ -134,27 +134,49 @@
 
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="267927be-58f1-486c-a44b-3def1a91602a" data-blockingmode="auto" type="text/javascript"></script>
 
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5QXV8XX5');</script>
+    <script data-cookieconsent="ignore">
+        (function () {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            window.gtag = gtag;
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J5QVVCDFEY');
+            let analyticsLoaded = false;
+
+            function loadGoogleAnalytics() {
+                if (analyticsLoaded) {
+                    return;
+                }
+                analyticsLoaded = true;
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY';
+                script.onload = function () {
+                    gtag('js', new Date());
+                    gtag('config', 'G-J5QVVCDFEY');
+                };
+                document.head.appendChild(script);
+            }
+
+            function handleConsentUpdate() {
+                if (window.Cookiebot && Cookiebot.consent && Cookiebot.consent.statistics) {
+                    loadGoogleAnalytics();
+                }
+            }
+
+            window.addEventListener('CookiebotOnAccept', handleConsentUpdate);
+            window.addEventListener('CookiebotOnLoad', handleConsentUpdate);
+
+            document.addEventListener('DOMContentLoaded', function () {
+                if (window.Cookiebot && Cookiebot.consent && Cookiebot.consent.statistics) {
+                    loadGoogleAnalytics();
+                }
+            });
+        })();
     </script>
     
 </head>
 
 <body>
-    <script async src="https://tally.so/widgets/embed.js"></script>
-
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QXV8XX5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div id="layout-container">
 
@@ -465,5 +487,74 @@ function playSound(sound) { sound.currentTime = 0; sound.play().catch(e => conso
     });
 </script>
 
+    <script>
+        (function () {
+            const suggestionsButton = document.getElementById("suggestions-btn");
+            let tallyScriptLoaded = false;
+
+            function hasConsent() {
+                return window.Cookiebot && Cookiebot.consent && (Cookiebot.consent.preferences || Cookiebot.consent.marketing);
+            }
+
+            function ensureTallyScript() {
+                if (tallyScriptLoaded) {
+                    if (window.Tally && typeof window.Tally.loadEmbeds === "function") {
+                        window.Tally.loadEmbeds();
+                    }
+                    return;
+                }
+
+                const existing = document.getElementById("tally-embed-script");
+                if (existing) {
+                    tallyScriptLoaded = true;
+                    if (window.Tally && typeof window.Tally.loadEmbeds === "function") {
+                        window.Tally.loadEmbeds();
+                    }
+                    return;
+                }
+
+                const script = document.createElement("script");
+                script.id = "tally-embed-script";
+                script.async = true;
+                script.src = "https://tally.so/widgets/embed.js";
+                script.onload = function () {
+                    tallyScriptLoaded = true;
+                    if (window.Tally && typeof window.Tally.loadEmbeds === "function") {
+                        window.Tally.loadEmbeds();
+                    }
+                };
+                document.body.appendChild(script);
+            }
+
+            function handleTallyRequest(event) {
+                if (!hasConsent()) {
+                    event.preventDefault();
+                    if (window.Cookiebot && typeof Cookiebot.show === "function") {
+                        Cookiebot.show();
+                    } else {
+                        alert("כדי לפתוח את טופס ההצעות יש לאפשר קוקיות העדפה.");
+                    }
+                    return false;
+                }
+
+                ensureTallyScript();
+                return true;
+            }
+
+            if (suggestionsButton) {
+                suggestionsButton.addEventListener("click", handleTallyRequest);
+            }
+
+            function consentBootstrap() {
+                if (hasConsent()) {
+                    ensureTallyScript();
+                }
+            }
+
+            window.addEventListener("CookiebotOnAccept", consentBootstrap);
+            window.addEventListener("CookiebotOnLoad", consentBootstrap);
+            window.addEventListener("CookiebotOnDecline", function () { tallyScriptLoaded = false; });
+        })();
+    </script>
 </body>
 </html>
