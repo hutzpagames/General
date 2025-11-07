@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Accessible Games For Global Campaigns | Hutzpa Games</title>
+    <meta name="description" content="Best practices from Hutzpa Games for creating accessible, localized, and inclusive branded game campaigns, covering research, design systems, QA, and governance.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .article h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 2.5rem;
+        }
+        .article h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 1.75rem;
+        }
+        .article p {
+            margin-top: 1.25rem;
+            color: #475569;
+            line-height: 1.75;
+        }
+        .article ul {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+        .article li {
+            margin-bottom: 0.75rem;
+        }
+        .article blockquote {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(79,70,229,0.08));
+            border-left: 4px solid #0ea5e9;
+            border-radius: 1rem;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <img src="../Logo.svg" alt="Hutzpa Games Logo" class="h-12 w-auto" />
+                    Hutzpa Games
+                </a>
+            </h1>
+            <nav id="main-nav" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex-col items-center space-y-4 md:static md:flex-row md:space-y-0 md:space-x-8 md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
+                <a href="../index.html#services" class="text-gray-600 hover:text-sky-500 transition-colors">Services</a>
+                <a href="../index.html#insights" class="text-gray-600 hover:text-sky-500 transition-colors">Insights</a>
+                <a href="../index.html#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">Portfolio</a>
+                <a href="./index.html" class="text-gray-600 hover:text-sky-500 transition-colors">Blog</a>
+                <a href="../index.html#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">Get a Quote</a>
+                <a href="../he.html" class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                    HE
+                </a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 z-50" aria-label="Open menu" aria-expanded="false">
+                <svg id="hamburger-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-20">
+        <section class="bg-slate-100 border-b border-slate-200">
+            <div class="container mx-auto px-6 py-16">
+                <p class="text-sm uppercase tracking-[0.3em] font-semibold text-sky-600 mb-3">Production Craft</p>
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-gray-900 mb-6">Building Accessible Games For Global Campaigns</h1>
+                <p class="text-lg text-gray-600 max-w-3xl">Accessibility is a core pillar of every Hutzpa Games project. Inclusive design is not just the right thing to do—it unlocks new audiences, increases retention, and keeps brands compliant. In this guide we share the standards, rituals, and tools our studio uses to deliver game experiences that feel welcoming to every player, regardless of ability, language, or device.</p>
+                <div class="mt-8 grid gap-6 md:grid-cols-3">
+                    <div class="bg-white border border-gray-200 rounded-xl p-6">
+                        <h2 class="text-sm font-semibold text-gray-900 uppercase tracking-widest mb-2">Key Standards</h2>
+                        <p class="text-gray-600">WCAG 2.2 AA, EN 301 549, Section 508, Apple and Google accessibility guidelines.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-6">
+                        <h2 class="text-sm font-semibold text-gray-900 uppercase tracking-widest mb-2">Disciplines Involved</h2>
+                        <p class="text-gray-600">UX research, narrative design, engineering, localization, QA, legal compliance.</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-6">
+                        <h2 class="text-sm font-semibold text-gray-900 uppercase tracking-widest mb-2">Downloadable Assets</h2>
+                        <p class="text-gray-600">Accessibility heuristics, localization glossary template, inclusive audio checklist.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <article class="container mx-auto px-6 max-w-4xl article mt-16">
+            <h2>Start With Inclusive Research</h2>
+            <p>Accessibility begins during discovery, not at the end of production. Our researchers recruit a diverse panel of players who use assistive technologies, live in different regions, and represent a wide range of ages. We run moderated playtests to observe how different abilities interact with prototypes, from screen readers to alternative input devices. These sessions surface friction points that might never appear in traditional user testing.</p>
+            <p>We document findings in an "inclusive opportunity map" that connects each accessibility insight to specific mechanics, copy, audio cues, or visual design components. This map becomes a living artifact used by every discipline throughout the project.</p>
+
+            <h2>Design Systems With Accessibility Baked In</h2>
+            <p>Our design systems include accessible color palettes, typography scales, and component libraries ready for localization. We set minimum contrast ratios of 4.5:1 for body text and 7:1 for critical UI elements. Interactive components include visible focus states, large tap targets, and skip-navigation links. Motion is optional with toggles that reduce animation intensity or disable parallax effects entirely.</p>
+            <p>When we build new mechanics, we provide audio descriptions, captions, and alternative text for all narrative elements. Iconography includes labels and tooltips. Localization teams receive context notes and screenshots to ensure culturally appropriate translations. All instructions are written at a B1 reading level unless brand guidelines require otherwise.</p>
+
+            <h3>Component Checklist</h3>
+            <ul>
+                <li>Buttons with 44px minimum touch size, keyboard focus ring, and ARIA labels.</li>
+                <li>Sliders and mini-games controllable via keyboard, screen reader commands, and switch controls.</li>
+                <li>Color palettes tested for common forms of color vision deficiency.</li>
+                <li>Audio cues paired with haptic or visual alternatives.</li>
+                <li>Progress meters with textual descriptions for screen readers.</li>
+            </ul>
+
+            <h2>Engineer for Performance and Flexibility</h2>
+            <p>Accessible experiences also load fast and adapt to different devices. Our engineers prioritize semantic HTML, leverage ARIA roles judiciously, and keep interaction logic lightweight for assistive technologies. We pre-render key screens to reduce time-to-interaction and use service workers to manage offline states, ensuring the experience remains stable even on unreliable networks.</p>
+            <p>International campaigns demand robust localization pipelines. We implement translation keys with pluralization support, dynamic layout adjustments for right-to-left languages, and asset management systems that swap audio and video files per locale. Unit tests cover language switches, screen reader announcements, and time zone logic.</p>
+
+            <h3>Engineering Safeguards</h3>
+            <ul>
+                <li>Automated accessibility tests in CI covering contrast, semantic structure, and keyboard traps.</li>
+                <li>Performance budgets enforced at 2 seconds for Largest Contentful Paint on 3G devices.</li>
+                <li>Error handling that provides descriptive recovery paths rather than generic alerts.</li>
+                <li>Feature flags allowing gradual rollouts and quick rollbacks when accessibility regressions occur.</li>
+            </ul>
+
+            <h2>QA As a Cross-Disciplinary Ritual</h2>
+            <p>Quality assurance blends manual and automated testing. Our QA leads partner with external auditors to run screen reader sessions across NVDA, JAWS, VoiceOver, and TalkBack. We validate keyboard-only navigation, voice control flows, and closed captions. During localization QA we verify line breaks, plural forms, and cultural references with native speakers.</p>
+            <p>Accessibility regressions can appear late in production, so we run "inclusion fire drills" before launch. Every discipline reviews the latest build, focusing solely on accessibility criteria. Findings are triaged within the same day, and we repeat the drill until the build passes without critical issues.</p>
+
+            <blockquote>
+                "Accessibility is not a box to tick. It's a creative constraint that pushes us to design smarter, clearer, and more joyful experiences for everyone."
+                <span class="block mt-2 font-semibold">— Maya Braun, Head of Production at Hutzpa Games</span>
+            </blockquote>
+
+            <h2>Governance Keeps Standards Alive</h2>
+            <p>Post-launch, accessibility requires ongoing governance. We maintain documentation hubs with component usage guidelines, localization glossaries, and support scripts. When product teams submit update requests, accessibility leads review the scope and assign additional QA time. We also run quarterly audits that compare the live experience against WCAG updates and local regulations.</p>
+            <p>Training is part of governance. We host workshops for client teams covering inclusive writing, alternative text best practices, and how to interpret accessibility reports. These sessions help internal stakeholders sustain the experience without introducing regressions.</p>
+
+            <h2>Resources You Can Use Today</h2>
+            <ul>
+                <li><strong>Accessibility Heuristic Scorecard:</strong> Evaluate your current experience across perception, interaction, and comprehension categories.</li>
+                <li><strong>Localization Glossary Template:</strong> Align terms, tone, and cultural references before translating your game.</li>
+                <li><strong>Inclusive Audio Checklist:</strong> Ensure music, narration, and sound effects enhance rather than hinder comprehension.</li>
+                <li><strong>Player Feedback Journal:</strong> Track accessibility reports, resolutions, and follow-up communication.</li>
+            </ul>
+
+            <h2>Partner With Hutzpa Games</h2>
+            <p>Our studio loves solving complex accessibility challenges. Whether you need an audit, a redesign, or a full production partner, we can help. Share your brief through the contact section on our main site and our producers will follow up with next steps.</p>
+        </article>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500 text-sm">
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="../privacy_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="../terms_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="../index.html#contact" class="hover:text-sky-600 underline">Contact</a>
+            </div>
+            <p>&copy; 2025 Hutzpa Games. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mainNav = document.getElementById('main-nav');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        if (menuButton && mainNav) {
+            menuButton.addEventListener('click', () => {
+                mainNav.classList.toggle('hidden');
+                hamburgerIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+            });
+        }
+
+    </script>
+</body>
+</html>
