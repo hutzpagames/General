@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hutzpa Games Blog - AI Arcade Stories, Tips, and News</title>
+    <meta name="description" content="Read the latest AI gaming stories, safety guides, and community news from Hutzpa Games.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #0284c7, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover,
+        .card-hover-effect:focus-within {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 20px -5px rgba(15, 23, 42, 0.2);
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+    <header class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <a href="../index.html" class="flex items-center gap-3 text-2xl font-bold text-gray-900">
+                <img src="../Logo.svg" alt="Hutzpa Games Logo" class="h-12 w-auto">
+                Hutzpa Games Blog
+            </a>
+            <nav class="flex flex-wrap items-center gap-4 text-sm font-semibold text-gray-600">
+                <a href="../index.html#games" class="hover:text-sky-500 transition-colors">Games</a>
+                <a href="../index.html#community" class="hover:text-sky-500 transition-colors">Community</a>
+                <a href="../index.html#contact" class="hover:text-sky-500 transition-colors">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="py-16">
+        <section class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="uppercase tracking-widest text-xs font-semibold text-sky-500">AI Arcade</p>
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-gray-900 mb-4">Stories, Tips, and Research For AI-Powered Play</h1>
+                <p class="text-gray-600">Welcome to our editorial home. We post weekly deep dives about how our games evolve, wellness advice for players and parents, and behind-the-scenes updates from the Hutzpa Games studio.</p>
+            </div>
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <article class="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col card-hover-effect">
+                    <p class="text-xs uppercase tracking-widest text-sky-500 font-semibold mb-2">AI Systems</p>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3"><a href="./adaptive-ai-puzzle-design.html" class="hover:text-sky-600">How Our Daily AI Puzzle Keeps Getting Smarter</a></h2>
+                    <p class="text-gray-600 flex-1">Discover how we blend reinforcement learning with player feedback loops to deliver a personalized challenge each morning.</p>
+                    <a href="./adaptive-ai-puzzle-design.html" class="mt-6 inline-flex items-center font-semibold text-sky-600 hover:text-sky-700">Read article<span class="ml-2" aria-hidden="true">&rarr;</span></a>
+                </article>
+                <article class="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col card-hover-effect">
+                    <p class="text-xs uppercase tracking-widest text-sky-500 font-semibold mb-2">Player Wellbeing</p>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3"><a href="./parents-guide-safe-ai-gaming.html" class="hover:text-sky-600">Parents' Guide To Safe AI Gaming Sessions</a></h2>
+                    <p class="text-gray-600 flex-1">Helpful tools and conversation starters so the whole family can enjoy our titles responsibly.</p>
+                    <a href="./parents-guide-safe-ai-gaming.html" class="mt-6 inline-flex items-center font-semibold text-sky-600 hover:text-sky-700">Read article<span class="ml-2" aria-hidden="true">&rarr;</span></a>
+                </article>
+                <article class="bg-white border border-gray-200 rounded-2xl p-6 flex flex-col card-hover-effect">
+                    <p class="text-xs uppercase tracking-widest text-sky-500 font-semibold mb-2">Accessibility</p>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3"><a href="./accessible-ai-adventures.html" class="hover:text-sky-600">Building Accessible AI Adventures For Everyone</a></h2>
+                    <p class="text-gray-600 flex-1">A look at the inclusive design choices that make our AI companions approachable for every player.</p>
+                    <a href="./accessible-ai-adventures.html" class="mt-6 inline-flex items-center font-semibold text-sky-600 hover:text-sky-700">Read article<span class="ml-2" aria-hidden="true">&rarr;</span></a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500 text-sm">
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="../privacy_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="../terms_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="../index.html#contact" class="hover:text-sky-600 underline">Contact</a>
+            </div>
+            <p>&copy; 2025 Hutzpa Games. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

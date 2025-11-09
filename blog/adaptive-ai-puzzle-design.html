@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Our Daily AI Puzzle Keeps Getting Smarter | Hutzpa Games Blog</title>
+    <meta name="description" content="Explore the adaptive systems behind Hutzpa Games' daily AI puzzle, including difficulty tuning, accessibility options, and player feedback loops.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .article-body p {
+            margin-bottom: 1.25rem;
+        }
+        .article-body h2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .article-body ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .article-body li {
+            margin-bottom: 0.75rem;
+        }
+        blockquote {
+            border-left: 4px solid #38bdf8;
+            padding-left: 1.25rem;
+            font-style: italic;
+            color: #334155;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+    <header class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-6 py-6 flex items-center justify-between">
+            <a href="./index.html" class="flex items-center gap-3 text-xl font-bold text-gray-900">
+                <img src="../Logo.svg" alt="Hutzpa Games Logo" class="h-10 w-auto">
+                Hutzpa Games Blog
+            </a>
+            <a href="../index.html" class="text-sm font-semibold text-sky-600 hover:text-sky-700">Back to Hutzpa Games</a>
+        </div>
+    </header>
+
+    <main class="py-16">
+        <article class="container mx-auto px-6 max-w-3xl bg-white border border-gray-200 rounded-3xl shadow-xl p-8 md:p-12">
+            <p class="text-xs uppercase tracking-widest text-sky-500 font-semibold mb-3">AI Systems</p>
+            <h1 class="text-4xl font-black tracking-tight text-gray-900 mb-6">How Our Daily AI Puzzle Keeps Getting Smarter</h1>
+            <p class="text-gray-500 text-sm mb-8">By Maya Ross, Lead Puzzle Designer · Updated March 2025</p>
+            <div class="article-body text-lg text-gray-600 leading-relaxed">
+                <p>The Daily Spark puzzle is the first thing thousands of Hutzpa players open every morning. It started as a simple five-by-five grid of word associations; today it is a living system that adjusts the challenge to your mood, remembers what makes you smile, and nudges you to stretch without feeling overwhelmed. In this deep dive we want to demystify the machine learning magic, share the player-first principles that guide our updates, and invite you into the feedback loop.</p>
+
+                <h2>Three Signals Drive Difficulty Tuning</h2>
+                <p>We combine player performance, sentiment, and accessibility settings to determine tomorrow’s puzzle shape. Every run is scored on more than success or failure; we analyze how long you hovered on clues, the hints you requested, and the alternative answers you proposed in freeform mode.</p>
+                <ul>
+                    <li><strong>Performance score:</strong> We reward steady progress and streak consistency rather than raw speed. That means a player who solves carefully without hints can still see their difficulty increase even if it takes longer.</li>
+                    <li><strong>Mood check-ins:</strong> Short emoji sliders let you tell us when you want to chill or compete. The AI respects that signal for at least three sessions to avoid whiplash.</li>
+                    <li><strong>Accessibility profile:</strong> Text size, color contrast, and audio narration preferences inform puzzle composition. If you enable high contrast, we avoid color-based clue mechanics.</li>
+                </ul>
+
+                <p>The combination of these signals creates a player vector that feeds our reinforcement learning agent. We retrain the agent weekly with anonymized, aggregated data to keep the experience fresh without chasing every blip.</p>
+
+                <h2>Design Safeguards Keep Things Fair</h2>
+                <p>Adaptive systems can go off the rails without healthy guardrails. We apply human review to every new mechanic before it can be surfaced in the live queue, and our community council participates in monthly playtests. These practices ensure that surprises feel delightful, not punishing.</p>
+                <blockquote>“We don’t want the AI to chase difficulty for difficulty’s sake. If a puzzle doesn’t spark curiosity and teach you something new, it doesn’t ship.” — Maya Ross</blockquote>
+                <p>Another safeguard is the comfort reset. If your streak drops twice in a row, the agent automatically lowers complexity for your next three plays while surfacing tutorial cards in the UI. You can also hit the manual reset button from the settings menu if life gets busy.</p>
+
+                <h2>Player Feedback Shapes Our Roadmap</h2>
+                <p>Every article needs a clear call to action: please keep telling us what works for you. We read every note that arrives via <a href="mailto:play@hutzpagames.com" class="text-sky-600 hover:text-sky-700 underline">play@hutzpagames.com</a>, and our Discord #daily-spark channel has become a thriving lab for new clue types. Recent additions such as cooperative lightning rounds and narrated mindfulness breaks were born directly from community suggestions.</p>
+
+                <h2>Try The Experimental Mode</h2>
+                <p>If you want an early peek at what’s next, toggle on Experimental Mode in your profile. You’ll see preview mechanics like theme voting, AI-generated art clues, and rhythm-based timers. Experimental Mode is optional, clearly labeled, and never required to maintain your streak. We gather analytics from volunteers only after they opt in.</p>
+
+                <p>Our vision is simple: keep mornings playful, mindful, and meaningful. As long as you keep solving, we’ll keep listening and iterating. See you tomorrow at reset!</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500 text-sm">
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="../privacy_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="../terms_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="../index.html#contact" class="hover:text-sky-600 underline">Contact</a>
+            </div>
+            <p>&copy; 2025 Hutzpa Games. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
