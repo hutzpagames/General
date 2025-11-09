@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hutzpa Games Blog - Insights on Gamified Marketing and Branded Games</title>
+    <meta name="description" content="Deep dives, case studies, and best practices from Hutzpa Games on building successful gamified marketing campaigns, branded mini-games, and interactive training experiences.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #0284c7, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover,
+        .card-hover-effect:focus-within {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <img src="../Logo.svg" alt="Hutzpa Games Logo" class="h-12 w-auto" />
+                    Hutzpa Games
+                </a>
+            </h1>
+            <nav id="main-nav" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex-col items-center space-y-4 md:static md:flex-row md:space-y-0 md:space-x-8 md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
+                <a href="../index.html#services" class="text-gray-600 hover:text-sky-500 transition-colors">Services</a>
+                <a href="../index.html#insights" class="text-gray-600 hover:text-sky-500 transition-colors">Insights</a>
+                <a href="../index.html#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">Portfolio</a>
+                <a href="./index.html" class="text-gray-900 font-semibold">Blog</a>
+                <a href="../index.html#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">Get a Quote</a>
+                <a href="../he.html" class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                    HE
+                </a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 z-50" aria-label="Open menu" aria-expanded="false">
+                <svg id="hamburger-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <section class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-4xl mx-auto">
+                    <p class="uppercase tracking-[0.3em] text-xs font-semibold text-sky-600 mb-3">Hutzpa Games Blog</p>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-gray-900 mb-6">Deep Strategy, Playful Execution</h2>
+                    <p class="text-lg text-gray-600">Our studio turns marketing and education challenges into interactive experiences that people willingly spend time with. The articles below document the processes, frameworks, and lessons we have developed through client projects across retail, fintech, media, education, and public sector partners.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-20">
+            <div class="container mx-auto px-6 grid gap-8 lg:grid-cols-3">
+                <article class="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col card-hover-effect shadow-lg">
+                    <p class="text-sm font-semibold uppercase tracking-widest text-sky-500 mb-2">Strategy Playbook</p>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4"><a href="./gamified-customer-loyalty.html" class="hover:text-sky-600">Designing Gamified Loyalty Programs That Retain Customers</a></h3>
+                    <p class="text-gray-600 flex-1">An end-to-end guide on mapping customer journeys, selecting reward mechanics, and using analytics to keep engagement high long after campaign launch. Includes downloadable checklists and workshop prompts.</p>
+                    <a href="./gamified-customer-loyalty.html" class="mt-6 inline-flex items-center font-semibold text-sky-600 hover:text-sky-700">Read the full guide<span class="ml-2" aria-hidden="true">&rarr;</span></a>
+                </article>
+                <article class="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col card-hover-effect shadow-lg">
+                    <p class="text-sm font-semibold uppercase tracking-widest text-sky-500 mb-2">Case Study</p>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4"><a href="./viral-branded-mini-game-case-study.html" class="hover:text-sky-600">Behind The Scenes of a Viral Branded Mini-Game Launch</a></h3>
+                    <p class="text-gray-600 flex-1">A transparent timeline of how our team produced a multilingual trivia experience for a household brand, including UX research insights, art direction decisions, and post-launch optimization tactics.</p>
+                    <a href="./viral-branded-mini-game-case-study.html" class="mt-6 inline-flex items-center font-semibold text-sky-600 hover:text-sky-700">See the case study<span class="ml-2" aria-hidden="true">&rarr;</span></a>
+                </article>
+                <article class="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col card-hover-effect shadow-lg">
+                    <p class="text-sm font-semibold uppercase tracking-widest text-sky-500 mb-2">Production Craft</p>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4"><a href="./accessible-gamified-campaigns.html" class="hover:text-sky-600">Building Accessible Games For Global Campaigns</a></h3>
+                    <p class="text-gray-600 flex-1">Practical steps for designing inclusive interactive content: localization workflows, assistive technology support, and QA rituals that help every player feel welcome.</p>
+                    <a href="./accessible-gamified-campaigns.html" class="mt-6 inline-flex items-center font-semibold text-sky-600 hover:text-sky-700">Learn our process<span class="ml-2" aria-hidden="true">&rarr;</span></a>
+                </article>
+            </div>
+        </section>
+
+        <section class="pb-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto bg-slate-50 border border-gray-200 rounded-2xl p-10">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Why We Share Our Playbooks</h3>
+                    <p class="text-gray-600 mb-4">Every project we take on blends behavioral psychology, storytelling, and cutting-edge web technology. Publishing our methodology keeps us accountable to rigorous standards and helps marketers, educators, and innovation teams understand how to collaborate with us effectively.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li><strong>Transparent processes:</strong> We break down ideation, prototyping, art, engineering, deployment, and analytics so stakeholders can see the full lifecycle.</li>
+                        <li><strong>Actionable templates:</strong> Many articles include workshop agendas, KPI dashboards, and testing scorecards that your team can adapt immediately.</li>
+                        <li><strong>Continuous improvement:</strong> Documenting our experiments pushes us to iterate quickly and share what worked—as well as what we would refine next time.</li>
+                    </ul>
+                    <p class="text-gray-600 mt-4">Have a question about something we published? Use the contact section on our main site to share your brief and we will get back to you promptly.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500 text-sm">
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="../privacy_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="../terms_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="../index.html#contact" class="hover:text-sky-600 underline">Contact</a>
+            </div>
+            <p>&copy; 2025 Hutzpa Games. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mainNav = document.getElementById('main-nav');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        if (menuButton && mainNav) {
+            menuButton.addEventListener('click', () => {
+                mainNav.classList.toggle('hidden');
+                hamburgerIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+            });
+        }
+    </script>
+</body>
+</html>
