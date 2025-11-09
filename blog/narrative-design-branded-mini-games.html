@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrative Design Pillars for Branded Mini-Games | Hutzpa Games</title>
+    <meta name="description" content="Create branded mini-games with compelling narrative arcs. Hutzpa Games shares story structures, character development tips, and localization guidance for marketing and education projects.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .prose-custom h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 2.5rem;
+        }
+        .prose-custom h3 {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 2rem;
+        }
+        .prose-custom p {
+            margin-top: 1.25rem;
+            color: #475569;
+            line-height: 1.75;
+        }
+        .prose-custom ul {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+        .prose-custom li {
+            margin-bottom: 0.75rem;
+        }
+        .story-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        @media (min-width: 1024px) {
+            .story-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+        .story-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .story-card h2 {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .story-card p {
+            color: #475569;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <img src="../Logo.svg" alt="Hutzpa Games Logo" class="h-12 w-auto" />
+                    Hutzpa Games
+                </a>
+            </h1>
+            <nav id="main-nav" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex-col items-center space-y-4 md:static md:flex-row md:space-y-0 md:space-x-8 md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
+                <a href="../index.html#services" class="text-gray-600 hover:text-sky-500 transition-colors">Services</a>
+                <a href="../index.html#insights" class="text-gray-600 hover:text-sky-500 transition-colors">Insights</a>
+                <a href="../index.html#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">Portfolio</a>
+                <a href="./index.html" class="text-gray-600 hover:text-sky-500 transition-colors">Blog</a>
+                <a href="../index.html#contact" class="text-sky-600 border border-sky-200 hover:border-sky-400 hover:bg-sky-50 font-semibold px-5 py-2 rounded-lg transition-colors">Explore Collaborations</a>
+                <a href="./he/index.html" class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                    HE
+                </a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 z-50" aria-label="Open menu" aria-expanded="false">
+                <svg id="hamburger-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-20">
+        <section class="bg-slate-100 border-b border-slate-200">
+            <div class="container mx-auto px-6 py-16">
+                <p class="text-sm uppercase tracking-[0.3em] font-semibold text-sky-600 mb-3">Game Design Craft</p>
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-gray-900 mb-6">Narrative Design Pillars for Branded Mini-Games</h1>
+                <p class="text-lg text-gray-600 max-w-3xl">Storytelling is what transforms a branded experience from a campaign asset into a memorable journey. We design narratives that honor the brand, empower players, and adapt across languages. These pillars guide our story teams from pitch deck to localization QA.</p>
+                <div class="story-grid mt-10">
+                    <div class="story-card">
+                        <h2>Theme</h2>
+                        <p>Define an emotional anchor aligned with brand promise.</p>
+                    </div>
+                    <div class="story-card">
+                        <h2>Characters</h2>
+                        <p>Develop multi-dimensional protagonists and supporting cast.</p>
+                    </div>
+                    <div class="story-card">
+                        <h2>Structure</h2>
+                        <p>Plan beats for onboarding, rising tension, climax, and resolution.</p>
+                    </div>
+                    <div class="story-card">
+                        <h2>Localization</h2>
+                        <p>Build modular copy and art ready for regional adaptation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mx-auto px-6 max-w-4xl mt-12">
+            <div class="bg-white border border-gray-200 rounded-2xl p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-sky-600">Author</p>
+                    <p class="text-xl font-semibold text-gray-900">Lior Hazan</p>
+                    <p class="text-sm text-gray-600">Narrative Director, Hutzpa Games</p>
+                </div>
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-sky-600">Published</p>
+                    <p class="text-sm text-gray-600">February 5, 2025</p>
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-sm text-gray-600 leading-6">Lior leads story teams crafting multilingual narratives for brands, museums, and edtech organizations. He blends dramaturgy with interaction design to keep players emotionally invested.</p>
+                </div>
+            </div>
+        </section>
+
+        <article class="container mx-auto px-6 max-w-4xl prose-custom mt-16">
+            <h2>Anchor Every Mission in Theme</h2>
+            <p>We start with a single thematic sentence, such as "Curiosity uncovers hidden talents" or "Generosity sparks community." Every mission, collectible, and challenge references this theme through dialogue, UI copy, and art direction. Players feel consistent emotional cues regardless of level.</p>
+
+            <h2>Write Characters With Agency</h2>
+            <p>Branded games often rely on mascots, but agency matters more than mascots. We give protagonists decisions that alter the experience: choosing how to approach a puzzle, which ally to recruit, or what reward to prioritize. Non-playable characters provide mentorship without stealing the spotlight.</p>
+
+            <h3>Character Toolkit</h3>
+            <ul>
+                <li>Motivation triangle (personal, communal, brand-aligned).</li>
+                <li>Signature phrases and gestures that reinforce tone.</li>
+                <li>Accessibility notes covering pronunciation, reading level, and cultural context.</li>
+            </ul>
+
+            <h2>Storyboard the Journey</h2>
+            <p>Our team uses four-act structures to map pacing. Act I introduces the world and mechanics. Act II complicates the mission with new twists. Act III delivers a climactic challenge that tests mastered skills. Act IV celebrates the player and offers epilogues or bonus quests.</p>
+            <p>Storyboards align writers, artists, and engineers. We annotate each frame with dialogue beats, UI states, and audio cues so production can scale smoothly.</p>
+
+            <h2>Localize With Respect</h2>
+            <p>Localization is more than translation. We supply context files with cultural references, idioms, and tonal guidelines. Voice-over scripts include pronunciation guides, while art layers separate text elements for quick swaps. Regional consultants review early builds to flag cultural mismatches.</p>
+
+            <h2>Recommended Reading</h2>
+            <ul>
+                <li><a href="./art-direction-branded-games.html" class="text-sky-600 font-semibold hover:text-sky-700">Art Direction Systems for Branded Games</a> – pair narrative beats with cohesive visual design.</li>
+                <li><a href="./sound-design-brand-campaigns.html" class="text-sky-600 font-semibold hover:text-sky-700">Sound Design that Amplifies Branded Play</a> – reinforce storytelling through audio.</li>
+                <li><a href="./gamified-saas-onboarding.html" class="text-sky-600 font-semibold hover:text-sky-700">Designing Gamified SaaS Onboarding Journeys</a> – adapt narrative techniques for product education.</li>
+            </ul>
+
+            <h2>Let's Tell Better Stories Together</h2>
+            <p>Have a concept that needs narrative firepower? Share a short brief through the <a href="../index.html#contact" class="text-sky-600 font-semibold hover:text-sky-700">contact form</a> and we'll suggest story shapes that resonate globally.</p>
+        </article>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-500 text-sm">
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="../privacy_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="../terms_en.html" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 underline">Terms of Service</a>
+                <span>&bull;</span>
+                <a href="../index.html#contact" class="hover:text-sky-600 underline">Contact</a>
+            </div>
+            <p>&copy; 2025 Hutzpa Games LTD – 518667345.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mainNav = document.getElementById('main-nav');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        if (menuButton && mainNav) {
+            menuButton.addEventListener('click', () => {
+                mainNav.classList.toggle('hidden');
+                hamburgerIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+            });
+        }
+    </script>
+</body>
+</html>
