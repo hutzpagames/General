@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -15,10 +16,12 @@
             --alias-white: #ffffff;
             --alias-dark: #2c2c2c;
             --alias-light-gray: #f7f7f7;
-            --header-height: 4.5rem; /* Standard header height */
+            --header-height: 4.5rem;
+            /* Standard header height */
         }
 
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
             overflow: hidden;
@@ -32,20 +35,21 @@
             flex-direction: column;
             height: 100%;
         }
-    
+
         #app-wrapper {
-            flex-grow: 1; 
+            flex-grow: 1;
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch; 
+            -webkit-overflow-scrolling: touch;
             padding: 1rem;
             padding-bottom: calc(1rem + env(safe-area-inset-bottom));
             /* Add padding-top to account for the fixed header */
-            padding-top: calc(1rem + var(--header-height)); 
+            padding-top: calc(1rem + var(--header-height));
         }
 
-        #setup-screen, #game-screen {
-           max-height: none;
-           overflow-y: visible;
+        #setup-screen,
+        #game-screen {
+            max-height: none;
+            overflow-y: visible;
         }
 
         #app-container {
@@ -53,63 +57,189 @@
             flex-direction: column;
             justify-content: center;
         }
+
         .alias-title {
             font-weight: 900;
             color: var(--alias-red);
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.05);
         }
-        .card { -webkit-perspective: 1000; perspective: 1000; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-        .card.is-flipped { transform: rotateY(180deg); }
-        .card__face { -webkit-backface-visibility: hidden; backface-visibility: hidden; position: absolute; width: 100%; height: 100%; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border: 2px solid var(--alias-dark); }
-        .card__face--front { background-color: var(--alias-white); color: var(--alias-dark); }
-        .card__face--back { transform: rotateY(180deg); background-color: var(--alias-red); color: var(--alias-white); border-color: var(--alias-red); }
-        .btn { transition: all 0.15s ease-in-out; border-radius: 0.75rem; font-weight: 700; }
-        .btn:active { transform: scale(0.96); filter: brightness(0.95); }
-        .btn-red { background-color: var(--alias-red); color: var(--alias-white); }
-        .btn-outline { background-color: var(--alias-white); color: var(--alias-red); border: 2px solid var(--alias-red); }
-        .score-box { background-color: var(--alias-white); border: 2px solid #e5e7eb; color: var(--alias-dark); transition: all 0.3s ease-in-out; border-radius: 0.5rem; position: relative; overflow: hidden; }
-        .score-box.active { border: 2px solid var(--alias-red); }
-        .modal-content { transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; }
-        .btn-outline.selected { background-color: var(--alias-red); color: var(--alias-white); }
-        .score-change { position: absolute; top: 50%; left: 50%; font-size: 1.5rem; font-weight: 900; opacity: 0; pointer-events: none; direction: ltr; }
-        .score-change.plus-one { color: #16a34a; animation: float-up-left 0.8s ease-out forwards; }
-        .score-change.minus-one { color: var(--alias-red); animation: float-up-right 0.8s ease-out forwards; }
-        @keyframes float-up-left { 0% { opacity: 1; transform: translate(-120%, -50%); } 100% { opacity: 0; transform: translate(-120%, -150%); } }
-        @keyframes float-up-right { 0% { opacity: 1; transform: translate(20%, -50%); } 100% { opacity: 0; transform: translate(20%, -150%); } }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
-        
+
+        .card {
+            -webkit-perspective: 1000;
+            perspective: 1000;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card__face {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 2px solid var(--alias-dark);
+        }
+
+        .card__face--front {
+            background-color: var(--alias-white);
+            color: var(--alias-dark);
+        }
+
+        .card__face--back {
+            transform: rotateY(180deg);
+            background-color: var(--alias-red);
+            color: var(--alias-white);
+            border-color: var(--alias-red);
+        }
+
+        .btn {
+            transition: all 0.15s ease-in-out;
+            border-radius: 0.75rem;
+            font-weight: 700;
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+            filter: brightness(0.95);
+        }
+
+        .btn-red {
+            background-color: var(--alias-red);
+            color: var(--alias-white);
+        }
+
+        .btn-outline {
+            background-color: var(--alias-white);
+            color: var(--alias-red);
+            border: 2px solid var(--alias-red);
+        }
+
+        .score-box {
+            background-color: var(--alias-white);
+            border: 2px solid #e5e7eb;
+            color: var(--alias-dark);
+            transition: all 0.3s ease-in-out;
+            border-radius: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-box.active {
+            border: 2px solid var(--alias-red);
+        }
+
+        .modal-content {
+            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+        }
+
+        .btn-outline.selected {
+            background-color: var(--alias-red);
+            color: var(--alias-white);
+        }
+
+        .score-change {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 1.5rem;
+            font-weight: 900;
+            opacity: 0;
+            pointer-events: none;
+            direction: ltr;
+        }
+
+        .score-change.plus-one {
+            color: #16a34a;
+            animation: float-up-left 0.8s ease-out forwards;
+        }
+
+        .score-change.minus-one {
+            color: var(--alias-red);
+            animation: float-up-right 0.8s ease-out forwards;
+        }
+
+        @keyframes float-up-left {
+            0% {
+                opacity: 1;
+                transform: translate(-120%, -50%);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-120%, -150%);
+            }
+        }
+
+        @keyframes float-up-right {
+            0% {
+                opacity: 1;
+                transform: translate(20%, -50%);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(20%, -150%);
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
         /* Custom CSS for Collapsed Content */
         summary {
-            list-style: none; /* Hide default marker */
+            list-style: none;
+            /* Hide default marker */
             /* Adjusted styling for smaller footprint */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem; /* Smaller font */
-            padding: 0.5rem 0; /* Reduced vertical padding */
+            font-size: 0.9rem;
+            /* Smaller font */
+            padding: 0.5rem 0;
+            /* Reduced vertical padding */
         }
+
         /* Hide default marker in most browsers */
-        summary::marker, summary::-webkit-details-marker {
+        summary::marker,
+        summary::-webkit-details-marker {
             display: none;
             content: "";
         }
+
         /* Add a custom icon for open/closed state */
         summary:after {
             content: '▼';
             margin-right: 0.5rem;
             transition: transform 0.2s;
-            font-size: 0.6rem; /* Smaller icon */
+            font-size: 0.6rem;
+            /* Smaller icon */
             color: #d92d20;
         }
-        details[open] > summary:after {
+
+        details[open]>summary:after {
             content: '▲';
             transform: rotate(0deg);
         }
     </style>
 
-    <title>קצה הלשון - המשחק</title>
+    <title>!קצה הלשון - המשחק</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#d92d20"/>
+    <meta name="theme-color" content="#d92d20" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="קצה הלשון">
@@ -132,350 +262,413 @@
         gtag("set", "url_passthrough", false);
     </script>
 
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="267927be-58f1-486c-a44b-3def1a91602a" data-blockingmode="auto" type="text/javascript"></script>
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="267927be-58f1-486c-a44b-3def1a91602a"
+        data-blockingmode="auto" type="text/javascript"></script>
 
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5QXV8XX5');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5QXV8XX5');</script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5QVVCDFEY"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J5QVVCDFEY');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-J5QVVCDFEY');
     </script>
-       <script async
-       data-ad-frequency-hint="30s"
-       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=pub-6878123086661063" # your publisher ID
-        data-adbreak-test="on"
-       crossorigin="anonymous">
-   </script>
-   <script>
-      window.adsbygoogle = window.adsbygoogle || [];
-      var adBreak = adConfig = function(o) {adsbygoogle.push(o);}
-   </script>
+    <script async data-ad-frequency-hint="30s"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=pub-6878123086661063"
+        data-adbreak-test="on" crossorigin="anonymous">
+        </script>
+    <script>
+        window.adsbygoogle = window.adsbygoogle || [];
+        var adBreak = adConfig = function (o) { adsbygoogle.push(o); }
+    </script>
 </head>
 
 <body>
     <script async src="https://tally.so/widgets/embed.js"></script>
 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QXV8XX5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QXV8XX5" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
-<div id="layout-container">
+    <div id="layout-container">
 
-    <!-- START: FULL NAVIGATION BAR (HEBREW) -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200 h-[var(--header-height)]">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
-                <a href="../he.html" class="flex items-center gap-2">
-                    <img src="../Logo.svg" alt="הלוגו של חוצפה גיימס" class="h-12 w-auto" />
-                    חוצפה גיימס
-                </a>
-            </h1>
-            <nav id="main-nav" class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex flex-col items-center space-y-4 
-                                    md:static md:flex-row md:space-y-0 md:space-x-8 md:space-x-reverse md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
-                <!-- Links point to main page sections -->
-                <a href="../he.html#services" class="text-gray-600 hover:text-sky-500 transition-colors">שירותים</a>
-                <a href="../he.html#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">תיק עבודות</a>
-                <a href="../he.html#contact" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">קבלו הצעת מחיר</a>
-                <!-- Language Switcher - Links to the English home page -->
-                <a href="../index.html" class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91 3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
-                    EN
-                </a>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 z-50" aria-label="פתח תפריט" aria-expanded="false">
-                <svg id="hamburger-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-                <svg id="close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-    </header>
-    <!-- END: FULL NAVIGATION BAR -->
-
-    <main id="app-wrapper">
-        <div id="app-container" class="w-full max-w-md mx-auto">
-            <div id="setup-screen" class="bg-white p-6 md:p-8 rounded-xl shadow-lg text-center">
-                <h1 class="text-6xl mb-4 alias-title">קצה הלשון</h1>
-                <p class="text-gray-500 mb-8">נחשו מילים עם חברים!</p>
-
-                <div id="team-inputs-container" class="space-y-4 mb-4">
-                    <div class="flex items-center gap-2">
-                        <label for="team1-name" class="sr-only">שם קבוצה 1</label>
-                        <input type="text" id="team1-name" placeholder="שם קבוצה 1" value="קבוצה א'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <label for="team2-name" class="sr-only">שם קבוצה 2</label>
-                        <input type="text" id="team2-name" placeholder="שם קבוצה 2" value="קבוצה ב'" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
-                    </div>
-                </div>
-                <button id="add-team-btn" class="w-full mb-6 py-2 px-4 text-md text-red-600 font-semibold rounded-lg border-2 border-dashed border-red-300 hover:bg-red-50 transition">
-                    + הוסף קבוצה
-                </button>
-
-                <div class="mb-8">
-                    <fieldset>
-                        <legend class="block text-sm font-medium text-gray-700 mb-2">נקודות לניצחון</legend>
-                        <div id="score-options" class="flex justify-center gap-2 max-w-xs mx-auto">
-                            <button class="score-option w-full py-3 btn btn-outline" data-value="10">10</button>
-                            <button class="score-option w-full py-3 btn btn-outline selected" data-value="20">20</button>
-                            <button class="score-option w-full py-3 btn btn-outline" data-value="50">50</button>
-                        </div>
-                    </fieldset>
-                </div>
-
-                <button id="start-game-btn" class="w-full py-4 px-6 text-2xl shadow-lg transform btn btn-red mb-4">
-                    התחל משחק
-                </button>
-                <div class="grid grid-cols-2 gap-4">
-                    <button id="add-words-btn" class="w-full py-3 px-6 text-lg shadow-md transform btn btn-outline">
-                        הוסף מילים
-                    </button>
-                    <button id="how-to-play-btn" class="w-full py-3 px-6 text-lg shadow-md transform btn btn-outline">
-                        איך משחקים?
-                    </button>
-                </div>
-
-                <div class="mt-4">
-                    <a href="#tally-open=nrzGoM&tally-hide-title=1&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=0&tally-form-events-forwarding=1" id="suggestions-btn" class="w-full block py-3 px-6 text-lg shadow-md transform btn btn-outline text-center">
-                        הצעות לשיפור
+        <!-- START: FULL NAVIGATION BAR (HEBREW) -->
+        <header
+            class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200 h-[var(--header-height)]">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <h1 class="text-2xl font-bold tracking-tighter text-gray-900">
+                    <a href="../he.html" class="flex items-center gap-2">
+                        <img src="../Logo.svg" alt="הלוגו של חוצפה גיימס" class="h-12 w-auto" />
+                        חוצפה גיימס
                     </a>
-                </div>
+                </h1>
+                <nav id="main-nav"
+                    class="absolute top-full left-0 w-full bg-white/95 backdrop-blur-sm p-6 shadow-lg hidden flex flex-col items-center space-y-4 
+                                    md:static md:flex-row md:space-y-0 md:space-x-8 md:space-x-reverse md:w-auto md:bg-transparent md:p-0 md:shadow-none md:flex">
+                    <!-- Links point to main page sections -->
+                    <a href="../he.html#services" class="text-gray-600 hover:text-sky-500 transition-colors">שירותים</a>
+                    <a href="../he.html#portfolio" class="text-gray-600 hover:text-sky-500 transition-colors">תיק
+                        עבודות</a>
+                    <a href="../he.html#contact"
+                        class="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-5 py-2 rounded-lg transition-colors">קבלו
+                        הצעת מחיר</a>
+                    <!-- Language Switcher - Links to the English home page -->
+                    <a href="../index.html"
+                        class="flex items-center gap-1 text-gray-600 hover:text-sky-500 transition-colors font-semibold">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91 3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" />
+                        </svg>
+                        EN
+                    </a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 z-50" aria-label="פתח תפריט"
+                    aria-expanded="false">
+                    <svg id="hamburger-icon" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
+        </header>
+        <!-- END: FULL NAVIGATION BAR -->
 
-            <div id="game-screen" class="hidden w-full">
-                <div id="last-round-banner" class="hidden text-center bg-red-600 text-white font-bold p-2 mb-4 rounded-lg shadow-md animate-pulse">
-                </div>
-                <div id="tie-breaker-banner" class="hidden text-center bg-blue-600 text-white font-bold p-2 mb-4 rounded-lg shadow-md">
-                </div>
-                <div class="mb-4 text-center">
-                    <button id="edit-scores-btn" class="py-2 px-5 text-sm btn btn-outline hidden">
-                        עריכת ניקוד
+        <main id="app-wrapper">
+            <div id="app-container" class="w-full max-w-md mx-auto">
+                <div id="setup-screen" class="bg-white p-6 md:p-8 rounded-xl shadow-lg text-center">
+                    <h1 class="text-6xl mb-4 alias-title">קצה הלשון</h1>
+                    <p class="text-gray-500 mb-8">נחשו מילים עם חברים!</p>
+
+                    <div id="team-inputs-container" class="space-y-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <label for="team1-name" class="sr-only">שם קבוצה 1</label>
+                            <input type="text" id="team1-name" placeholder="שם קבוצה 1" value="קבוצה א'"
+                                class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <label for="team2-name" class="sr-only">שם קבוצה 2</label>
+                            <input type="text" id="team2-name" placeholder="שם קבוצה 2" value="קבוצה ב'"
+                                class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                        </div>
+                    </div>
+                    <button id="add-team-btn"
+                        class="w-full mb-6 py-2 px-4 text-md text-red-600 font-semibold rounded-lg border-2 border-dashed border-red-300 hover:bg-red-50 transition">
+                        + הוסף קבוצה
                     </button>
-                </div>
-                <div class="flex items-start justify-center gap-3 mb-6">
-                    <div id="scores-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 flex-grow">
+
+                    <div class="mb-8">
+                        <fieldset>
+                            <legend class="block text-sm font-medium text-gray-700 mb-2">נקודות לניצחון</legend>
+                            <div id="score-options" class="flex justify-center gap-2 max-w-xs mx-auto">
+                                <button class="score-option w-full py-3 btn btn-outline" data-value="10">10</button>
+                                <button class="score-option w-full py-3 btn btn-outline selected"
+                                    data-value="20">20</button>
+                                <button class="score-option w-full py-3 btn btn-outline" data-value="50">50</button>
+                            </div>
+                        </fieldset>
                     </div>
-                    <div class="text-center bg-white rounded-lg p-2 shadow-md flex-shrink-0">
-                        <div class="text-5xl font-black text-gray-800" id="timer">60</div>
-                        <div class="text-sm text-gray-500">שניות</div>
+
+                    <button id="start-game-btn" class="w-full py-4 px-6 text-2xl shadow-lg transform btn btn-red mb-4">
+                        התחל משחק
+                    </button>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button id="add-words-btn" class="w-full py-3 px-6 text-lg shadow-md transform btn btn-outline">
+                            הוסף מילים
+                        </button>
+                        <button id="how-to-play-btn"
+                            class="w-full py-3 px-6 text-lg shadow-md transform btn btn-outline">
+                            איך משחקים?
+                        </button>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="#tally-open=nrzGoM&tally-hide-title=1&tally-emoji-text=👋&tally-emoji-animation=wave&tally-auto-close=0&tally-form-events-forwarding=1"
+                            id="suggestions-btn"
+                            class="w-full block py-3 px-6 text-lg shadow-md transform btn btn-outline text-center">
+                            הצעות לשיפור
+                        </a>
                     </div>
                 </div>
 
-                <div class="relative h-64 mb-6">
-                    <div class="card w-full h-full" id="word-card">
-                        <div class="card__face card__face--front flex items-center justify-center p-6">
-                            <div class="text-center">
-                                <h2 class="text-2xl md:text-3xl font-bold">התור של <span id="current-team-name-card"></span></h2>
-                                <p class="text-gray-500 mt-2">הפכו את הקלף כדי להתחיל</p>
+                <div id="game-screen" class="hidden w-full">
+                    <div id="last-round-banner"
+                        class="hidden text-center bg-red-600 text-white font-bold p-2 mb-4 rounded-lg shadow-md animate-pulse">
+                    </div>
+                    <div id="tie-breaker-banner"
+                        class="hidden text-center bg-blue-600 text-white font-bold p-2 mb-4 rounded-lg shadow-md">
+                    </div>
+                    <div class="mb-4 text-center">
+                        <button id="edit-scores-btn" class="py-2 px-5 text-sm btn btn-outline hidden">
+                            עריכת ניקוד
+                        </button>
+                    </div>
+                    <div class="flex items-start justify-center gap-3 mb-6">
+                        <div id="scores-container"
+                            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 flex-grow">
+                        </div>
+                        <div class="text-center bg-white rounded-lg p-2 shadow-md flex-shrink-0">
+                            <div class="text-5xl font-black text-gray-800" id="timer">60</div>
+                            <div class="text-sm text-gray-500">שניות</div>
+                        </div>
+                    </div>
+
+                    <div class="relative h-64 mb-6">
+                        <div class="card w-full h-full" id="word-card">
+                            <div class="card__face card__face--front flex items-center justify-center p-6">
+                                <div class="text-center">
+                                    <h2 class="text-2xl md:text-3xl font-bold">התור של <span
+                                            id="current-team-name-card"></span></h2>
+                                    <p class="text-gray-500 mt-2">הפכו את הקלף כדי להתחיל</p>
+                                </div>
+                            </div>
+                            <div class="card__face card__face--back flex items-center justify-center p-6">
+                                <h2 id="word-display" class="text-5xl font-extrabold text-center">מילה</h2>
                             </div>
                         </div>
-                        <div class="card__face card__face--back flex items-center justify-center p-6">
-                            <h2 id="word-display" class="text-5xl font-extrabold text-center">מילה</h2>
+                    </div>
+
+                    <div id="action-buttons" class="grid grid-cols-2 gap-4 hidden">
+                        <button id="skip-btn"
+                            class="py-5 px-6 text-2xl shadow-lg transform btn btn-outline">דלג</button>
+                        <button id="correct-btn"
+                            class="py-5 px-6 text-2xl shadow-lg transform btn btn-red">הצלחנו!</button>
+                    </div>
+                </div>
+
+                <div id="how-to-play-modal" role="dialog" aria-modal="true"
+                    class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+                    <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-2xl font-bold text-gray-800">איך משחקים?</h2>
+                            <button id="close-how-to-play-btn"
+                                class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
+                        </div>
+                        <div class="space-y-4 text-gray-700 text-sm md:text-base max-h-[70vh] overflow-y-auto pr-2">
+                            <div>
+                                <h3 class="font-bold text-red-600 text-base md:text-lg">המטרה</h3>
+                                <p>לגרום לקבוצה שלכם לנחש כמה שיותר מילים.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-red-600 text-base md:text-lg">איך משחקים?</h3>
+                                <ul class="list-disc list-inside space-y-2 pr-2">
+                                    <li>מתחלקים לקבוצות (לפחות שני אנשים בכל קבוצה).</li>
+                                    <li>בכל סבב שחקן אחר בקבוצה יהיה המסביר.</li>
+                                    <li>המסביר צריך להסביר לקבוצה שלו כמה שיותר מילים תוך דקה. אם הם ניחשו את המילה הוא
+                                        לוחץ "הצלחנו!" והקבוצה מקבלת נקודה.</li>
+                                    <li><strong>אסור להגיד את המילה עצמה!</strong> גם לא מילים מאותו שורש, או חלקים של
+                                        המילה. אסור גם לומר את המילה בשפה אחרת. (למשל אם המילה היא "אוכל" אפשר להגיד
+                                        "מכניסים אותו לפה כשאתה רעב" אבל אסור להגיד "אוכלים אותו" או "FOOD").</li>
+                                    <li>אם לא יודעים, אפשר ללחוץ "דלג" ולאבד נקודה.</li>
+                                    <li>עברתם על החוקים? לחצו "דלג" כדי לאבד נקודה.</li>
+                                    <li>אם לחצתם בטעות על הכפתור הלא נכון, אפשר לערוך את הנקודות בסוף הסיבוב.</li>
+                                    <li>הקבוצה הראשונה שמגיעה למטרת הנקודות מנצחת!</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id="action-buttons" class="grid grid-cols-2 gap-4 hidden">
-                    <button id="skip-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-outline">דלג</button>
-                    <button id="correct-btn" class="py-5 px-6 text-2xl shadow-lg transform btn btn-red">הצלחנו!</button>
-                </div>
-            </div>
-
-            <div id="how-to-play-modal" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-                <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
-                    <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-2xl font-bold text-gray-800">איך משחקים?</h2>
-                        <button id="close-how-to-play-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
-                    </div>
-                    <div class="space-y-4 text-gray-700 text-sm md:text-base max-h-[70vh] overflow-y-auto pr-2">
-                        <div>
-                            <h3 class="font-bold text-red-600 text-base md:text-lg">המטרה</h3>
-                            <p>לגרום לקבוצה שלכם לנחש כמה שיותר מילים.</p>
+                <div id="custom-words-modal" role="dialog" aria-modal="true"
+                    class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+                    <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-2xl font-bold text-gray-800">הוספת מילים</h2>
+                            <button id="close-custom-words-btn"
+                                class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-red-600 text-base md:text-lg">איך משחקים?</h3>
-                            <ul class="list-disc list-inside space-y-2 pr-2">
-                                <li>מתחלקים לקבוצות (לפחות שני אנשים בכל קבוצה).</li>
-                                <li>בכל סבב שחקן אחר בקבוצה יהיה המסביר.</li>
-                                <li>המסביר צריך להסביר לקבוצה שלו כמה שיותר מילים תוך דקה. אם הם ניחשו את המילה הוא לוחץ "הצלחנו!" והקבוצה מקבלת נקודה.</li>
-                                <li><strong>אסור להגיד את המילה עצמה!</strong> גם לא מילים מאותו שורש, או חלקים של המילה. אסור גם לומר את המילה בשפה אחרת. (למשל אם המילה היא "אוכל" אפשר להגיד "מכניסים אותו לפה כשאתה רעב" אבל אסור להגיד "אוכלים אותו" או "FOOD").</li>
-                                <li>אם לא יודעים, אפשר ללחוץ "דלג" ולאבד נקודה.</li>
-                                <li>עברתם על החוקים? לחצו "דלג" כדי לאבד נקודה.</li>
-                                <li>אם לחצתם בטעות על הכפתור הלא נכון, אפשר לערוך את הנקודות בסוף הסיבוב.</li>
-                                <li>הקבוצה הראשונה שמגיעה למטרת הנקודות מנצחת!</li>
-                            </ul>
+                        <div class="space-y-4 text-gray-700">
+                            <label for="custom-words-textarea" class="text-sm">הכניסו מילים מותאמות אישית, מילה אחת בכל
+                                שורה.</label>
+                            <textarea id="custom-words-textarea"
+                                class="w-full h-40 p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
+                                placeholder="לדוגמה:&#10;פיל&#10;מחשב&#10;אהבה"></textarea>
+                            <button id="save-custom-words-btn"
+                                class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
+                                שמור והוסף
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="custom-words-modal" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-                <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
-                    <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-2xl font-bold text-gray-800">הוספת מילים</h2>
-                        <button id="close-custom-words-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
-                    </div>
-                    <div class="space-y-4 text-gray-700">
-                        <label for="custom-words-textarea" class="text-sm">הכניסו מילים מותאמות אישית, מילה אחת בכל שורה.</label>
-                        <textarea id="custom-words-textarea" class="w-full h-40 p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition" placeholder="לדוגמה:&#10;פיל&#10;מחשב&#10;אהבה"></textarea>
-                        <button id="save-custom-words-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                            שמור והוסף
+                <div id="edit-scores-modal" role="dialog" aria-modal="true"
+                    class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+                    <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-2xl font-bold text-gray-800">עריכת ניקוד</h2>
+                            <button id="close-edit-scores-btn"
+                                class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
+                        </div>
+                        <div id="edit-scores-list" class="space-y-4">
+                        </div>
+                        <button id="save-scores-btn"
+                            class="w-full mt-6 py-3 px-6 text-xl shadow-lg transform btn btn-red">
+                            שמור שינויים
                         </button>
                     </div>
                 </div>
-            </div>
 
-            <div id="edit-scores-modal" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-                <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-right modal-content">
-                    <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-2xl font-bold text-gray-800">עריכת ניקוד</h2>
-                        <button id="close-edit-scores-btn" class="text-gray-500 hover:text-red-500 text-3xl">&times;</button>
+                <div id="turn-over-modal" role="dialog" aria-modal="true"
+                    class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+                    <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full modal-content">
+                        <h2 class="text-4xl font-black text-gray-800 mb-2">הזמן נגמר!</h2>
+                        <p class="text-lg text-gray-600 mb-4">
+                            כל הכבוד, <span id="finished-team-name" class="font-bold"></span>!
+                        </p>
+                        <p class="text-gray-500 mb-6">
+                            הצלחתם <span id="turn-score" class="font-bold text-2xl"
+                                style="color: var(--alias-red);">0</span> מילים.
+                        </p>
+                        <button id="next-turn-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
+                            התור הבא
+                        </button>
                     </div>
-                    <div id="edit-scores-list" class="space-y-4">
+                </div>
+
+                <div id="countdown-modal"
+                    class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+                    <div id="countdown-display" class="text-9xl font-black text-white"
+                        style="text-shadow: 0 0 20px rgba(0,0,0,0.5);">3</div>
+                </div>
+
+                <div id="winning-screen" role="dialog" aria-modal="true"
+                    class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+                    <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full transform scale-95 opacity-0 modal-content"
+                        id="winning-modal-content">
+                        <div class="text-6xl mb-4">🏆</div>
+                        <h2 class="text-4xl font-black text-gray-800 mb-2">ניצחון!</h2>
+                        <p class="text-lg text-gray-600 mb-6">
+                            קבוצת <span id="winning-team-name" class="font-bold text-2xl"
+                                style="color: var(--alias-red);"></span> ניצחה!
+                        </p>
+                        <button id="play-again-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
+                            שחקו שוב
+                        </button>
                     </div>
-                    <button id="save-scores-btn" class="w-full mt-6 py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                        שמור שינויים
-                    </button>
                 </div>
+
+                <!-- COLLAPSIBLE PUBLISHER CONTENT SECTION (MOVED & STYLED FOR SMALLER FOOTPRINT) -->
+                <details id="publisher-content-details"
+                    class="mt-4 bg-white rounded-xl shadow-md border border-gray-200 p-4 text-right">
+                    <summary
+                        class="list-none cursor-pointer text-sm font-medium text-gray-700 hover:text-red-500 transition p-1 -m-1">
+                        מידע נוסף: על המשחק והגיימיפיקציה (לחץ לפתיחה)
+                    </summary>
+
+                    <div class="pt-4 mt-4 border-t border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">הערך והתוכן הייחודי של 'קצה הלשון'</h3>
+                        <p class="text-gray-700 mb-4 text-sm leading-relaxed">
+                            'קצה הלשון' הוא הרבה יותר ממשחק מילים; זוהי פלטפורמה חברתית וקצבית שהפכה במהירות ללהיט בקרב
+                            משפחות, חברים וקבוצות עבודה ברחבי ישראל. המשחק פותח על ידי **חוצפה גיימס** במטרה כפולה: לספק
+                            חווית בידור איכותית ומאתגרת, וכן להדגים את הכוח של גיימיפיקציה ככלי ליצירת מעורבות גבוהה.
+                        </p>
+                        <p class="text-gray-700 mb-4 text-sm leading-relaxed">
+                            <strong>מה הופך אותו לתוכן איכותי?</strong> המשחק מעמיד את כישורי ההסברה והחשיבה המהירה של
+                            המשתתפים במבחן. עם מגבלת זמן של 60 שניות לסיבוב והצורך להימנע משימוש במילים אסורות, נוצרת
+                            דינמיקה קבוצתית מצחיקה ומותחת. המילים המופיעות בכרטיסים נבחרו בקפידה מתוך מגוון רחב של
+                            נושאים, מה שהופך כל סיבוב למפתיע ותורם להרחבת אוצר המילים והשפה העברית.
+                        </p>
+
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">גיימיפיקציה כשפה של הדור הדיגיטלי</h3>
+                        <p class="text-gray-700 mb-4 text-sm leading-relaxed">
+                            בעידן שבו טווחי הקשב הולכים ומצטמצמים, תוכן אינטראקטיבי ומשחקי הוא הדרך היעילה ביותר ללכוד
+                            ולשמר את תשומת הלב של הקהל. חוצפה גיימס מתמחה בהפיכת מסרים מורכבים, הדרכות יבשות ואסטרטגיות
+                            שיווק סטנדרטיות למשחקים קצרים, זכירים ומעוררי שיתוף. כל משחק שאנו מפתחים, כולל 'קצה הלשון',
+                            מעוצב מראש כדי לייצר **תעבורה חוזרת (Retention)** ו**מעורבות אורגנית (Social Sharing)**. אנו
+                            מאמינים כי משחקים הם לא רק בידור, אלא כלי שיווקי ואסטרטגי רב עוצמה המייצר חוויית משתמש
+                            עשירה. אסטרטגיה זו היא הליבה של הערך המוסף שלנו כחברת תוכן ופיתוח.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed text-sm">
+                            אנו בחוצפה גיימס רואים במשחק זה את התגלמות הפילוסופיה שלנו: להפוך כל אינטראקציה – בין אם
+                            חברתית ובין אם שיווקית – לחוויה בלתי נשכחת ובעלת ערך אמיתי למשתמש. זהו תוכן ייחודי ובעל ערך
+                            שאינו רק משמש להצגת מודעות, אלא יוצר מעורבות עמוקה עם קהל המשתמשים.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-gray-200 text-center">
+                        <a href="../privacy_he.html" target="_blank" rel="noopener noreferrer"
+                            class="text-gray-500 hover:text-red-600 text-xs underline font-medium">מדיניות פרטיות
+                            ושימוש</a>
+                    </div>
+                </details>
+                <!-- END COLLAPSIBLE PUBLISHER CONTENT SECTION -->
+
             </div>
+        </main>
+    </div>
+    <script src="words.js"></script>
+    <script>
+        // Your entire existing game logic script...
+        let words = [...defaultWords]; let customWords = []; let availableWords = []; const state = { teams: [], currentTeamIndex: 0, timerInterval: null, timeLeft: 60, gameActive: false, turnScore: 0, roundTime: 60, winningScore: 20, inLastRound: false, inTieBreaker: false }; const successSound = new Audio('success.mp3'); const loseSound = new Audio('lose.mp3'); const victorySound = new Audio('victory.mp3'); const tickingSound = new Audio('ticking.mp3'); const setupScreen = document.getElementById('setup-screen'); const gameScreen = document.getElementById('game-screen'); const turnOverModal = document.getElementById('turn-over-modal'); const winningScreen = document.getElementById('winning-screen'); const winningModalContent = document.getElementById('winning-modal-content'); const howToPlayModal = document.getElementById('how-to-play-modal'); const customWordsModal = document.getElementById('custom-words-modal'); const teamInputsContainer = document.getElementById('team-inputs-container'); const addTeamBtn = document.getElementById('add-team-btn'); const scoreOptions = document.getElementById('score-options'); const startGameBtn = document.getElementById('start-game-btn'); const howToPlayBtn = document.getElementById('how-to-play-btn'); const closeHowToPlayBtn = document.getElementById('close-how-to-play-btn'); const addWordsBtn = document.getElementById('add-words-btn'); const closeCustomWordsBtn = document.getElementById('close-custom-words-btn'); const saveCustomWordsBtn = document.getElementById('save-custom-words-btn'); const customWordsTextarea = document.getElementById('custom-words-textarea'); const scoresContainer = document.getElementById('scores-container'); const timerDisplay = document.getElementById('timer'); const wordDisplay = document.getElementById('word-display'); const wordCard = document.getElementById('word-card'); const actionButtons = document.getElementById('action-buttons'); const currentTeamNameCard = document.getElementById('current-team-name-card'); const correctBtn = document.getElementById('correct-btn'); const skipBtn = document.getElementById('skip-btn'); const finishedTeamName = document.getElementById('finished-team-name'); const turnScoreDisplay = document.getElementById('turn-score'); const nextTurnBtn = document.getElementById('next-turn-btn'); const winningTeamName = document.getElementById('winning-team-name'); const playAgainBtn = document.getElementById('play-again-btn'); const countdownModal = document.getElementById('countdown-modal'); const countdownDisplay = document.getElementById('countdown-display'); const editScoresBtn = document.getElementById('edit-scores-btn'); const editScoresModal = document.getElementById('edit-scores-modal'); const closeEditScoresBtn = document.getElementById('close-edit-scores-btn'); const saveScoresBtn = document.getElementById('save-scores-btn'); const editScoresList = document.getElementById('edit-scores-list'); startGameBtn.addEventListener('click', startGame); wordCard.addEventListener('click', flipCardAndStartTurn); correctBtn.addEventListener('click', handleCorrect); skipBtn.addEventListener('click', handleSkip); nextTurnBtn.addEventListener('click', setupNextTurn); playAgainBtn.addEventListener('click', resetGame); howToPlayBtn.addEventListener('click', () => howToPlayModal.classList.remove('hidden')); closeHowToPlayBtn.addEventListener('click', () => howToPlayModal.classList.add('hidden')); addWordsBtn.addEventListener('click', () => customWordsModal.classList.remove('hidden')); closeCustomWordsBtn.addEventListener('click', () => customWordsModal.classList.add('hidden')); saveCustomWordsBtn.addEventListener('click', saveCustomWords); addTeamBtn.addEventListener('click', addTeamInput); teamInputsContainer.addEventListener('click', (e) => { if (e.target && e.target.classList.contains('remove-team-btn')) { e.target.parentElement.remove(); } }); scoreOptions.addEventListener('click', (e) => { if (e.target.classList.contains('score-option')) { scoreOptions.querySelectorAll('.score-option').forEach(btn => btn.classList.remove('selected')); e.target.classList.add('selected'); } }); editScoresBtn.addEventListener('click', openEditScoresModal); closeEditScoresBtn.addEventListener('click', () => editScoresModal.classList.add('hidden')); saveScoresBtn.addEventListener('click', saveScores); editScoresList.addEventListener('click', handleScoreChangeInModal);
 
-            <div id="turn-over-modal" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-                <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full modal-content">
-                    <h2 class="text-4xl font-black text-gray-800 mb-2">הזמן נגמר!</h2>
-                    <p class="text-lg text-gray-600 mb-4">
-                        כל הכבוד, <span id="finished-team-name" class="font-bold"></span>!
-                    </p>
-                    <p class="text-gray-500 mb-6">
-                        הצלחתם <span id="turn-score" class="font-bold text-2xl" style="color: var(--alias-red);">0</span> מילים.
-                    </p>
-                    <button id="next-turn-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                        התור הבא
-                    </button>
-                </div>
-            </div>
+        // START: Mobile menu toggle logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mainNav = document.getElementById('main-nav');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
 
-            <div id="countdown-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
-                <div id="countdown-display" class="text-9xl font-black text-white" style="text-shadow: 0 0 20px rgba(0,0,0,0.5);">3</div>
-            </div>
+            if (menuButton && mainNav) {
+                menuButton.addEventListener('click', () => {
+                    mainNav.classList.toggle('hidden');
+                    hamburgerIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                    menuButton.setAttribute('aria-expanded', !isExpanded);
+                });
 
-            <div id="winning-screen" role="dialog" aria-modal="true" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
-                <div class="bg-white p-8 rounded-xl shadow-xl text-center max-w-sm w-full transform scale-95 opacity-0 modal-content" id="winning-modal-content">
-                    <div class="text-6xl mb-4">🏆</div>
-                    <h2 class="text-4xl font-black text-gray-800 mb-2">ניצחון!</h2>
-                    <p class="text-lg text-gray-600 mb-6">
-                        קבוצת <span id="winning-team-name" class="font-bold text-2xl" style="color: var(--alias-red);"></span> ניצחה!
-                    </p>
-                    <button id="play-again-btn" class="w-full py-3 px-6 text-xl shadow-lg transform btn btn-red">
-                        שחקו שוב
-                    </button>
-                </div>
-            </div>
-        
-            <!-- COLLAPSIBLE PUBLISHER CONTENT SECTION (MOVED & STYLED FOR SMALLER FOOTPRINT) -->
-            <details id="publisher-content-details" class="mt-4 bg-white rounded-xl shadow-md border border-gray-200 p-4 text-right">
-                <summary class="list-none cursor-pointer text-sm font-medium text-gray-700 hover:text-red-500 transition p-1 -m-1">
-                    מידע נוסף: על המשחק והגיימיפיקציה (לחץ לפתיחה)
-                </summary>
-                
-                <div class="pt-4 mt-4 border-t border-gray-200">
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">הערך והתוכן הייחודי של 'קצה הלשון'</h3>
-                    <p class="text-gray-700 mb-4 text-sm leading-relaxed">
-                        'קצה הלשון' הוא הרבה יותר ממשחק מילים; זוהי פלטפורמה חברתית וקצבית שהפכה במהירות ללהיט בקרב משפחות, חברים וקבוצות עבודה ברחבי ישראל. המשחק פותח על ידי **חוצפה גיימס** במטרה כפולה: לספק חווית בידור איכותית ומאתגרת, וכן להדגים את הכוח של גיימיפיקציה ככלי ליצירת מעורבות גבוהה.
-                    </p>
-                    <p class="text-gray-700 mb-4 text-sm leading-relaxed">
-                        <strong>מה הופך אותו לתוכן איכותי?</strong> המשחק מעמיד את כישורי ההסברה והחשיבה המהירה של המשתתפים במבחן. עם מגבלת זמן של 60 שניות לסיבוב והצורך להימנע משימוש במילים אסורות, נוצרת דינמיקה קבוצתית מצחיקה ומותחת. המילים המופיעות בכרטיסים נבחרו בקפידה מתוך מגוון רחב של נושאים, מה שהופך כל סיבוב למפתיע ותורם להרחבת אוצר המילים והשפה העברית.
-                    </p>
-                    
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 mt-6">גיימיפיקציה כשפה של הדור הדיגיטלי</h3>
-                    <p class="text-gray-700 mb-4 text-sm leading-relaxed">
-                        בעידן שבו טווחי הקשב הולכים ומצטמצמים, תוכן אינטראקטיבי ומשחקי הוא הדרך היעילה ביותר ללכוד ולשמר את תשומת הלב של הקהל. חוצפה גיימס מתמחה בהפיכת מסרים מורכבים, הדרכות יבשות ואסטרטגיות שיווק סטנדרטיות למשחקים קצרים, זכירים ומעוררי שיתוף. כל משחק שאנו מפתחים, כולל 'קצה הלשון', מעוצב מראש כדי לייצר **תעבורה חוזרת (Retention)** ו**מעורבות אורגנית (Social Sharing)**. אנו מאמינים כי משחקים הם לא רק בידור, אלא כלי שיווקי ואסטרטגי רב עוצמה המייצר חוויית משתמש עשירה. אסטרטגיה זו היא הליבה של הערך המוסף שלנו כחברת תוכן ופיתוח.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed text-sm">
-                        אנו בחוצפה גיימס רואים במשחק זה את התגלמות הפילוסופיה שלנו: להפוך כל אינטראקציה – בין אם חברתית ובין אם שיווקית – לחוויה בלתי נשכחת ובעלת ערך אמיתי למשתמש. זהו תוכן ייחודי ובעל ערך שאינו רק משמש להצגת מודעות, אלא יוצר מעורבות עמוקה עם קהל המשתמשים.
-                    </p>
-                </div>
-                
-                <div class="mt-8 pt-4 border-t border-gray-200 text-center">
-                    <a href="../privacy_he.html" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-red-600 text-xs underline font-medium">מדיניות פרטיות ושימוש</a>
-                </div>
-            </details>
-            <!-- END COLLAPSIBLE PUBLISHER CONTENT SECTION -->
-
-        </div>
-    </main>
-</div> 
-<script src="words.js"></script>
-<script>
-    // Your entire existing game logic script...
-let words = [...defaultWords]; let customWords = []; let availableWords = []; const state = { teams: [], currentTeamIndex: 0, timerInterval: null, timeLeft: 60, gameActive: false, turnScore: 0, roundTime: 60, winningScore: 20, inLastRound: false, inTieBreaker: false }; const successSound = new Audio('success.mp3'); const loseSound = new Audio('lose.mp3'); const victorySound = new Audio('victory.mp3'); const tickingSound = new Audio('ticking.mp3'); const setupScreen = document.getElementById('setup-screen'); const gameScreen = document.getElementById('game-screen'); const turnOverModal = document.getElementById('turn-over-modal'); const winningScreen = document.getElementById('winning-screen'); const winningModalContent = document.getElementById('winning-modal-content'); const howToPlayModal = document.getElementById('how-to-play-modal'); const customWordsModal = document.getElementById('custom-words-modal'); const teamInputsContainer = document.getElementById('team-inputs-container'); const addTeamBtn = document.getElementById('add-team-btn'); const scoreOptions = document.getElementById('score-options'); const startGameBtn = document.getElementById('start-game-btn'); const howToPlayBtn = document.getElementById('how-to-play-btn'); const closeHowToPlayBtn = document.getElementById('close-how-to-play-btn'); const addWordsBtn = document.getElementById('add-words-btn'); const closeCustomWordsBtn = document.getElementById('close-custom-words-btn'); const saveCustomWordsBtn = document.getElementById('save-custom-words-btn'); const customWordsTextarea = document.getElementById('custom-words-textarea'); const scoresContainer = document.getElementById('scores-container'); const timerDisplay = document.getElementById('timer'); const wordDisplay = document.getElementById('word-display'); const wordCard = document.getElementById('word-card'); const actionButtons = document.getElementById('action-buttons'); const currentTeamNameCard = document.getElementById('current-team-name-card'); const correctBtn = document.getElementById('correct-btn'); const skipBtn = document.getElementById('skip-btn'); const finishedTeamName = document.getElementById('finished-team-name'); const turnScoreDisplay = document.getElementById('turn-score'); const nextTurnBtn = document.getElementById('next-turn-btn'); const winningTeamName = document.getElementById('winning-team-name'); const playAgainBtn = document.getElementById('play-again-btn'); const countdownModal = document.getElementById('countdown-modal'); const countdownDisplay = document.getElementById('countdown-display'); const editScoresBtn = document.getElementById('edit-scores-btn'); const editScoresModal = document.getElementById('edit-scores-modal'); const closeEditScoresBtn = document.getElementById('close-edit-scores-btn'); const saveScoresBtn = document.getElementById('save-scores-btn'); const editScoresList = document.getElementById('edit-scores-list'); startGameBtn.addEventListener('click', startGame); wordCard.addEventListener('click', flipCardAndStartTurn); correctBtn.addEventListener('click', handleCorrect); skipBtn.addEventListener('click', handleSkip); nextTurnBtn.addEventListener('click', setupNextTurn); playAgainBtn.addEventListener('click', resetGame); howToPlayBtn.addEventListener('click', () => howToPlayModal.classList.remove('hidden')); closeHowToPlayBtn.addEventListener('click', () => howToPlayModal.classList.add('hidden')); addWordsBtn.addEventListener('click', () => customWordsModal.classList.remove('hidden')); closeCustomWordsBtn.addEventListener('click', () => customWordsModal.classList.add('hidden')); saveCustomWordsBtn.addEventListener('click', saveCustomWords); addTeamBtn.addEventListener('click', addTeamInput); teamInputsContainer.addEventListener('click', (e) => { if (e.target && e.target.classList.contains('remove-team-btn')) { e.target.parentElement.remove(); } }); scoreOptions.addEventListener('click', (e) => { if (e.target.classList.contains('score-option')) { scoreOptions.querySelectorAll('.score-option').forEach(btn => btn.classList.remove('selected')); e.target.classList.add('selected'); } }); editScoresBtn.addEventListener('click', openEditScoresModal); closeEditScoresBtn.addEventListener('click', () => editScoresModal.classList.add('hidden')); saveScoresBtn.addEventListener('click', saveScores); editScoresList.addEventListener('click', handleScoreChangeInModal); 
-
-// START: Mobile menu toggle logic
-document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('mobile-menu-button');
-    const mainNav = document.getElementById('main-nav');
-    const hamburgerIcon = document.getElementById('hamburger-icon');
-    const closeIcon = document.getElementById('close-icon');
-
-    if (menuButton && mainNav) {
-        menuButton.addEventListener('click', () => {
-            mainNav.classList.toggle('hidden');
-            hamburgerIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-            menuButton.setAttribute('aria-expanded', !isExpanded);
+                // Close menu when a link is clicked (for mobile UX)
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (!mainNav.classList.contains('md:flex')) { // Only collapse on mobile
+                            mainNav.classList.add('hidden');
+                            hamburgerIcon.classList.remove('hidden');
+                            closeIcon.classList.add('hidden');
+                            menuButton.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+            }
         });
-        
-        // Close menu when a link is clicked (for mobile UX)
-        mainNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (!mainNav.classList.contains('md:flex')) { // Only collapse on mobile
-                    mainNav.classList.add('hidden');
-                    hamburgerIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                    menuButton.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
-    }
-});
-// END: Mobile menu toggle logic
+        // END: Mobile menu toggle logic
 
 
-function playSound(sound) { sound.currentTime = 0; sound.play().catch(e => console.log("Audio play failed:", e)); } function addTeamInput() { const teamCount = teamInputsContainer.children.length; const newTeamInput = document.createElement('div'); newTeamInput.className = 'flex items-center gap-2'; newTeamInput.innerHTML = ` <label for="team${teamCount + 1}-name" class="sr-only">שם קבוצה ${teamCount + 1}</label> <input type="text" id="team${teamCount + 1}-name" placeholder="שם קבוצה ${teamCount + 1}" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"> <button class="remove-team-btn text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button> `; teamInputsContainer.appendChild(newTeamInput); } function saveCustomWords() { const newWords = customWordsTextarea.value.split('\n').map(word => word.trim()).filter(word => word.length > 0); if (newWords.length > 0) { const newUniqueWords = newWords.filter(w => !customWords.includes(w)); customWords.push(...newUniqueWords); words = [...new Set([...defaultWords, ...customWords])]; const originalText = saveCustomWordsBtn.textContent; saveCustomWordsBtn.textContent = 'נשמר!'; saveCustomWordsBtn.disabled = true; saveCustomWordsBtn.classList.remove('btn-red'); saveCustomWordsBtn.classList.add('bg-green-500'); setTimeout(() => { customWordsModal.classList.add('hidden'); saveCustomWordsBtn.textContent = originalText; saveCustomWordsBtn.classList.add('btn-red'); saveCustomWordsBtn.classList.remove('bg-green-500'); saveCustomWordsBtn.disabled = false; customWordsTextarea.value = ''; }, 1500); } else { customWordsModal.classList.add('hidden'); } } function shuffle(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[array[i], array[j]] = [array[j], array[i]]; } } function getNextWord() { if (availableWords.length === 0) { console.log("Word deck empty. Reshuffling..."); availableWords = [...words]; shuffle(availableWords); } return availableWords.pop(); } function startGame() { const selectedScore = scoreOptions.querySelector('.selected').dataset.value; state.roundTime = 60; state.winningScore = parseInt(selectedScore) || 20; state.teams = []; state.inLastRound = false; state.inTieBreaker = false; document.getElementById('tie-breaker-banner').classList.add('hidden'); document.getElementById('last-round-banner').classList.add('hidden'); const teamNameInputs = document.querySelectorAll('.team-name-input'); teamNameInputs.forEach((input, index) => { state.teams.push({ name: input.value || `קבוצה ${index + 1}`, score: 0 }); }); state.teams.forEach((team, index) => { team.id = index; }); renderScoreboard(); timerDisplay.textContent = state.roundTime; setupScreen.classList.add('hidden'); gameScreen.classList.remove('hidden'); editScoresBtn.classList.remove('hidden'); availableWords = [...words]; shuffle(availableWords); updateTurnIndicator(); } function renderScoreboard() { scoresContainer.innerHTML = ''; state.teams.forEach(team => { const scoreBox = document.createElement('div'); scoreBox.id = `score-box-${team.id}`; scoreBox.className = 'score-box p-3 rounded-lg text-center shadow-md'; scoreBox.innerHTML = ` <div id="team-name-${team.id}" class="font-bold text-base md:text-lg truncate">${team.name}</div> <div id="team-score-${team.id}" class="text-2xl font-black">${team.score}</div> `; scoresContainer.appendChild(scoreBox); }); } function updateTurnIndicator() { document.querySelectorAll('.score-box').forEach(box => box.classList.remove('active')); const currentTeam = state.teams[state.currentTeamIndex]; currentTeamNameCard.textContent = currentTeam.name; const currentScoreBox = document.getElementById(`score-box-${currentTeam.id}`); if (currentScoreBox) { currentScoreBox.classList.add('active'); } } function startRoundCountdown() { editScoresBtn.classList.add('hidden'); countdownModal.classList.remove('hidden'); let countdown = 3; countdownDisplay.textContent = countdown; const countdownInterval = setInterval(() => { countdown--; if (countdown > 0) { countdownDisplay.textContent = countdown; } else { clearInterval(countdownInterval); countdownModal.classList.add('hidden'); tickingSound.play().catch(e => console.log("Audio play failed")); tickingSound.pause(); tickingSound.currentTime = 0; wordCard.classList.add('is-flipped'); actionButtons.classList.remove('hidden'); wordDisplay.textContent = getNextWord(); startTimer(); } }, 1000); } function flipCardAndStartTurn() { if (state.gameActive) return; startRoundCountdown(); } function startTimer() { state.gameActive = true; state.timeLeft = state.roundTime; timerDisplay.textContent = state.timeLeft; timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200'); tickingSound.pause(); tickingSound.currentTime = 0; state.timerInterval = setInterval(() => { state.timeLeft--; timerDisplay.textContent = state.timeLeft; if (state.timeLeft === 10) { playSound(tickingSound); } if (state.timeLeft <= 10 && !timerDisplay.parentElement.classList.contains('animate-pulse')) { timerDisplay.parentElement.classList.add('animate-pulse', 'bg-red-200'); } if (state.timeLeft <= 0) { endTurn(); } }, 1000); } function showScoreAnimation(teamId, amount) { const scoreBox = document.getElementById(`score-box-${teamId}`); if (!scoreBox) return; const animationEl = document.createElement('div'); animationEl.classList.add('score-change'); if (amount > 0) { animationEl.textContent = `+${amount}`; animationEl.classList.add('plus-one'); } else { animationEl.textContent = `${amount}`; animationEl.classList.add('minus-one'); } scoreBox.appendChild(animationEl); setTimeout(() => { animationEl.remove(); }, 800); } function updateLastRoundBanner() { const banner = document.getElementById('last-round-banner'); if (!state.inLastRound) { banner.classList.add('hidden'); return; } const maxScore = Math.max(...state.teams.map(team => team.score)); if (maxScore < state.winningScore) { banner.classList.add('hidden'); state.inLastRound = false; return; } const leadingTeams = state.teams.filter(team => team.score === maxScore); let bannerText = ''; if (leadingTeams.length === 1) { bannerText = `סיכוי אחרון! ${leadingTeams[0].name} עומדת לנצח!`; } else { bannerText = `סיכוי אחרון! תיקו בצמרת עם ${maxScore} נקודות!`; } banner.textContent = bannerText; banner.classList.remove('hidden'); } function handleCorrect() { if (!state.gameActive) return; playSound(successSound); const currentTeam = state.teams[state.currentTeamIndex]; currentTeam.score++; state.turnScore++; showScoreAnimation(currentTeam.id, 1); if (!state.inLastRound && currentTeam.score >= state.winningScore) { state.inLastRound = true; } if (state.inLastRound) { updateLastRoundBanner(); } setTimeout(() => { updateScoreDisplay(); }, 150); if (!state.gameActive) return; wordDisplay.textContent = getNextWord(); } function handleSkip() { if (!state.gameActive) return; playSound(loseSound); const currentTeam = state.teams[state.currentTeamIndex]; if (currentTeam.score > 0) { currentTeam.score--; showScoreAnimation(currentTeam.id, -1); if (state.inLastRound) { updateLastRoundBanner(); } setTimeout(() => { updateScoreDisplay(); }, 150); } wordDisplay.textContent = getNextWord(); } function updateScoreDisplay() { state.teams.forEach(team => { const teamScoreEl = document.getElementById(`team-score-${team.id}`); if (teamScoreEl) teamScoreEl.textContent = team.score; }); } function endTurn() { clearInterval(state.timerInterval); state.gameActive = false; const currentTeam = state.teams[state.currentTeamIndex]; finishedTeamName.textContent = currentTeam.name; turnScoreDisplay.textContent = state.turnScore; turnOverModal.classList.remove('hidden'); } function setupNextTurn() { turnOverModal.classList.add('hidden'); editScoresBtn.classList.remove('hidden'); state.turnScore = 0; const isLastTeamOfRound = state.currentTeamIndex === state.teams.length - 1; const wasInTieBreaker = state.inTieBreaker; if (isLastTeamOfRound) { let shouldCheckForWinner = false; if (wasInTieBreaker) { shouldCheckForWinner = true; } else { const teamsAboveGoal = state.teams.filter(team => team.score >= state.winningScore); if (teamsAboveGoal.length > 0) { shouldCheckForWinner = true; } } if (shouldCheckForWinner) { const maxScore = Math.max(...state.teams.map(team => team.score)); const potentialWinners = state.teams.filter(team => team.score === maxScore); if (potentialWinners.length === 1 && maxScore >= state.winningScore) { endGame(potentialWinners[0]); return; } else if (potentialWinners.length > 1) { state.inTieBreaker = true; state.currentTeamIndex = 0; if (!wasInTieBreaker) { alert('תיקו! משחקים סיבוב שובר שוויון. הקבוצה עם הניקוד הגבוה ביותר בסוף הסיבוב תנצח!'); } else { alert('עדיין תיקו! משחקים סיבוב שובר שוויון נוסף.'); } const tieBreakerBanner = document.getElementById('tie-breaker-banner'); tieBreakerBanner.textContent = 'שובר שוויון! הניקוד הגבוה ביותר בסיבוב זה מנצח!'; tieBreakerBanner.classList.remove('hidden'); updateTurnIndicator(); timerDisplay.textContent = state.roundTime; timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200'); actionButtons.classList.add('hidden'); wordCard.classList.remove('is-flipped'); return; } } } state.currentTeamIndex = (state.currentTeamIndex + 1) % state.teams.length; updateTurnIndicator(); timerDisplay.textContent = state.roundTime; timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200'); actionButtons.classList.add('hidden'); wordCard.classList.remove('is-flipped'); } function endGame(winningTeam) { clearInterval(state.timerInterval); tickingSound.pause(); playSound(victorySound); state.gameActive = false; document.getElementById('last-round-banner').classList.add('hidden'); document.getElementById('tie-breaker-banner').classList.add('hidden'); winningTeamName.textContent = winningTeam.name; turnOverModal.classList.add('hidden'); editScoresBtn.classList.add('hidden'); winningScreen.classList.remove('hidden'); setTimeout(() => { winningModalContent.classList.remove('scale-95', 'opacity-0'); }, 50); } function resetGame() { state.inLastRound = false; document.getElementById('last-round-banner').classList.add('hidden'); document.getElementById('tie-breaker-banner').classList.add('hidden'); state.inTieBreaker = false; state.teams = []; state.currentTeamIndex = 0; state.gameActive = false; state.turnScore = 0; clearInterval(state.timerInterval); tickingSound.pause(); winningScreen.classList.add('hidden'); gameScreen.classList.add('hidden'); editScoresBtn.classList.add('hidden'); winningModalContent.classList.add('scale-95', 'opacity-0'); wordCard.classList.remove('is-flipped'); actionButtons.classList.add('hidden'); timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200'); setupScreen.classList.remove('hidden'); } function openEditScoresModal() { editScoresList.innerHTML = ''; state.teams.forEach(team => { const teamEditRow = document.createElement('div'); teamEditRow.className = 'flex items-center justify-between bg-gray-100 p-3 rounded-lg'; teamEditRow.innerHTML = ` <span class="font-bold text-lg">${team.name}</span> <div class="flex items-center gap-4"> <button data-team-id="${team.id}" data-action="minus" class="w-8 h-8 rounded-full bg-red-200 text-red-700 font-bold text-xl flex items-center justify-center">-</button> <span class="text-2xl font-black w-10 text-center" data-score-for-team="${team.id}">${team.score}</span> <button data-team-id="${team.id}" data-action="plus" class="w-8 h-8 rounded-full bg-green-200 text-green-700 font-bold text-xl flex items-center justify-center">+</button> </div> `; editScoresList.appendChild(teamEditRow); }); editScoresModal.classList.remove('hidden'); } function handleScoreChangeInModal(e) { const action = e.target.dataset.action; const teamId = e.target.dataset.teamId; if (!action || !teamId) return; const scoreSpan = editScoresList.querySelector(`[data-score-for-team="${teamId}"]`); let currentScore = parseInt(scoreSpan.textContent, 10); if (action === 'plus') { currentScore++; } else if (action === 'minus' && currentScore > 0) { currentScore--; } scoreSpan.textContent = currentScore; } function saveScores() { const scoreSpans = editScoresList.querySelectorAll('[data-score-for-team]'); scoreSpans.forEach(span => { const teamId = parseInt(span.dataset.scoreForTeam, 10); const newScore = parseInt(span.textContent, 10); const team = state.teams.find(t => t.id === teamId); if (team) { team.score = newScore; } }); updateScoreDisplay(); editScoresModal.classList.add('hidden'); const anyTeamReachedGoal = state.teams.some(t => t.score >= state.winningScore); if (anyTeamReachedGoal) { state.inLastRound = true; updateLastRoundBanner(); } else { state.inLastRound = false; document.getElementById('last-round-banner').classList.add('hidden'); } }
-</script>
+        function playSound(sound) { sound.currentTime = 0; sound.play().catch(e => console.log("Audio play failed:", e)); } function addTeamInput() { const teamCount = teamInputsContainer.children.length; const newTeamInput = document.createElement('div'); newTeamInput.className = 'flex items-center gap-2'; newTeamInput.innerHTML = ` <label for="team${teamCount + 1}-name" class="sr-only">שם קבוצה ${teamCount + 1}</label> <input type="text" id="team${teamCount + 1}-name" placeholder="שם קבוצה ${teamCount + 1}" class="team-name-input w-full p-3 border-2 border-gray-300 rounded-lg text-center text-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"> <button class="remove-team-btn text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button> `; teamInputsContainer.appendChild(newTeamInput); } function saveCustomWords() { const newWords = customWordsTextarea.value.split('\n').map(word => word.trim()).filter(word => word.length > 0); if (newWords.length > 0) { const newUniqueWords = newWords.filter(w => !customWords.includes(w)); customWords.push(...newUniqueWords); words = [...new Set([...defaultWords, ...customWords])]; const originalText = saveCustomWordsBtn.textContent; saveCustomWordsBtn.textContent = 'נשמר!'; saveCustomWordsBtn.disabled = true; saveCustomWordsBtn.classList.remove('btn-red'); saveCustomWordsBtn.classList.add('bg-green-500'); setTimeout(() => { customWordsModal.classList.add('hidden'); saveCustomWordsBtn.textContent = originalText; saveCustomWordsBtn.classList.add('btn-red'); saveCustomWordsBtn.classList.remove('bg-green-500'); saveCustomWordsBtn.disabled = false; customWordsTextarea.value = ''; }, 1500); } else { customWordsModal.classList.add('hidden'); } } function shuffle(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[array[i], array[j]] = [array[j], array[i]]; } } function getNextWord() { if (availableWords.length === 0) { console.log("Word deck empty. Reshuffling..."); availableWords = [...words]; shuffle(availableWords); } return availableWords.pop(); } function startGame() { const selectedScore = scoreOptions.querySelector('.selected').dataset.value; state.roundTime = 60; state.winningScore = parseInt(selectedScore) || 20; state.teams = []; state.inLastRound = false; state.inTieBreaker = false; document.getElementById('tie-breaker-banner').classList.add('hidden'); document.getElementById('last-round-banner').classList.add('hidden'); const teamNameInputs = document.querySelectorAll('.team-name-input'); teamNameInputs.forEach((input, index) => { state.teams.push({ name: input.value || `קבוצה ${index + 1}`, score: 0 }); }); state.teams.forEach((team, index) => { team.id = index; }); renderScoreboard(); timerDisplay.textContent = state.roundTime; setupScreen.classList.add('hidden'); gameScreen.classList.remove('hidden'); editScoresBtn.classList.remove('hidden'); availableWords = [...words]; shuffle(availableWords); updateTurnIndicator(); } function renderScoreboard() { scoresContainer.innerHTML = ''; state.teams.forEach(team => { const scoreBox = document.createElement('div'); scoreBox.id = `score-box-${team.id}`; scoreBox.className = 'score-box p-3 rounded-lg text-center shadow-md'; scoreBox.innerHTML = ` <div id="team-name-${team.id}" class="font-bold text-base md:text-lg truncate">${team.name}</div> <div id="team-score-${team.id}" class="text-2xl font-black">${team.score}</div> `; scoresContainer.appendChild(scoreBox); }); } function updateTurnIndicator() { document.querySelectorAll('.score-box').forEach(box => box.classList.remove('active')); const currentTeam = state.teams[state.currentTeamIndex]; currentTeamNameCard.textContent = currentTeam.name; const currentScoreBox = document.getElementById(`score-box-${currentTeam.id}`); if (currentScoreBox) { currentScoreBox.classList.add('active'); } } function startRoundCountdown() { editScoresBtn.classList.add('hidden'); countdownModal.classList.remove('hidden'); let countdown = 3; countdownDisplay.textContent = countdown; const countdownInterval = setInterval(() => { countdown--; if (countdown > 0) { countdownDisplay.textContent = countdown; } else { clearInterval(countdownInterval); countdownModal.classList.add('hidden'); tickingSound.play().catch(e => console.log("Audio play failed")); tickingSound.pause(); tickingSound.currentTime = 0; wordCard.classList.add('is-flipped'); actionButtons.classList.remove('hidden'); wordDisplay.textContent = getNextWord(); startTimer(); } }, 1000); } function flipCardAndStartTurn() { if (state.gameActive) return; startRoundCountdown(); } function startTimer() { state.gameActive = true; state.timeLeft = state.roundTime; timerDisplay.textContent = state.timeLeft; timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200'); tickingSound.pause(); tickingSound.currentTime = 0; state.timerInterval = setInterval(() => { state.timeLeft--; timerDisplay.textContent = state.timeLeft; if (state.timeLeft === 10) { playSound(tickingSound); } if (state.timeLeft <= 10 && !timerDisplay.parentElement.classList.contains('animate-pulse')) { timerDisplay.parentElement.classList.add('animate-pulse', 'bg-red-200'); } if (state.timeLeft <= 0) { endTurn(); } }, 1000); } function showScoreAnimation(teamId, amount) { const scoreBox = document.getElementById(`score-box-${teamId}`); if (!scoreBox) return; const animationEl = document.createElement('div'); animationEl.classList.add('score-change'); if (amount > 0) { animationEl.textContent = `+${amount}`; animationEl.classList.add('plus-one'); } else { animationEl.textContent = `${amount}`; animationEl.classList.add('minus-one'); } scoreBox.appendChild(animationEl); setTimeout(() => { animationEl.remove(); }, 800); } function updateLastRoundBanner() { const banner = document.getElementById('last-round-banner'); if (!state.inLastRound) { banner.classList.add('hidden'); return; } const maxScore = Math.max(...state.teams.map(team => team.score)); if (maxScore < state.winningScore) { banner.classList.add('hidden'); state.inLastRound = false; return; } const leadingTeams = state.teams.filter(team => team.score === maxScore); let bannerText = ''; if (leadingTeams.length === 1) { bannerText = `סיכוי אחרון! ${leadingTeams[0].name} עומדת לנצח!`; } else { bannerText = `סיכוי אחרון! תיקו בצמרת עם ${maxScore} נקודות!`; } banner.textContent = bannerText; banner.classList.remove('hidden'); } function handleCorrect() { if (!state.gameActive) return; playSound(successSound); const currentTeam = state.teams[state.currentTeamIndex]; currentTeam.score++; state.turnScore++; showScoreAnimation(currentTeam.id, 1); if (!state.inLastRound && currentTeam.score >= state.winningScore) { state.inLastRound = true; } if (state.inLastRound) { updateLastRoundBanner(); } setTimeout(() => { updateScoreDisplay(); }, 150); if (!state.gameActive) return; wordDisplay.textContent = getNextWord(); } function handleSkip() { if (!state.gameActive) return; playSound(loseSound); const currentTeam = state.teams[state.currentTeamIndex]; if (currentTeam.score > 0) { currentTeam.score--; showScoreAnimation(currentTeam.id, -1); if (state.inLastRound) { updateLastRoundBanner(); } setTimeout(() => { updateScoreDisplay(); }, 150); } wordDisplay.textContent = getNextWord(); } function updateScoreDisplay() { state.teams.forEach(team => { const teamScoreEl = document.getElementById(`team-score-${team.id}`); if (teamScoreEl) teamScoreEl.textContent = team.score; }); } function endTurn() { clearInterval(state.timerInterval); state.gameActive = false; const currentTeam = state.teams[state.currentTeamIndex]; finishedTeamName.textContent = currentTeam.name; turnScoreDisplay.textContent = state.turnScore; turnOverModal.classList.remove('hidden'); } function setupNextTurn() { adBreak({ type: 'next', name: 'next_turn' }); turnOverModal.classList.add('hidden'); editScoresBtn.classList.remove('hidden'); state.turnScore = 0; const isLastTeamOfRound = state.currentTeamIndex === state.teams.length - 1; const wasInTieBreaker = state.inTieBreaker; if (isLastTeamOfRound) { let shouldCheckForWinner = false; if (wasInTieBreaker) { shouldCheckForWinner = true; } else { const teamsAboveGoal = state.teams.filter(team => team.score >= state.winningScore); if (teamsAboveGoal.length > 0) { shouldCheckForWinner = true; } } if (shouldCheckForWinner) { const maxScore = Math.max(...state.teams.map(team => team.score)); const potentialWinners = state.teams.filter(team => team.score === maxScore); if (potentialWinners.length === 1 && maxScore >= state.winningScore) { endGame(potentialWinners[0]); return; } else if (potentialWinners.length > 1) { state.inTieBreaker = true; state.currentTeamIndex = 0; if (!wasInTieBreaker) { alert('תיקו! משחקים סיבוב שובר שוויון. הקבוצה עם הניקוד הגבוה ביותר בסוף הסיבוב תנצח!'); } else { alert('עדיין תיקו! משחקים סיבוב שובר שוויון נוסף.'); } const tieBreakerBanner = document.getElementById('tie-breaker-banner'); tieBreakerBanner.textContent = 'שובר שוויון! הניקוד הגבוה ביותר בסיבוב זה מנצח!'; tieBreakerBanner.classList.remove('hidden'); updateTurnIndicator(); timerDisplay.textContent = state.roundTime; timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200'); actionButtons.classList.add('hidden'); wordCard.classList.remove('is-flipped'); return; } } } state.currentTeamIndex = (state.currentTeamIndex + 1) % state.teams.length; updateTurnIndicator(); timerDisplay.textContent = state.roundTime; timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200'); actionButtons.classList.add('hidden'); wordCard.classList.remove('is-flipped'); } function endGame(winningTeam) { clearInterval(state.timerInterval); tickingSound.pause(); playSound(victorySound); state.gameActive = false; document.getElementById('last-round-banner').classList.add('hidden'); document.getElementById('tie-breaker-banner').classList.add('hidden'); winningTeamName.textContent = winningTeam.name; turnOverModal.classList.add('hidden'); editScoresBtn.classList.add('hidden'); winningScreen.classList.remove('hidden'); setTimeout(() => { winningModalContent.classList.remove('scale-95', 'opacity-0'); }, 50); } function resetGame() { state.inLastRound = false; document.getElementById('last-round-banner').classList.add('hidden'); document.getElementById('tie-breaker-banner').classList.add('hidden'); state.inTieBreaker = false; state.teams = []; state.currentTeamIndex = 0; state.gameActive = false; state.turnScore = 0; clearInterval(state.timerInterval); tickingSound.pause(); winningScreen.classList.add('hidden'); gameScreen.classList.add('hidden'); editScoresBtn.classList.add('hidden'); winningModalContent.classList.add('scale-95', 'opacity-0'); wordCard.classList.remove('is-flipped'); actionButtons.classList.add('hidden'); timerDisplay.parentElement.classList.remove('animate-pulse', 'bg-red-200'); setupScreen.classList.remove('hidden'); } function openEditScoresModal() { editScoresList.innerHTML = ''; state.teams.forEach(team => { const teamEditRow = document.createElement('div'); teamEditRow.className = 'flex items-center justify-between bg-gray-100 p-3 rounded-lg'; teamEditRow.innerHTML = ` <span class="font-bold text-lg">${team.name}</span> <div class="flex items-center gap-4"> <button data-team-id="${team.id}" data-action="minus" class="w-8 h-8 rounded-full bg-red-200 text-red-700 font-bold text-xl flex items-center justify-center">-</button> <span class="text-2xl font-black w-10 text-center" data-score-for-team="${team.id}">${team.score}</span> <button data-team-id="${team.id}" data-action="plus" class="w-8 h-8 rounded-full bg-green-200 text-green-700 font-bold text-xl flex items-center justify-center">+</button> </div> `; editScoresList.appendChild(teamEditRow); }); editScoresModal.classList.remove('hidden'); } function handleScoreChangeInModal(e) { const action = e.target.dataset.action; const teamId = e.target.dataset.teamId; if (!action || !teamId) return; const scoreSpan = editScoresList.querySelector(`[data-score-for-team="${teamId}"]`); let currentScore = parseInt(scoreSpan.textContent, 10); if (action === 'plus') { currentScore++; } else if (action === 'minus' && currentScore > 0) { currentScore--; } scoreSpan.textContent = currentScore; } function saveScores() { const scoreSpans = editScoresList.querySelectorAll('[data-score-for-team]'); scoreSpans.forEach(span => { const teamId = parseInt(span.dataset.scoreForTeam, 10); const newScore = parseInt(span.textContent, 10); const team = state.teams.find(t => t.id === teamId); if (team) { team.score = newScore; } }); updateScoreDisplay(); editScoresModal.classList.add('hidden'); const anyTeamReachedGoal = state.teams.some(t => t.score >= state.winningScore); if (anyTeamReachedGoal) { state.inLastRound = true; updateLastRoundBanner(); } else { state.inLastRound = false; document.getElementById('last-round-banner').classList.add('hidden'); } }
+    </script>
 
-<script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(registration => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, err => {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-      });
-    }
-</script>
-
-<script>
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            document.querySelectorAll('[role="dialog"]:not(.hidden)').forEach(modal => {
-                modal.classList.add('hidden');
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
             });
         }
-    });
-</script>
+    </script>
+
+    <script>
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('[role="dialog"]:not(.hidden)').forEach(modal => {
+                    modal.classList.add('hidden');
+                });
+            }
+        });
+    </script>
 
 </body>
+
 </html>
-
-
-
