@@ -1,0 +1,17 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Revenue Leak Lead Finder output",
+  "description": "Verified revenue-path failures and a concise run summary.",
+  "properties": {
+    "qualifiedLeads": {
+      "title": "Qualified leads dataset",
+      "description": "One independently verified business defect per dataset item.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    },
+    "summary": {
+      "title": "Run summary",
+      "description": "Discovery, inspection, verification, and stop-condition totals.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+    }
+  }
+}
