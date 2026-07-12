@@ -1,0 +1,139 @@
+{
+  "title": "Revenue Leak Lead Finder input",
+  "description": "Find local businesses whose public booking, appointment, reservation, consultation, or contact links have an independently verified objective failure. Output is one qualified business per dataset item.",
+  "type": "object",
+  "schemaVersion": 1,
+  "additionalProperties": false,
+  "properties": {
+    "locations": {
+      "title": "Metro areas",
+      "description": "Choose one or more built-in metro bounding boxes. Add custom boxes below for other markets.",
+      "type": "array",
+      "editor": "select",
+      "default": ["austin-tx", "tampa-fl"],
+      "minItems": 1,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["austin-tx", "tampa-fl", "charlotte-nc", "denver-co", "phoenix-az", "nashville-tn", "miami-fl", "orlando-fl", "dallas-tx", "atlanta-ga", "las-vegas-nv", "san-diego-ca"],
+        "enumTitles": ["Austin, Texas", "Tampa, Florida", "Charlotte, North Carolina", "Denver, Colorado", "Phoenix, Arizona", "Nashville, Tennessee", "Miami, Florida", "Orlando, Florida", "Dallas, Texas", "Atlanta, Georgia", "Las Vegas, Nevada", "San Diego, California"]
+      }
+    },
+    "categories": {
+      "title": "Business categories",
+      "description": "Select appointment- or inquiry-driven categories.",
+      "type": "array",
+      "editor": "select",
+      "default": ["dentist", "veterinary", "beauty", "physiotherapist"],
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["dentist", "veterinary", "beauty", "hairdresser", "physiotherapist", "chiropractor", "lawyer", "real_estate", "restaurant", "hotel", "car_repair", "clinic"],
+        "enumTitles": ["Dentists", "Veterinary clinics", "Beauty salons / spas", "Hairdressers", "Physiotherapists", "Chiropractors", "Law firms", "Real-estate agencies", "Restaurants", "Hotels", "Car repair", "Medical clinics"]
+      }
+    },
+    "customBboxes": {
+      "title": "Custom bounding boxes",
+      "description": "Optional extra markets. Bounding box format: south,west,north,east.",
+      "type": "array",
+      "editor": "schemaBased",
+      "default": [],
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "title": "Market label",
+            "description": "Human-readable location name.",
+            "type": "string",
+            "editor": "textfield",
+            "minLength": 2,
+            "maxLength": 80
+          },
+          "bbox": {
+            "title": "Bounding box",
+            "description": "south,west,north,east, for example 30.098,-97.938,30.516,-97.561",
+            "type": "string",
+            "editor": "textfield",
+            "pattern": "^-?\\d{1,3}(?:\\.\\d+)?,-?\\d{1,3}(?:\\.\\d+)?,-?\\d{1,3}(?:\\.\\d+)?,-?\\d{1,3}(?:\\.\\d+)?$"
+          }
+        },
+        "required": ["label", "bbox"]
+      }
+    },
+    "startUrls": {
+      "title": "Direct websites",
+      "description": "Optional websites to inspect in addition to discovered local businesses.",
+      "type": "array",
+      "editor": "requestListSources",
+      "default": [],
+      "maxItems": 200
+    },
+    "maxCandidates": {
+      "title": "Maximum candidate websites",
+      "description": "Hard cap on websites inspected. Higher values cost more compute.",
+      "type": "integer",
+      "editor": "number",
+      "default": 120,
+      "minimum": 1,
+      "maximum": 1000,
+      "sectionCaption": "Run limits"
+    },
+    "maxResults": {
+      "title": "Maximum paid results",
+      "description": "Stop after this many verified revenue-leak leads are written.",
+      "type": "integer",
+      "editor": "number",
+      "default": 25,
+      "minimum": 1,
+      "maximum": 250
+    },
+    "maxConcurrency": {
+      "title": "Concurrent website checks",
+      "description": "Conservative default limits load on public business sites.",
+      "type": "integer",
+      "editor": "number",
+      "default": 6,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "confirmationChecks": {
+      "title": "Matching checks required",
+      "description": "An issue is emitted only when all checks return the same objective failure.",
+      "type": "integer",
+      "editor": "number",
+      "default": 2,
+      "minimum": 2,
+      "maximum": 3,
+      "sectionCaption": "Quality controls"
+    },
+    "confirmationDelayMs": {
+      "title": "Delay between confirmations (ms)",
+      "description": "Delay between matching checks of the same failed URL.",
+      "type": "integer",
+      "editor": "number",
+      "default": 1800,
+      "minimum": 500,
+      "maximum": 10000
+    },
+    "onlyWithPublicContact": {
+      "title": "Require public email or phone",
+      "description": "When enabled, suppress results without an explicit public business email or phone number.",
+      "type": "boolean",
+      "default": false
+    },
+    "maxCriticalLinksPerSite": {
+      "title": "Maximum critical links per site",
+      "description": "Caps booking/contact links checked on each website.",
+      "type": "integer",
+      "editor": "number",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 10
+    }
+  }
+}
