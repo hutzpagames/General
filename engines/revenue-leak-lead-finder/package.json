@@ -1,0 +1,19 @@
+{
+  "name": "revenue-leak-lead-finder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Apify Actor that finds high-intent local-business leads with independently verified broken booking/contact links.",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node --test",
+    "validate": "node scripts/validate-config.js"
+  },
+  "dependencies": {
+    "apify": "3.7.2",
+    "cheerio": "1.2.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
