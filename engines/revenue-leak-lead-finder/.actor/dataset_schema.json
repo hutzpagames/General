@@ -1,0 +1,46 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "businessName": { "type": "string", "title": "Business name", "description": "Public business name from OpenStreetMap or the supplied URL." },
+      "category": { "type": "string", "title": "Category", "description": "Detected local-business category." },
+      "market": { "type": "string", "title": "Market", "description": "Metro area or custom market label." },
+      "website": { "type": "string", "title": "Website", "description": "Business website inspected." },
+      "publicEmail": { "type": ["string", "null"], "title": "Public email", "description": "Explicitly published business email; never guessed." },
+      "publicPhone": { "type": ["string", "null"], "title": "Public phone", "description": "Public business phone when available." },
+      "issueType": { "type": "string", "title": "Issue type", "description": "Objective failure class." },
+      "failedUrl": { "type": "string", "title": "Failed URL", "description": "Revenue-critical URL that failed matching checks." },
+      "callToAction": { "type": "string", "title": "CTA", "description": "Visible booking/contact call-to-action text." },
+      "statusCode": { "type": ["integer", "null"], "title": "HTTP status", "description": "Matching HTTP status, or null for DNS/TLS connection failures." },
+      "evidence": { "type": "string", "title": "Evidence", "description": "Concise human-readable verification evidence." },
+      "confidence": { "type": "string", "enum": ["high"], "title": "Confidence", "description": "Only high-confidence matched failures are emitted." },
+      "confirmationCount": { "type": "integer", "title": "Confirmations", "description": "Number of matching checks." },
+      "checkedAt": { "type": "string", "title": "Checked at", "description": "ISO-8601 timestamp of final confirmation." },
+      "sourceUrl": { "type": ["string", "null"], "title": "Source", "description": "OpenStreetMap object URL for discovered businesses." },
+      "sourceLicense": { "type": "string", "title": "Source license", "description": "Attribution and database license notice." }
+    },
+    "required": ["businessName", "category", "market", "website", "issueType", "failedUrl", "evidence", "confidence", "confirmationCount", "checkedAt", "sourceLicense"]
+  },
+  "views": {
+    "qualifiedLeads": {
+      "title": "Qualified revenue-leak leads",
+      "description": "One independently verified business defect per row.",
+      "transformation": {
+        "fields": ["businessName", "category", "market", "issueType", "statusCode", "callToAction", "publicEmail", "publicPhone", "website", "failedUrl", "confirmationCount", "checkedAt", "sourceUrl"]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "website": { "format": "link" },
+          "failedUrl": { "format": "link" },
+          "sourceUrl": { "format": "link" },
+          "confirmationCount": { "format": "number" },
+          "statusCode": { "format": "number" },
+          "checkedAt": { "format": "date" }
+        }
+      }
+    }
+  }
+}
